@@ -21,7 +21,7 @@
 	<!-- Morris.js charts CSS -->
 	<link rel="stylesheet" href="{{ asset('css/morris.css') }}">
 	<!-- Vector CSS -->
-	<link rel="stylesheet" href="{{ asset('css/jvectormap') }}">
+	<link rel="stylesheet" href="{{ asset('css/jvectormap.css') }}">
 	<!-- date picker -->
 	<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
 	<!-- daterange picker -->
@@ -96,6 +96,7 @@
 <script src="js/pages/dashboard.js"></script>
 <!-- MinimalLite Admin for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
+
 
 @yield('scripts')
 

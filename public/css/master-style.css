@@ -40,13 +40,13 @@ Project:	MinimalLite Admin - Responsive Admin Template
 /******************* 
 import icon and fonts Styles 
 *******************/
-@import url(../assets/vendor_components/font-awesome/css/font-awesome.css);
-@import url(../assets/vendor_components/Ionicons/css/ionicons.css);
-@import url(../assets/vendor_components/themify-icons/themify-icons.css);
-@import url(../assets/vendor_components/linea-icons/linea.css);
-@import url(../assets/vendor_components/glyphicons/glyphicon.css);
-@import url(../assets/vendor_components/flag-icon/css/flag-icon.css);
-@import url(../assets/vendor_components/material-design-iconic-font/css/materialdesignicons.css);
+@import url(font-awesome.css);
+@import url(ionicons.css);
+@import url(themify-icons.css);
+@import url(linea.css);
+@import url(glyphicon.css);
+@import url(flag-icon.css);
+@import url(materialdesignicons.css);
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 /*------------------------------------------------------------------
@@ -709,7 +709,7 @@ a:active, a:focus, a:hover {
 }
 .sidebar-mini.sidebar-collapse .main-sidebar .user-panel>.info, .sidebar-mini.sidebar-collapse .sidebar-form, .sidebar-mini.sidebar-collapse .sidebar-menu li.header, .sidebar-mini.sidebar-collapse .sidebar-menu>li>.treeview-menu, .sidebar-mini.sidebar-collapse .sidebar-menu>li>a>.pull-right, .sidebar-mini.sidebar-collapse .sidebar-menu>li>a>span {
     display: none;
-    -webkit-transform: translateZ(0);
+    /* -webkit-transform: translateZ(0); */
 }
 .sidebar-mini.sidebar-collapse .main-header .logo {
     width: 60px;
@@ -997,7 +997,7 @@ a:active, a:focus, a:hover {
 }
 .navbar-custom-menu .navbar-nav li > a.dropdown-toggle, .navbar-custom-menu .navbar-nav > li:last-child > a, .navbar-custom-menu .navbar-nav > .search-box > a {
 	padding: 0px 15px;
-	vertical-align: middle;
+	/* vertical-align: middle; */
     line-height: 60px;
     display: block;
 	font-size: 1.5rem;
@@ -1079,9 +1079,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 .dropdown-menu>li>a>.fa, .dropdown-menu>li>a>.glyphicon, .dropdown-menu>li>a>.ion {
     margin-right: 10px;
 }
-.dropdown-menu>li>a:hover {
 
-}
 .dropdown-menu>.divider {
     background-color: #eee;
 }
@@ -1387,7 +1385,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
     color: #67757c;
     min-height: 38px;
     display: initial;
-    -webkit-background-clip: padding-box;
+    /* -webkit-background-clip: padding-box; */
     background-color: transparent;
     background-position: center bottom, center calc(100% - 1px);
     background-repeat: no-repeat;
@@ -3560,8 +3558,8 @@ input[type="color"] {
 }
 .wizard-content .wizard.vertical>.steps {
     display: inline;
-    float: left;
-    width: 20%
+    /* float: left; */
+    /* width: 20%; */
 }
 .wizard-content .wizard.vertical>.steps>ul>li {
     display: block;
@@ -6630,7 +6628,7 @@ ul.flexbox {
 [class*="img-hov-"] img {
   -webkit-transition: .45s;
   transition: .45s;
-  -webkit-backface-visibility: hidden;
+  /* -webkit-backface-visibility: hidden; */
 }
 
 .img-hov-fadein {
@@ -8528,9 +8526,6 @@ td .label {
     display: inline-block;
     background-color: #fff;
 	border-radius: 4px;
-}
-.btn-circle, .btn-rounded {
-
 }
 .timeline-inverse>li>.timeline-item {
     background: #f0f0f0;
@@ -11575,9 +11570,6 @@ table.dataTable thead .sorting:after {
     padding: 10px 15px;
     -webkit-box-shadow: 0 2px 2px 0 rgba(169, 169, 169, .14), 0 3px 1px -2px rgba(169, 169, 169, .2), 0 1px 5px 0 rgba(169, 169, 169, .12);
     box-shadow: 0 2px 2px 0 rgba(169, 169, 169, .14), 0 3px 1px -2px rgba(169, 169, 169, .2), 0 1px 5px 0 rgba(169, 169, 169, .12);
-}
-.btn-shadow, .lockscreen-box-body {
-    -webkit-box-shadow: 0 2px 2px 0 rgba(169, 169, 169, .14), 0 3px 1px -2px rgba(169, 169, 169, .2), 0 1px 5px 0 rgba(169, 169, 169, .12);
 }
 .btn-shadow {
     box-shadow: 0 2px 2px 0 rgba(169, 169, 169, .14), 0 3px 1px -2px rgba(169, 169, 169, .2), 0 1px 5px 0 rgba(169, 169, 169, .12);

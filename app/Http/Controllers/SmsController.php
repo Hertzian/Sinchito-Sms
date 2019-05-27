@@ -52,4 +52,8 @@ class SmsController extends Controller
         return redirect('/sendsms')->with('message', $message);
 
     }
+
+    public function vista(){
+        return view('nuevaVista');
+    }
 }

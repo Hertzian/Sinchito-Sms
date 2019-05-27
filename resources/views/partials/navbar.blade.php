@@ -292,10 +292,10 @@
                 <li class="user-body">
                 <div class="row ">
                     <div class="col-12 text-left">
-                    <a href="pages/my_profile.html"><i class="ion ion-person"></i> My Profile</a>
+                    <a href="#"><i class="ion ion-person"></i> My Profile</a>
                     </div>
                     <div class="col-12 text-left">
-                    <a href="pages/my-balance.html"><i class="ion ion-person"></i> My balance</a>
+                    <a href="#"><i class="ion ion-person"></i> My balance</a>
                     </div>
                     <div class="col-12 text-left">
                     <a href="#"><i class="ion ion-email-unread"></i> Inbox</a>
@@ -307,9 +307,15 @@
                             <div class="col-12 text-left">
                     <a href="#"><i class="ti-settings"></i> Account Setting</a>
                     </div>
-                            <div role="separator" class="divider col-12"></div>
-                            <div class="col-12 text-left">
-                    <a href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        <div role="separator" class="divider col-12"></div>
+                        <div class="col-12 text-left">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ __('Logout') }}</a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
                     </div>
                 </div>
                 <!-- /.row -->
