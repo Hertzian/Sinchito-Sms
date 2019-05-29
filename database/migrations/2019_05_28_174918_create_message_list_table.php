@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBatchItemListTable extends Migration
+class CreateMessageListTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateBatchItemListTable extends Migration
      */
     public function up()
     {
-        Schema::create('batch_item_list', function (Blueprint $table) {
+        Schema::create('message_list', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->timestamps();
+            // need FK
         });
     }
 
@@ -27,6 +28,6 @@ class CreateBatchItemListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batch_item_list');
+        Schema::dropIfExists('message_list');
     }
 }

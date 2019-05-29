@@ -19,3 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/nuevavista', 'SmsController@vista');
+
+Route::get('/getbatch', function () {
+    return view('batches.getbatch');
+});

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBatchMessageTable extends Migration
+class CreateMessageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateBatchMessageTable extends Migration
      */
     public function up()
     {
-        Schema::create('batch_message', function (Blueprint $table) {
+        Schema::create('message', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->string('message_list');//FK
-            $table->string('date_sent');
             $table->string('sender');
             $table->string('recipient');
-            $table->string('message_length');
             $table->string('encoding');
-            $table->string('message_status');
             $table->string('body');
-            $table->string('send_at');
-            $table->string('is_queued');
+            $table->string('msg_length');
             $table->string('cc');
+            $table->string('is_queued');
+            $table->string('send_at');
+            $table->string('status');
             $table->timestamps();
+            // need FK
         });
     }
 
@@ -37,6 +36,6 @@ class CreateBatchMessageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batch_message');
+        Schema::dropIfExists('message');
     }
 }

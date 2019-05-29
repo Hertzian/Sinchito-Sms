@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillingTable extends Migration
+class CreateItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBillingTable extends Migration
      */
     public function up()
     {
-        Schema::create('billing', function (Blueprint $table) {
+        Schema::create('item', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('rfc');
-            $table->string('cfdi');
-            $table->string('razon_social');
+            $table->string('name');
+            $table->string('number');
             $table->timestamps();
+            // need FK
         });
     }
 
@@ -29,6 +29,6 @@ class CreateBillingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billing');
+        Schema::dropIfExists('item');
     }
 }
