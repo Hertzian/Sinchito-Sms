@@ -11,38 +11,56 @@
         <div class="box-header with-border">
             <div class="row">
                 <div class="col-xl-3 col-md-6 col-12">
-					<!-- Default box -->
-					  <div class="box bg-success">		
-						<div class="box-body">
-							<div class="p-15 text-center">
-							  <div class="vertical-align-middle">
-								<div class="font-size-40">
-								  7
-								  <span class="font-size-30"></span>
+									<!-- Default box -->
+										<div class="box bg-success">		
+										<div class="box-body">
+											<div class="p-15 text-center">
+												<div class="vertical-align-middle">
+												<div class="font-size-40">
+													7
+													<span class="font-size-30"></span>
+												</div>
+												<div class="font-size-20">Running</div>
+												</div>
+											</div>
+										</div>
+										<!-- /.box-body -->		
+										</div>
+								<!-- /.box -->
 								</div>
-								<div class="font-size-20">Running</div>
-							  </div>
-							</div>
-						</div>
-						<!-- /.box-body -->		
-					  </div>
-					<!-- /.box -->
+								<div class="col-xl-3 col-md-6 col-12">
+									<!-- Default box -->
+										<div class="box bg-success">		
+										<div class="box-body">
+											<div class="p-15 text-center">
+												<div class="vertical-align-middle">
+												<div class="font-size-40">
+													7
+													<span class="font-size-30"></span>
+												</div>
+												<div class="font-size-20">Running</div>
+												</div>
+											</div>
+										</div>
+										<!-- /.box-body -->		
+										</div>
+								<!-- /.box -->
                 </div>
                 <div class="col-xl-3 col-md-6 col-12">
-					<!-- Default box -->
-					  <div class="box bg-success">		
-						<div class="box-body">
-							<div class="p-15 text-center">
-							  <div class="vertical-align-middle">
-								<div class="font-size-40">
-								  3
-								  <span class="font-size-30"></span>
-								</div>
-								<div class="font-size-20">Scheduled</div>
-							  </div>
-							</div>
-						</div>
-						<!-- /.box-body -->		
+								<!-- Default box -->
+									<div class="box bg-success">		
+										<div class="box-body">
+											<div class="p-15 text-center">
+												<div class="vertical-align-middle">
+													<div class="font-size-40">
+														3
+													<span class="font-size-30"></span>
+													</div>
+													<div class="font-size-20">Scheduled</div>
+											</div>
+										</div>
+									</div>
+									<!-- /.box-body -->		
 					  </div>
 					<!-- /.box -->
                 </div>
