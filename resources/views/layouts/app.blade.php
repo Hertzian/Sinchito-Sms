@@ -48,9 +48,11 @@
 
 @include('partials.sidebar')
 
-@include('partials.title')
-
 <div class="content">
+		
+	@include('partials.title')
+	
+	@include('partials.message')
 
 	@yield('content')
 
@@ -96,7 +98,6 @@
 <script src="js/pages/dashboard.js"></script>
 <!-- MinimalLite Admin for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
-
 
 @yield('scripts')
 
