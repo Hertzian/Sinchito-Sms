@@ -20,7 +20,7 @@
 													7
 													<span class="font-size-30"></span>
 												</div>
-												<div class="font-size-20">Running</div>
+												<div class="font-size-20">back one</div>
 												</div>
 											</div>
 										</div>
