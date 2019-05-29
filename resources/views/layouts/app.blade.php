@@ -96,7 +96,10 @@
 <script src="js/pages/dashboard.js"></script>
 <!-- MinimalLite Admin for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
-
+<!-- charts.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!-- graficad Dashboard -->
+<script src="{{ asset('js/graphic-charts.js') }}"></script>
 
 @yield('scripts')
 

@@ -53,7 +53,41 @@ class SmsController extends Controller
 
     }
 
+    // llamadas a views
+
     public function vista(){
         return view('nuevaVista');
+    }
+
+    public function profile(){
+        return view('profile');
+    }
+
+    public function contacts(){
+        return view('contacts');
+    }
+
+    public function template(){
+        return view('template');
+    }
+
+    public function balance(){
+        return view('balance');
+    }
+    
+    public function sms(){
+        return view('sms');
+    }
+
+    public function dashboard(){
+        return view('dashboard');
+    }
+
+    public function single(){
+        return view('singleSms');
+    }
+
+    public function settings(){
+        return view('settings');
     }
 }

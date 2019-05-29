@@ -11,11 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', function () {
+        return view('home');
+    });
 
-Auth::routes();
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/nuevavista', 'SmsController@vista');
+    Route::get('/dashboard', 'SmsController@dashboard')->name('dashboard');
+    Route::get('/single', 'SmsController@singleSms')->name('single');
+    Route::get('/sms', 'SmsController@sms')->name('sms');
+    Route::get('/balance', 'SmsController@balance')->name('balance');
+    Route::get('/myprofile', 'SmsController@profile')->name('profile');
+    Route::get('/mycontacts', 'SmsController@contacts')->name('contacts');
+    Route::get('/template', 'SmsController@template')->name('tempate');
+    Route::get('/settings', 'SmsController@settings')->name('settings');
+    Route::get('/nuevavista', 'SmsController@vista');
