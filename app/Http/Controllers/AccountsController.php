@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\ItemList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AccountsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function getAccounts(){
         $user = Auth::user();
         $accounts = Account::where('user_id', $user->id)->get();
@@ -21,11 +27,16 @@ class AccountsController extends Controller
     public function getAccount($id){
         $user = Auth::user();
         $account = Account::find($id);
+        $batches = ItemList::where('account_id', $account->id)->get();
+
 
         return view('account.getaccount', [
             'user' => $user,
-            'account' => $account
+            'account' => $account,
+            'batches' => $batches
         ]);
+
+
     }
 
     public function newAccountView(){

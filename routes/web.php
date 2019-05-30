@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/nuevavista', 'SmsController@vista');
 
 // Accounts
@@ -28,5 +29,10 @@ Route::post('/newaccount', 'AccountsController@newAccount');
 
 // Batches
 Route::get('/getlist/{id}', 'ItemsListController@getBatches');
-Route::get('/newlist', 'ItemsListController@newBatchView');
-Route::post('/newlist', 'ItemsListController@newBatch');
+Route::get('/newlist/{id}', 'ItemsListController@newBatchView');
+Route::post('/newlist/{id}', 'ItemsListController@newBatch');
+
+// Item
+Route::get('/getitems/{id}', 'ItemsController@getBatch');
+Route::get('/newitem/{id}', 'ItemsController@newItemView');
+Route::post('/newitem/{id}', 'ItemsController@newItem');

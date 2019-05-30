@@ -8,7 +8,7 @@ class Item extends Model
 {
     protected $table = 'item';
     protected $fillable = [
-        // 'name'
+        'name','number'
     ];
 
     public function item_list(){
