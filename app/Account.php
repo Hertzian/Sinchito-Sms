@@ -16,7 +16,8 @@ class Account extends Model
     }
 
     public function user(){
-        return $this->belogsTo('App/User', 'account_id');
+        // return $this->belogsTo('App/User', 'account_id');
+        return $this->hasOne('App/User', 'account_id');
     }
 
     public function message_list(){

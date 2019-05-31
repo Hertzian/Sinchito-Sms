@@ -36,7 +36,7 @@ class ItemsController extends Controller
         $item = new Item();
 
         $item->name = $request->input('name');
-        $item->number = $request->input('number');
+        $item->number = '+52' . $request->input('number');
         $item->item_list_id = $request->input('item_list_id');
 
         $request->validate([

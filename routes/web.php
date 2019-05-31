@@ -32,6 +32,8 @@ Route::get('/getlist/{id}', 'ItemsListController@getBatches');
 Route::get('/newlist/{id}', 'ItemsListController@newBatchView');
 Route::post('/newlist/{id}', 'ItemsListController@newBatch');
 
+Route::post('/send/{id}', 'ItemsListController@sendBatchSMS');
+
 // Item
 Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');

@@ -38,4 +38,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // if account hasOne property
+    public function account(){
+        return $this->hasOne('App\Account', 'account_id');
+    }
 }

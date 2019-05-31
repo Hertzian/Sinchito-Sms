@@ -20,4 +20,12 @@
     <p>no hay items aquí :(</p>
 @endif
 
+<form action="{{ url('/send/' . $batch->id) }}" method="post">
+    @csrf
+    <label for="texto_personalizado">Contenido del mensaje:</label>
+    <input type="text" name="texto_personalizado">
+    <br>
+    <button class="btn btn-success" type="submit">Send</button>
+</form>
+
 @endsection
