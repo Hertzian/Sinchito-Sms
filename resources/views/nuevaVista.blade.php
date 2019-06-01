@@ -6,5 +6,14 @@
 
 @section('content')
     <p>El cotorreo que va en la seccion</p>
+
+    <div class="card-body">
+        @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+        @endif
+    </div>
+    
 @endsection
 
