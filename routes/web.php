@@ -38,3 +38,7 @@ Route::post('/send/{id}', 'ItemsListController@sendBatchSMS');
 Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');
 Route::post('/newitem/{id}', 'ItemsController@newItem');
+// Single SMS
+Route::get('/single','ItemsController@sendSingleSMSView');
+Route::post('/single', 'ItemsController@sendSingleSMS');
+

@@ -22,8 +22,12 @@
 
 <form action="{{ url('/send/' . $batch->id) }}" method="post">
     @csrf
+    {{-- <label for="tel">Numero:</label>
+    <input type="text" name="tel"> --}}
     <label for="texto_personalizado">Contenido del mensaje:</label>
+    <br>
     <input type="text" name="texto_personalizado">
+    <br>
     <br>
     <button class="btn btn-success" type="submit">Send</button>
 </form>

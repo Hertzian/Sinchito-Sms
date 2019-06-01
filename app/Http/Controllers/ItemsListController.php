@@ -6,6 +6,7 @@ use App\Item;
 use App\Account;
 use App\ItemList;
 use Clx\Xms\Client;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Clx\Xms\Api\MtBatchTextSmsCreate;
 
@@ -66,49 +67,50 @@ class ItemsListController extends Controller
         $name = Item::where('item_list_id', $batch->id)->pluck('name');
         $number = Item::where('item_list_id', $batch->id)->pluck('number');
 
-        $names =[];
-        $numbers =[];
+        $names = [];
+        $numbers = [];
+        $message;
 
         $client = new Client($this->splan, $this->token);
-        $message;
+        
         try {
 
             $batchParams = new MtBatchTextSmsCreate();
             $batchParams->setSender('12345');
 
-            if (count($number) >= 1) {
-                for ($i=0; $i < count($number); $i++) { 
+            if(count($number) >=1){
+                for ($i=0; $i < count($name); $i++) { 
                     $numbers[] = $number[$i];
                 }
-
-                // foreach ($numbers as $key => $value) {
-                //     $numbers[] = $number[$value];
-                // }
-                
             }
 
-            dd($numbers);
+            // $nums = "";                        
+            // $nums = '';                        
+            // foreach( $numbers as $key => $value ){
+            //     $nums =  $nums . "'" . $value . "',";
+            // }
 
-            $batchParams->setRecipients($numbers);
-            
+            // dd([$nums]);
+
+            // dd($numbers);
+
             $texto = $request->input('texto_personalizado');
 
-            // $batchParams->setBody('
-            // Hola 
-            // ${fulano},
-            // Enviado con sinch, Kiubole, checando si funciona esto...
-            // ');
+            $batchParams->setRecipients($numbers);
 
-            $batchParams->setBody($texto);
+            $batchParams->setBody('Hola ${fulano}, ' . $texto);
 
             if (count($name) >=1) {
                 for ($i=0; $i < count($number); $i++) { 
                     $names = array_add($names, $number[$i], $name[$i]);
                 }
+                $names += ['default' => 'estimado cliente'];
             }
 
-            // dd($names);
-            $batchParams->setParameters($names);
+            $fulano = ['fulano' => $names];
+            // dd($fulano);
+
+            $batchParams->setParameters($fulano);
 
             $result = $client->createTextBatch($batchParams);
 
