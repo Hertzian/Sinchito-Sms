@@ -10,6 +10,11 @@ use Clx\Xms\Api\MtBatchTextSmsCreate;
 
 class ItemsController extends Controller
 {
+    protected $token;
+    protected $splan;
+    protected $endpoint;
+    protected $sender;
+
     public function __construct()
     {
         $this->middleware('auth');        
@@ -17,6 +22,7 @@ class ItemsController extends Controller
         $this->splan = config('app.sinch')['SERVICE_PLAN_ID'];
         // third arg for Client(), default https://api.clxcommunications.com/xms
         $this->endpoint = url('some url');
+        $this->sender = '12345';
     }
     
     public function getBatch($id){
@@ -66,7 +72,7 @@ class ItemsController extends Controller
         try {
 
             $batchParams = new MtBatchTextSmsCreate();
-            $batchParams->setSender('12345');
+            $batchParams->setSender($this->sender);
 
             $num = '+52' . $request->input('tel');
             $texto = $request->input('texto_personalizado');

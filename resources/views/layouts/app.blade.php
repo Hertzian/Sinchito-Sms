@@ -95,7 +95,7 @@
 <script src="{{ asset('js/template.js') }}"></script>
 <!-- MinimalLite Admin dashboard demo (This is only for demo purposes) -->
 {{-- Pendiente --}}
-<script src="js/pages/dashboard.js"></script>
+{{-- <script src="js/pages/dashboard.js"></script> --}}
 <!-- MinimalLite Admin for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
 

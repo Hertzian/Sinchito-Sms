@@ -15,6 +15,7 @@ class ItemsListController extends Controller
     protected $token;
     protected $splan;
     protected $endpoint;
+    protected $sender;
 
     public function __construct(){
 
@@ -23,6 +24,7 @@ class ItemsListController extends Controller
         $this->splan = config('app.sinch')['SERVICE_PLAN_ID'];
         // third arg for Client(), default https://api.clxcommunications.com/xms
         $this->endpoint = url('some url');
+        $this->sender = '12345';
     }
     
     public function getBatches($id){
@@ -76,23 +78,13 @@ class ItemsListController extends Controller
         try {
 
             $batchParams = new MtBatchTextSmsCreate();
-            $batchParams->setSender('12345');
+            $batchParams->setSender($this->sender);
 
             if(count($number) >=1){
                 for ($i=0; $i < count($name); $i++) { 
                     $numbers[] = $number[$i];
                 }
             }
-
-            // $nums = "";                        
-            // $nums = '';                        
-            // foreach( $numbers as $key => $value ){
-            //     $nums =  $nums . "'" . $value . "',";
-            // }
-
-            // dd([$nums]);
-
-            // dd($numbers);
 
             $texto = $request->input('texto_personalizado');
 
@@ -108,7 +100,6 @@ class ItemsListController extends Controller
             }
 
             $fulano = ['fulano' => $names];
-            // dd($fulano);
 
             $batchParams->setParameters($fulano);
 

@@ -13,7 +13,7 @@ class AddForeignKeyMessageTable extends Migration
      */
     public function up()
     {
-        Schema::table('message_list', function(Blueprint $table){
+        Schema::table('message', function(Blueprint $table){
             $table->bigInteger('message_list_id')->unsigned();
             $table->foreign('message_list_id')
                 ->references('id')->on('message_list')
@@ -28,8 +28,8 @@ class AddForeignKeyMessageTable extends Migration
      */
     public function down()
     {
-        Schema::table('message_list', function(Blueprint $table){
-            $table->dropForeign('message_list_message_list_id_foreign');
+        Schema::table('message', function(Blueprint $table){
+            $table->dropForeign('message_message_list_id_foreign');
         });
     }
 }

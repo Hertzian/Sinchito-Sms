@@ -1,6 +1,9 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="{{ URL::route('home') }}" class="logo">
+    <a href="
+    #
+    {{-- {{ URL::route('home') }} --}}
+    " class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <b class="logo-mini">
             <span class="light-logo"><img src="{{ asset('images/aries-light.png') }}" alt="logo"></span>
@@ -42,7 +45,7 @@
                         <li><!-- start message -->
                         <a href="#">
                             <div class="pull-left">
-                            <img src="{{ asset('images/user2-160x160.jpg') }}" class="rounded-circle" alt="User Image">
+                            <img src="{{ asset('images/user-160x160.jpg') }}" class="rounded-circle" alt="User Image">
                             </div>
                             <div class="mail-contnet">
                             <h4>
@@ -57,7 +60,7 @@
                         <li>
                         <a href="#">
                             <div class="pull-left">
-                            <img src="{{ asset('images/user3-128x128.jpg') }}" class="rounded-circle" alt="User Image">
+                            <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle" alt="User Image">
                             </div>
                             <div class="mail-contnet">
                             <h4>
@@ -71,7 +74,7 @@
                         <li>
                         <a href="#">
                             <div class="pull-left">
-                            <img src="{{ asset('images/user4-128x128.jpg') }}" class="rounded-circle" alt="User Image">
+                            <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle" alt="User Image">
                             </div>
                             <div class="mail-contnet">
                             <h4>
@@ -85,7 +88,7 @@
                         <li>
                         <a href="#">
                             <div class="pull-left">
-                            <img src="{{ asset('images/user3-128x128.jpg') }}" class="rounded-circle" alt="User Image">
+                            <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle" alt="User Image">
                             </div>
                             <div class="mail-contnet">
                             <h4>
@@ -99,7 +102,7 @@
                         <li>
                         <a href="#">
                             <div class="pull-left">
-                            <img src="{{ asset('images/user4-128x128.jpg') }}" class="rounded-circle" alt="User Image">
+                            <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle" alt="User Image">
                             </div>
                             <div class="mail-contnet">
                             <h4>
@@ -275,12 +278,12 @@
                 <!-- User Account -->
                 <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('images/user5-128x128.jpg') }}" class="user-image rounded-circle" alt="User Image">
+                    <img src="{{ asset('images/user-128x128.jpg') }}" class="user-image rounded-circle" alt="User Image">
                 </a>
                 <ul class="dropdown-menu scale-up">
                     <!-- User image -->
                     <li class="user-header">
-                    <img src="{{ asset('images/user5-128x128.jpg') }}" class="float-left rounded-circle" alt="User Image">
+                    <img src="{{ asset('images/user-128x128.jpg') }}" class="float-left rounded-circle" alt="User Image">
 
                     <p>
                         Juliya Brus
@@ -292,10 +295,16 @@
                     <li class="user-body">
                     <div class="row ">
                         <div class="col-12 text-left">
-                        <a href="{{ URL::route('profile') }}"><i class="ion ion-person"></i> My Profile</a>
+                        <a href="
+                        {{-- # --}}
+                        {{ URL::route('profile') }}
+                        "><i class="ion ion-person"></i> My Profile</a>
                         </div>
                         <div class="col-12 text-left">
-                        <a href="{{ URL::route('balance') }}"><i class="ion ion-person"></i> My balance</a>
+                        <a href="
+                        {{-- # --}}
+                        {{ URL::route('balance') }}
+                        "><i class="ion ion-person"></i> My balance</a>
                         </div>
                         <div class="col-12 text-left">
                         <a href="#"><i class="ion ion-email-unread"></i> Inbox</a>
@@ -305,7 +314,10 @@
                         </div>
                                 <div role="separator" class="divider col-12"></div>
                                 <div class="col-12 text-left">
-                        <a href="{{ URL::route('profile') }}"><i class="ti-settings"></i> Account Setting</a>
+                        <a href="
+                        {{-- # --}}
+                        {{ URL::route('profile') }}
+                        "><i class="ti-settings"></i> Account Setting</a>
                         </div>
                             <div role="separator" class="divider col-12"></div>
                             <div class="col-12 text-left">
