@@ -24,9 +24,9 @@
                     <li><a href="
                         {{-- # --}}
                         {{ URL::route('sms') }}
-                        "><i class="fa fa-money mr-5"></i>My Balance</a></li>
+                        "><i class="fa fa-money mr-5"></i>Balance</a></li>
                     <li><a href="#"><i class="fa fa-envelope-open mr-5"></i>Inbox</a></li>
-                    <li><a href="#"><i class="fa fa-cog mr-5"></i>Account Setting</a></li>
+                    <li><a href="#"><i class="fa fa-cog mr-5"></i>Configuración</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ __('Logout') }}</a></li>
                 </ul>
@@ -50,8 +50,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="{{ url('/single') }}"><i class="fa fa-envelope"></i>SMS Sencillo</a></li>
                     <li><a href="{{ URL::route('sms') }}"><i class="fa fa-money mr-5"></i>Batches</a></li>
-                    <li><a href="{{ URL::route('sin') }}"><i class="fa fa-envelope"></i>SMS Sencillo</a></li>
                     <li><a href="{{ URL::route('template') }}"><i class="fa fa-window-maximize"></i>Plantilla</a></li>
                     {{-- <li><a href="{{ URL::route('settings') }}"><i class="fa fa-cog mr-5"></i>Configuración</a></li> --}}
                 </ul>

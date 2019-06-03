@@ -51,4 +51,4 @@ Route::get('/template', function () {return view('vistas.template');})->name('te
 Route::get('/settings', function () {return view('vistas.settings');})->name('settings');
 Route::get('/contacts', function () {return view('vistas.contacts');})->name('contacts');
 Route::get('/balance', function () {return view('vistas.balance');})->name('balance');
-Route::get('/sin', function () {return view('vistas.singleSms');})->name('sin');
+// Route::get('/sin', function () {return view('vistas.singleSms');})->name('sin');

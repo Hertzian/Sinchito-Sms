@@ -6,7 +6,7 @@
 <h1>Mensaje sencillo</h1>    
 @endsection
 
-<br>
+{{-- <br>
 <a href="{{ url('/') }}" class="btn btn-danger">Regresar</a>
 <hr>
 
@@ -20,6 +20,52 @@
     <br>
     <br>
     <button class="btn btn-success" type="submit">Send</button>
-</form>
+</form> --}}
+
+{{-- 
+<div class="card-body">
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+    @endif
+</div>        
+--}}
+
+<section class="content">
+    <!-- row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="box content"><br><br>
+                <form action="{{ url('/single') }}" method="post">
+                    @csrf                 
+                    <div class="form-group row">
+                        <div class="col-1"></div>
+                        <label for="tel" class="col-xl-2 col-md-2 col-4 col-form-label">Recipiente:</label>
+                        <div class="col-xl-4 col-md-4 col-6">
+                            <input id="tel" class="form-control" name="tel" type="text" placeholder="Introduce el teléfono" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-1"></div>
+                        <label for="text-message" class="col-xl-2 col-md-2 col-4 col-form-label">Texto:</label>
+                        <div class="col-xl-4 col-md-4 col-6">
+                            <textarea class="form-control" name="texto_personalizado" rows="6" placeholder="Introduce el mensaje" required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
+                            {{-- <p id="letters">Message parts: 1, Characters: 0 </p> --}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-md-3 col-3"></div>
+                        {{-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --}}
+                        <button type="submit" class="btn btn-success col-xl-2 col-md-2 col-3">Enviar</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3">Limpiar</button>
+                    </div>
+                        {{-- <br><br><br> --}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection

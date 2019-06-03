@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <h1>Super sección</h1>
+  <h1>Batches/Listas de contactos</h1>
 @endsection
 
 @section('content')
@@ -158,7 +158,7 @@
         <div class="col-12">
           <div class="box">
             <div class="box-header with-border">
-            <h3 class="box-title">Data </h3>
+            <h3 class="box-title">Listas Contactos </h3>
           </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -166,50 +166,37 @@
             <thead>
               <tr>
                 <th>Batch Name</th>
-                <th>Client</th>
-                <th>Delivery Account</th>
-                <th>Recipinets</th>
-                <th>Start</th>
+                {{-- <th>Client</th> --}}
+                {{-- <th>Delivery Account</th> --}}
+                <th>No. de contactos</th>
+                {{-- <th>Start</th> --}}
                 <th>Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th>Batch Name</th>
-                <th>Client</th>
-                <th>Delivery Account</th>
-                <th>Recipinets</th>
-                <th>Start</th>
+                {{-- <th>Client</th> --}}
+                {{-- <th>Delivery Account</th> --}}
+                <th>No. de contactos</th>
+                {{-- <th>Start</th> --}}
                 <th>Actions</th>
               </tr>
             </tfoot>
             <tbody>
               <tr>
                 <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
+                {{-- <td>System Architect</td> --}}
+                {{-- <td>Edinburgh</td> --}}
                 <td>61</td>
-                <td>2011/04/25</td>
+                {{-- <td>2011/04/25</td> --}}
                 <td> 
                   <div class="btn-group">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal-sms"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                     <button type="button" class="btn btn-success" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button>
                   </div>
                 </td>
-              </tr>
-              <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td> 
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal-sms"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-success" id="sa-warning" onclick="deleteElement()" ><i class="fa fa-remove" aria-hidden="true"></i></button>
-                  </div>
-                </td>
-              </tr>
+              </tr>              
             </tbody>
           </table>
         </div>
