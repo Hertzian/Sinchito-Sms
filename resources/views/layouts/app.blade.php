@@ -98,6 +98,8 @@
 {{-- <script src="js/pages/dashboard.js"></script> --}}
 <!-- MinimalLite Admin for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
+<!-- funciones  -->
+<script src="{{ asset('js/functions.js') }}"></script>
 
 @yield('scripts')
 

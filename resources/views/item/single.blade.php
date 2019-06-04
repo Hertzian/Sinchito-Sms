@@ -51,7 +51,7 @@
                         <label for="text-message" class="col-xl-2 col-md-2 col-4 col-form-label">Texto:</label>
                         <div class="col-xl-4 col-md-4 col-6">
                             <textarea class="form-control" name="texto_personalizado" rows="6" placeholder="Introduce el mensaje" required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                            {{-- <p id="letters">Message parts: 1, Characters: 0 </p> --}}
+                             <p id="letters">Message parts: 1, Characters: 0 </p>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -59,7 +59,7 @@
                         {{-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --}}
                         <button type="submit" class="btn btn-success col-xl-2 col-md-2 col-3">Enviar</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3">Limpiar</button>
+                        <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3" onclick="limpiar_single();">Limpiar</button>
                     </div>
                         {{-- <br><br><br> --}}
                     </form>

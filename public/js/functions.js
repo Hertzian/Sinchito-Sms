@@ -88,28 +88,20 @@ $(document).ready( function () {
   
   function valTextMessage(obj)
   {
-    var latin = document.getElementById("latin-alphabet");
-    var other = document.getElementById("other-alphabet");
-    var textArea = document.getElementById("text-message");
+    var textArea = document.getElementById("texto_personalizado");
     var maxlength = 160;
-  
-    if(latin.checked){
-      maxlength = 160;
-    }
-    else if(other.checked){
-      maxlength = 70;
-    }else{
-      latin.checked = true;
-    }
-  
-    document.getElementById("letters").innerHTML = 'Message parts: 1, Characters: ' + obj.value.length +' ('+ maxlength +')';
-  
-    if(obj.value.length > maxlength){
-      textArea.style.color="#ff0000";
-    }
-    else{
-      textArea.style.color="#000000";
-    }
-  
+    var part = 1;
+    var max = 160;
+    
+    document.getElementById("letters").innerHTML = 'Message parts: '+ part +', Characters: ' + obj.value.length;
   }
   
+  function limpiar_single() {
+    var box1 = document.getElementById("tel").value ='';
+    var box2 = document.getElementById("texto_personalizado").value ='';
+  }
+
+  function limpiar_template() {
+    var box1 = document.getElementById("temaplate-name").value ='';
+    var box2 = document.getElementById("texto_personalizado").value ='';
+  }
