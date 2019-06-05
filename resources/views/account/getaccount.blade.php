@@ -47,19 +47,51 @@
         </div>
     </div>
 
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="add-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Agregar Lista</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <form action="{{ url('/newlist/' . $account->id) }}" method="post" class="">
+                    @csrf
+                    <div class="modal-body ">
+                        <div class="form-group row">
+                            <div class="col-2"></div>
+                            <label for="recupient-input" class="col-3 col-form-label">Nombre de lista</label>
+                            <div class="col-xl-4 col-md-6 col-6">
+                                <input type="hidden" name="account_id" value="{{ $account->id }}">  
+                                <input class="form-control" type="text" id="name" name="name" placeholder="Nombre de lista" required >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar Lista</button>
+                        <button type="button" class="btn btn-warning float-right" onclick="limpiar_template();">Limpiar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="row">
 
     @if (count($batches) >= 1)
         @foreach ($batches as $batch)
-            <div class="col-xl-3 col-md-6 col-12 ">
+            <div class="col-xl-4 col-md-6 col-12 ">
                 <div class="box box-body text-center">
-                    <div class="font-size-40 font-weight-200">{{ $user->id }}</div>
-                    <div>ID de Usuario</div>
+                    <div class="font-size-40 font-weight-200">{{ $batch->name }}</div>
+                    <div>
+                        Lista <br>
+                        <a href="{{ url('/getitems/' . $batch->id) }}" class="badge badge-warning">Ver Lista</a>
+                    </h6>
+                    </div>
                 </div>
             </div>
-            <p><a href="{{ url('/getitems/' . $batch->id) }}">{{ $batch->name }}</a></p>
         @endforeach
     @else
         <div class="col-xl-3 col-md-6 col-12 ">
@@ -78,49 +110,49 @@
         <h3>Informacion de cuenta</h3>
     </div>
 
-    <div class="col-xl-3 col-md-6 col-12 ">
+    <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $user->id }}</div>
-            <div>ID de Usuario</div>
+            <div> ID de Usuario</div>
         </div>
     </div>
 
-    <div class="col-xl-3 col-md-6 col-12 ">
+    <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $user->name }}</div>
             <div>Nombre de usuario</div>
         </div>
     </div>    
 
-    <div class="col-xl-3 col-md-6 col-12 ">
+    <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $account->id }}</div>
             <div>ID de cuenta</div>
         </div>
     </div>
 
-    <div class="col-xl-3 col-md-6 col-12 ">
+    <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $account->type }}</div>
             <div>Tipo de cuenta</div>
         </div>
     </div>
     
-    <div class="col-xl-3 col-md-6 col-12 ">
+    <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $account->message_limit }}</div>
             <div>Limite de mensajes</div>
         </div>
     </div>    
 
-    <div class="col-xl-3 col-md-6 col-12 ">
+    <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $account->balance }}</div>
             <div>Balance</div>
         </div>
     </div>
 
-    <div class="col-xl-3 col-md-6 col-12 ">
+    <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $account->status }}</div>
             <div>Status</div>
@@ -140,17 +172,5 @@
     <br>
     <label for="status">Status: {{ $account->status }}</label>
 <hr> -->
-<h3>Listas de contactos</h3>
-<a href="{{ url('/newlist/' . $account->id) }}" class="btn btn-primary">Nueva lista</a>
-<br>
-<br>
-
-@if (count($batches) >= 1)
-    @foreach ($batches as $batch)
-        <p><a href="{{ url('/getitems/' . $batch->id) }}">{{ $batch->name }}</a></p>
-    @endforeach
-@else
-    <p>No hay listas guardadas</p>    
-@endif
 
 @endsection

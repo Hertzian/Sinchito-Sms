@@ -29,41 +29,41 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-            <form action="{{ url('/newaccount') }}" method="post" class="">
-                @csrf
-                <div class="form-group row">
-                    <div class="col-2"></div>
-                    <label for="type" class="col-2 col-form-label">Tipo*</label>
-                    <div class="col-4">
-                        <input class="form-control" type="text" value="" placeholder="" id="type" name="type" require>
+                <form action="{{ url('/newaccount') }}" method="post" class="">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-2"></div>
+                        <label for="type" class="col-2 col-form-label">Tipo*</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" value="" placeholder="" id="type" name="type" require>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-2"></div>
-                    <label for="message_limit" class="col-2 col-form-label">Limite de mensajes*</label>
-                    <div class="col-4">
-                        <input class="form-control" type="text" value="" placeholder="" id="message_limit" name="message_limit" require>
+                    <div class="form-group row">
+                        <div class="col-2"></div>
+                        <label for="message_limit" class="col-2 col-form-label">Limite de mensajes*</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" value="" placeholder="" id="message_limit" name="message_limit" require>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-2"></div>
-                    <label for="balance" class="col-2 col-form-label">Balance*</label>
-                    <div class="col-4">
-                        <input class="form-control" type="text" value="" placeholder="" id="balance" name="balance" require>
+                    <div class="form-group row">
+                        <div class="col-2"></div>
+                        <label for="balance" class="col-2 col-form-label">Balance*</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" value="" placeholder="" id="balance" name="balance" require>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-2"></div>
-                    <label for="status" class="col-2 col-form-label">Status*</label>
-                    <div class="col-4">
-                        <input class="form-control" type="text" value="" placeholder="" id="status" name="status" require>
+                    <div class="form-group row">
+                        <div class="col-2"></div>
+                        <label for="status" class="col-2 col-form-label">Status*</label>
+                        <div class="col-4">
+                            <input class="form-control" type="text" value="" placeholder="" id="status" name="status" require>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-info float-right" onclick="ok()" value="Enviar">
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-info float-right" onclick="ok()" value="Enviar">
+                    </div>
+                </form>
             </div>
         </div>
         <!-- /.modal-content -->

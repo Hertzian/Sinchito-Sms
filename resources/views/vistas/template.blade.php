@@ -24,6 +24,7 @@
               <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Add template<i class="fa fa-arrow-right"></i></a>
           </div>
         </div>
+        
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="add-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">

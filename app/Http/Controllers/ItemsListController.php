@@ -60,7 +60,7 @@ class ItemsListController extends Controller
 
         $batch->save();
 
-        return redirect('/')->with('message', 'El batch se ha creado con éxito');
+        return redirect('/getaccount/' . $account->id)->with('message', 'El batch se ha creado con éxito');
     }
 
     public function sendBatchSMS(Request $request, $id){
@@ -89,6 +89,7 @@ class ItemsListController extends Controller
             $texto = $request->input('texto_personalizado');
 
             $batchParams->setRecipients($numbers);
+
 
             $batchParams->setBody('Hola ${fulano}, ' . $texto);
 
