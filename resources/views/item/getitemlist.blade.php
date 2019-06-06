@@ -25,34 +25,26 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Agregar Lista</h4>
+                        <h4 class="modal-title" id="myLargeModalLabel">Agregar Contacto</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
-                    <form action="{{ url('/newitem/' . $itemlist->id) }}" method="post">
+                 
+                    <form action="{{ url('/newitem/' . $batch->id) }}" method="post">
                         @csrf
-                        <input type="hidden" name="item_list_id" value="{{ $itemlist->id }}">    
-                        <label for="name">Nombre:</label>
-                        <input type="text" name="name"><br>
-                        <label for="number">Numero:</label>
-                        <input type="text" name="number"><br><br>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
-                    <form action="" method="post">
-                        @csrf       
                         <div class="modal-body ">
                             <div class="form-group row">
                                 <div class="col-2"></div>
-                                <label for="recupient-input" class="col-3 col-form-label">Nombre</label>
+                                <label for="name" class="col-3 col-form-label">Nombre</label>
                                 <div class="col-xl-4 col-md-6 col-6">
-                                    <input type="hidden" name="item_list_id" value="">
-                                    <input class="form-control" type="text" id="name"  name="name" placeholder="Nombre de lista" required >
+                                    <input type="hidden" name="item_list_id" value="{{ $batch->id }}">  
+                                    <input class="form-control" type="text" id="name" name="name" placeholder="Nombre de contacto" required >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-2"></div>
-                                <label for="recupient-input" class="col-3 col-form-label">Numero</label>
+                                <label for="number" class="col-3 col-form-label">Numero</label>
                                 <div class="col-xl-4 col-md-6 col-6">
-                                    <input class="form-control" type="number" id="number" name="number" placeholder="Nombre de lista" required >
+                                    <input class="form-control" type="number" id="number" name="number" placeholder="Numero" required >
                                 </div>
                             </div>
                         </div>

@@ -35,6 +35,7 @@ class ItemsController extends Controller
         ]);
     }
 
+    // {{ url('getitems/' . $itemlist->id) }}
     public function newItemView($id){
         $itemlist = ItemList::find($id);
 
