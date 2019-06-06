@@ -122,11 +122,4 @@
         </div>
     </section>
 
-
-<br>
-<a href="{{ url('/getaccount/' . $batch->id) }}" class="btn btn-danger">Regresar</a>
-<h3>Nombre de lista: {{ $batch->name }}</h3>
-<a href="{{ url('/newitem/' . $batch->id) }}" class="btn btn-primary">Nuevo contacto</a>
-<hr>
-
 @endsection
