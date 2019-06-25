@@ -98,10 +98,10 @@
                 
                 @if (count($accounts) >= 1)
                     @foreach ($accounts as $account)
-                        <li class="nav-item"><a href="{{ url('getaccount/' . $account->id) }}" class="nav-link">ID de cuenta: <span class="pull-right badge bg-warning">{{ $account->id }}</span></a></li>
+                        <li class="nav-item"><a href="{{ url('getaccount/' . $account->id) }}" class="nav-link">Cuenta {{ $account->id }} : <span class="pull-right badge bg-warning">Ver cuenta</span></a></li>
                     @endforeach    
                 @else
-                <li class="nav-item"><a href="" class="nav-link">ID de cuenta: <span class="pull-right badge bg-warning">sin cuentas registradas</span></a></li>
+                <li class="nav-item"><a href="" class="nav-link">ID de cuenta: <span class="pull-right badge bg-warning">Sin cuentas registradas</span></a></li>
                 @endif
                 
                 <li class="nav-item"><a href="#edit-modal" class="nav-link" data-target="#edit-modal" data-toggle="modal">Edit <span class="pull-right badge bg-info"><i class="fa fa-pencil" aria-hidden="true"></i></span></a></li>
