@@ -43,7 +43,7 @@
             <div class="icon">
                 <i class="fa fa-window-maximize"></i>
             </div>
-            <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Nueva lista<i class="fa fa-arrow-right"></i></a>
+            <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Nueva lista &nbsp;<i class="fa fa-arrow-right"></i></a>
         </div>
     </div>
 
@@ -94,12 +94,12 @@
             </div>
         @endforeach
     @else
-        <div class="col-xl-3 col-md-6 col-12 ">
-                <div class="box box-body text-center">
-                    <div class="font-size-40 font-weight-200"><i class="fa fa-grav"></i></div>
-                    <div>No hay listas guardadas</div>
-                </div>
-            </div>  
+        <div class="col-xl-4 col-md-6 col-12 ">
+            <div class="box box-body text-center">
+                <div class="font-size-40 font-weight-200"><i class="fa fa-grav"></i></div>
+                <div>No hay listas guardadas</div>
+            </div>
+        </div>  
     @endif
 
 </div>
@@ -113,7 +113,7 @@
     <div class="col-xl-4 col-md-6 col-12 ">
         <div class="box box-body text-center">
             <div class="font-size-40 font-weight-200">{{ $user->id }}</div>
-            <div> ID de Usuario</div>
+            <div>ID de Usuario</div>
         </div>
     </div>
 

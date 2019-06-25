@@ -59,7 +59,7 @@ class ItemsController extends Controller
 
         $item->save();
 
-        return redirect('/')
+        return redirect('/getitems')
             ->with('message', 'El item se ha creado con éxito');
     }
 

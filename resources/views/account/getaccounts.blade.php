@@ -61,6 +61,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
+                        <input type="button" class="btn btn-warning float-right" onclick="limpiar_()" value="Limpiar">
                         <input type="submit" class="btn btn-info float-right" onclick="ok()" value="Enviar">
                     </div>
                 </form>

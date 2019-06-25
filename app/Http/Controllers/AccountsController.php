@@ -64,6 +64,6 @@ class AccountsController extends Controller
 
         $account->save();
 
-        return redirect('/')->with('message', 'La cuenta se ha creado con éxito');
+        return redirect('getaccount')->with('message', 'La cuenta se ha creado con éxito');
     }
 }
