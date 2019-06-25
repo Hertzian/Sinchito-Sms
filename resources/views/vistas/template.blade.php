@@ -46,7 +46,7 @@
                     <label for="text-message" class="col-3 col-form-label">Text</label>
                     <div class="col-xl-4 col-md-6 col-6">
                         <textarea class="form-control" rows="5" placeholder="Enter ..." required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                        <p id="letters">Message parts: 1, Characters: 0 </p>
+                        <p id="letters">Message, Characters: 0 </p>
                     </div>
                   </div>
                 </form>

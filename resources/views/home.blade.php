@@ -14,17 +14,6 @@
     <div class="row justify-content-center">
         <div class="col-md-12 mt-5">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        You are logged in!
-                    </div>
                     {{-- ************************************* --}}
                     <div class="content">
                         <div class="content box-body">
@@ -39,10 +28,13 @@
                                                 Just want to send a single message? Simple. <br> 
                                                 Do it here. <br><br>
                                             </p>
-                                            <span class="info-box-text"><p class="text-right"><a href="
-                                            #
-                                            {{-- {{ URL::route('single') }} --}}
-                                            ">Go to single message</a></span> 
+                                            <span class="info-box-text">
+                                                <p class="text-right">
+                                                    <a href="
+                                                    {{-- {{ URL::route('single') }} --}}
+                                                    ">Go to single message</a>
+                                                </p>
+                                            </span> 
                                         </div>
                                         <!-- /.info-box-content -->
                                     </div>

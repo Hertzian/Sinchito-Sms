@@ -57,9 +57,9 @@
                     <div class="form-group row">
                         <div class="col-xl-3 col-md-3 col-3"></div>
                         {{-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --}}
-                        <button type="submit" class="btn btn-success col-xl-2 col-md-2 col-3">Enviar</button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3" onclick="limpiar_single();">Limpiar</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-success col-xl-2 col-md-2 col-3">Enviar</button>
                     </div>
                         {{-- <br><br><br> --}}
                     </form>

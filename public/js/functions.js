@@ -1,5 +1,5 @@
 
-$(document).ready( function () {
+  $(document).ready( function () {
     $('#balance-table').DataTable();
   } );
   
@@ -47,7 +47,7 @@ $(document).ready( function () {
     })
   }
   
-  async function alertWrongTimer() {
+  async function  r() {
     const {
       value: formValues
       } = await Swal.fire({
@@ -95,13 +95,38 @@ $(document).ready( function () {
     
     document.getElementById("letters").innerHTML = 'Message parts: '+ part +', Characters: ' + obj.value.length;
   }
+
+  // Limpiar campos
   
   function limpiar_single() {
-    var box1 = document.getElementById("tel").value ='';
-    var box2 = document.getElementById("texto_personalizado").value ='';
+    document.getElementById('tel').value ='';
+    document.getElementById('texto_personalizado').value ='';
   }
 
   function limpiar_template() {
-    var box1 = document.getElementById("temaplate-name").value ='';
-    var box2 = document.getElementById("texto_personalizado").value ='';
+    document.getElementById('temaplate-name').value = '';
+    document.getElementById('texto_personalizado').value = '';
   }
+
+  function Prueba() {
+    alert("alert");
+  }
+
+  function limpiar_() {
+    document.getElementById('type').value = '';
+    document.getElementById('message_limit').value = '';
+    document.getElementById('balance').value = '';
+    document.getElementById('status').value = '';
+  }
+
+  function limpiar_mensaje_single() {
+    document.getElementById('texto_personalizado').value = '';
+    console.log("L_mensaje_single se ejecuto");
+    
+  }
+
+  function limpiar_newitem() {
+    document.getElementById('name').value = '';
+    document.getElementById('number').value = '';
+  }
+

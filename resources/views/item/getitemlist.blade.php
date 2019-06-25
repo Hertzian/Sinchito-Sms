@@ -49,9 +49,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
                             <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar Lista</button>
-                            <button type="button" class="btn btn-warning float-right" onclick="limpiar_template();">Limpiar</button>
+                            <button type="button" class="btn btn-warning float-right" onclick="limpiar_newitem();">Limpiar</button>
                         </div>
                     </form>
                 </div>
@@ -64,7 +64,7 @@
         @if (count($items) >= 1)
             @foreach ($items as $item)
 
-                <div class="col-md-6 col-lg-3">
+                <div class="col-md-6 col-lg-4">
                     <a class="box box-body box-hover-shadow" href="#">
                     <div class="flexbox align-items-center">
                         <span class="ion ion-ios-person font-size-50"></span>
@@ -79,7 +79,7 @@
             @endforeach
         @else
 
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-4">
                 <a class="box box-body box-hover-shadow" href="#">
                     <div class="flexbox align-items-center">
                         <span class="fa fa-grav font-size-50"></span>
@@ -112,10 +112,11 @@
                         <div class="col-2"></div>
                         <label for="name" class="col-12 col-form-label">Contenido del mensaje:</label>
                         <div class="col-12">
-                            <textarea class="form-control" name="texto_personalizado" rows="6" placeholder="Introduce el mensaje" required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea>    
+                            <textarea class="form-control" name="texto_personalizado" rows="6" placeholder="Introduce el mensaje..." required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea>    
+                            <p id="letters">Message, Characters: 0 </p>
                         </div>
                     </div>
-                    <button class="btn btn-warning" type="button">Limpiar</button>
+                    <button class="btn btn-warning" type="button" onclick="limpiar_mensaje_single()">Limpiar</button>
                     <button class="btn btn-success" type="submit">Enviar</button>
                 </form>
             </div>
