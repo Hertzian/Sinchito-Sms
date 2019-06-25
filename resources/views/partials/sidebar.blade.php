@@ -51,7 +51,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/single') }}"><i class="fa fa-envelope"></i>SMS Sencillo</a></li>
-                    <li><a href="{{ URL::route('sms') }}"><i class="fa fa-money mr-5"></i>Batches</a></li>
+                    <li><a href="{{ url('/getlist') }}"><i class="fa fa-money mr-5"></i>Batches</a></li>
                     <li><a href="{{ URL::route('template') }}"><i class="fa fa-window-maximize"></i>Plantilla</a></li>
                     {{-- <li><a href="{{ URL::route('settings') }}"><i class="fa fa-cog mr-5"></i>Configuración</a></li> --}}
                 </ul>
@@ -65,14 +65,14 @@
                 </a>
             </li> --}}
         </ul>
-        <hr>
+        {{-- <hr>
         <p class="ml-2">Cuentas</p>
         <ul>
             <li><a href="{{ url('/single') }}">SMS sencillo</a></li>
             <li><a href="{{ url('/getaccounts') }}">Cuentas</a></li>
             <li><a href="{{ url('/newaccount') }}">Nueva cuenta</a></li>
             <hr>
-        </ul>
+        </ul> --}}
     </section>
 </aside>
 

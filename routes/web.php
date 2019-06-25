@@ -28,11 +28,11 @@ Route::get('/newaccount', 'AccountsController@newAccountView');
 Route::post('/newaccount', 'AccountsController@newAccount');
 
 // Batches
-Route::get('/getlist/{id}', 'ItemsListController@getBatches');
+Route::get('/getlist', 'ItemsListController@getBatches');
 Route::get('/newlist/{id}', 'ItemsListController@newBatchView');
 Route::post('/newlist/{id}', 'ItemsListController@newBatch');
-
 Route::post('/send/{id}', 'ItemsListController@sendBatchSMS');
+Route::post('/deletebatch/{id}', 'ItemsListController@deleteBatch');
 
 // Item
 Route::get('/getitems/{id}', 'ItemsController@getBatch');

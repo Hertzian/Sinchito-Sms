@@ -23,26 +23,25 @@
                             </div>
                         @endif
 
-                        You are logged in!
+                        Estas loggeado correctamente
                     </div>
                     {{-- ************************************* --}}
                     <div class="content">
                         <div class="content box-body">
-                            <h4>Lorem ipsum dolor</h4>
+                            <h4>Envía mensajes</h4>
                             <div class="row">
                                 <div class="col-xl-4 col-md-6 col">
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success"><i class="fa fa-envelope"></i></span>
                                         <div class="info-box-content box-body">
-                                            <h3 class="box-title">Send a single SMS</h3>
+                                            <h3 class="box-title">Envía un SMS sencillo</h3>
                                             <p>
-                                                Just want to send a single message? Simple. <br> 
-                                                Do it here. <br><br>
+                                                ¿Quieres enviar un msensje sencillo? Simple. <br>
+                                                Hazlo aquí. <br><br>
                                             </p>
                                             <span class="info-box-text"><p class="text-right"><a href="
-                                            #
-                                            {{-- {{ URL::route('single') }} --}}
-                                            ">Go to single message</a></span> 
+                                            {{ url('/single') }}
+                                            ">Ir a mensaje sencillo</a></span> 
                                         </div>
                                         <!-- /.info-box-content -->
                                     </div>
@@ -53,15 +52,14 @@
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success"><i class="fa fa-envelope"></i></span>
                                         <div class="info-box-content box-body">
-                                            <h3 class="box-title">Schedule a batch sendout</h3>
+                                            <h3 class="box-title">Prorgamar un envío por lotes</h3>
                                             <p>
-                                            Need to plan ahead? Repeat sendouts? Sending to a large group of receivers? <br>
-                                            Schedule a batch here.
+                                                ¿Necesitas planificar por adelantado? Repetir envíos? ¿Enviando a un gran grupo de receptores? <br>
+                                            Programe un lote aquí.
                                             </p>
                                             <span class="info-box-text"><p class="text-right"><a href="
-                                                #
-                                                {{-- {{ URL::route('sms') }} --}}
-                                                "class="text-left">go to batches</a></span> 
+                                                {{ url('/getlist') }}
+                                                "class="text-left">Ir a lotes</a></span> 
                                         </div>
                                         <!-- /.info-box-content -->
                                     </div>
@@ -72,21 +70,23 @@
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success"><i class="fa fa-envelope"></i></span>
                                         <div class="info-box-content box-body">
-                                            <h3 class="box-title">Templates</h3>
+                                            <h3 class="box-title">Plantillas</h3>
                                             <p>
-                                                Set up your pre-defined message templates. <br>
-                                                Personalised messages are allowed. <br><br>
+                                                Configure sus plantillas de mensajes predefinidos. <br>
+                                                Se permiten mensajes personalizados. <br><br>
                                             </p>
                                             <span class="info-box-text"><p class="text-right"><a href="
                                             #
                                             {{-- {{ URL::route('tempate') }} --}}
-                                            "class="text-left">go to templete</a></span> 
+                                            "class="text-left">Ir a plantillas</a></span> 
                                         </div>
                                         <!-- /.info-box-content -->
                                     </div>
                                     <!-- /.info-box -->
                                 </div>
                             </div>
+
+
                             <h4>Lorem ipsum dolor</h4>
                             <div class="row ">
 
@@ -94,15 +94,15 @@
                                 <div class="info-box">
                                     <span class="info-box-icon bg-success"><i class="ion ion-person-stalker"></i></span>
                                     <div class="info-box-content box-body">
-                                        <h3 class="box-title">Address Book</h3>
+                                        <h3 class="box-title">Directorio</h3>
                                         <p>
-                                            Upload the list of receivers who you want to send to, <br>
-                                            to simplify the recurring sendout.<br><br><br>
+                                            Suba la lista de receptores a los que quiere enviar,<br>
+                                            Para simplificar el envío recurrente.<br><br><br>
                                         </p>
                                         <span class="info-box-text"><p class="text-right"><a href="
                                             #
                                             {{-- {{ URL::route('contacts') }} --}}
-                                            "class="text-left">go to address book</a></span> 
+                                            "class="text-left">Ir al directorio</a></span> 
                                     </div>
                                     <!-- /.info-box-content --> 
                                 </div>
@@ -115,12 +115,12 @@
                                     <div class="info-box-content box-body">
                                         <h3 class="box-title">FAQ</h3>
                                         <p> 
-                                            How do I send Batch SMS?<br>
-                                            How do I send a single SMS?<br>
-                                            How do I create an Address Book?<br>
-                                            How do I upload a list?<br>
+                                            ¿Cómo envío un lote de SMS?<br>
+                                            ¿Cómo envío un solo SMS?<br>
+                                            ¿Cómo creo un directorio?<br>
+                                            ¿Cómo subo una lista?<br>
                                         </p>
-                                        <span class="info-box-text"><p class="text-right"><a href="#"class="text-left">go to FAQ</a></span> 
+                                        <span class="info-box-text"><p class="text-right"><a href="#"class="text-left">Ir a FAQ</a></span> 
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>
@@ -131,11 +131,11 @@
                                 <div class="info-box">
                                     <span class="info-box-icon bg-success"><i class="fa fa-gears"></i></span>
                                     <div class="info-box-content box-body">
-                                        <h3 class="box-title">Need to top up your account?</h3>
+                                        <h3 class="box-title">¿Necesita recargar su cuenta?</h3>
                                         <p> 
-                                            Manage your account and top up your balance in the Sinch portal. <br><br><br>
+                                            Administre su cuenta y recargue su saldo en nuestro portal. <br><br><br>
                                         </p>
-                                        <span class="info-box-text"><p class="text-right"><a href="#"class="text-left">Go to payment</a></span>
+                                        <span class="info-box-text"><p class="text-right"><a href="#"class="text-left">Ir a pagos</a></span>
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>

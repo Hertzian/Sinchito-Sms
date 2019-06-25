@@ -8,6 +8,7 @@ use App\ItemList;
 use Clx\Xms\Client;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Clx\Xms\Api\MtBatchTextSmsCreate;
 
 class ItemsListController extends Controller
@@ -27,9 +28,10 @@ class ItemsListController extends Controller
         $this->sender = '12345';
     }
     
-    public function getBatches($id){
-        $account = Account::find($id);
-        $batches = ItemList::where('account_id', $account->id)
+    public function getBatches(){
+        $user = Auth::user();
+        $account = Account::find($user->id);
+        $batches = ItemList::where('account_id', $user->id)
             ->get();
 
         return view('itemlist.getitemslist',[
@@ -51,16 +53,17 @@ class ItemsListController extends Controller
         $batch = new ItemList();
 
         $batch->name = $request->input('name');
-        $batch->account_id = $request->input('account_id');
+        $batch->account_id = $account->id;
 
         $request->validate([
             'name' => 'required',
-            'account_id' => 'required'
+            // 'account_id' => 'required'
         ]);
 
         $batch->save();
 
-        return redirect('/getaccount/' . $account->id)->with('message', 'El batch se ha creado con éxito');
+        return redirect('/getlist')
+        ->with('message', 'El batch se ha creado con éxito');
     }
 
     public function sendBatchSMS(Request $request, $id){
@@ -114,6 +117,14 @@ class ItemsListController extends Controller
         }
 
         return redirect('/')->with('message', $message);
+    }
+
+    public function deleteBatch($id){        
+        $batch = ItemList::find($id);
+        $batch->delete();
+
+        return redirect('/getlist')
+        ->with('message', 'El batch se ha eliminado con éxito');;
     }
     
 }
