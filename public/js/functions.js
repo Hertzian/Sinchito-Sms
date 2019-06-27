@@ -130,3 +130,29 @@
     document.getElementById('number').value = '';
   }
 
+  $(function () {
+    'use strict'
+    // Composite line charts, the second using values supplied via javascript
+    $("#lineIncrease").sparkline([1,8,6,5,6,8,7,9,7,8,10,16,14,10], {
+      type: 'line',
+      width: '100%',
+      height: '140',
+      lineWidth: 2,
+      lineColor: '#ffffff',
+      fillColor: "#398bf7",
+      spotColor: '#ffffff',
+      minSpotColor: '#ffffff',
+      maxSpotColor: '#ffffff',
+      spotRadius: 3,
+    });
+
+    $("#lineToday").sparkline([1,4,3,7,6,4,8,9,6,8,12], {
+			type: 'line',
+			width: '100%',
+			height: '70',
+			lineColor: '#ffffff',
+			fillColor: '#398bf7',
+			lineWidth: 2,
+			spotRadius: 3,
+		});
+  }); 

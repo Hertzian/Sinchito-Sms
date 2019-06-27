@@ -24,13 +24,9 @@
                                                  
                                                 <br>
                                             </p>
-                                            <span class="info-box-text">
-                                                <p class="text-right">
-                                                    <a href="{{-- {{ URL::route('single') }} --}}">
-                                                        Envia mensaje sencillo
-                                                    </a>
-                                                </p>
-                                            </span> 
+                                            <span class="info-box-text"><p class="">
+                                                    <a href="{{ url('/single') }}"> Envia mensaje sencillo</a>
+                                            </p></span> 
                                         </div>
                                         <!-- /.info-box-content -->
                                     </div>
@@ -46,10 +42,9 @@
                                                 Envia mensajes a mutiples pesonas,
                                                 Envia lotes de mensajes. 
                                             </p>
-                                            <span class="info-box-text"><p class="text-right"><a href="
-                                            #
-                                            {{-- {{ URL::route('getlist') }} --}}
-                                                "class="text-left">Enviar lote de mendajes</a></span> 
+                                            <span class="info-box-text"><p class="text-right">
+                                            <a href="{{ url('/getlist') }}" class="text-left">Enviar lote de mendajes</a>
+                                            </p></span> 
                                         </div>
                                         <!-- /.info-box-content -->
                                     </div>
@@ -65,9 +60,9 @@
                                                 Envia mensajes personalisados,<br>
                                                 Crea mensajes personalizados.<br><br><br>
                                             </p>
-                                            <span class="info-box-text"><p class="text-right"><a href="
-                                             {{ URL::route('template') }} 
-                                            "class="text-left">Personaliza tus mensajes</a></span> 
+                                            <span class="info-box-text"><p class="text-right">
+                                            <a href="{{ URL::route('template') }}" class="text-left">Personaliza tus mensajes</a>
+                                            </p></span> 
                                         </div>
                                         <!-- /.info-box-content -->
                                     </div>
@@ -86,10 +81,9 @@
                                             Agrega a quien quieres enviarle mensajes 
                                             
                                         </p>
-                                        <span class="info-box-text"><p class="text-right"><a href="
-                                            #
-                                            {{-- {{ URL::route('contacts') }} --}}
-                                            "class="text-left">Ir a contactos</a></span> 
+                                        <span class="info-box-text"><p class="text-right">
+                                            <a href="{{ url('/getlist') }}"class="text-left">Ir a contactos</a>
+                                        </p></span> 
                                     </div>
                                     <!-- /.info-box-content --> 
                                 </div>
@@ -122,7 +116,9 @@
                                             ¿Te quedaste sin credito? <br>
                                             Agrega credito en tu cuenta.<br><br>
                                         </p>
-                                        <span class="info-box-text"><p class="text-right"><a href="#"class="text-left">Agregar credito</a></span>
+                                        <span class="info-box-text"><p class="text-right">
+                                            <a href="{{ url('/balance') }}"class="text-left">Agregar credito</a>
+                                        </p></span>
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>
