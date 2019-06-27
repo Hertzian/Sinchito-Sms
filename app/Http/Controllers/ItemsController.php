@@ -35,14 +35,22 @@ class ItemsController extends Controller
         ]);
     }
 
-    // {{ url('getitems/' . $itemlist->id) }}
-    public function newItemView($id){
-        $itemlist = ItemList::find($id);
+    // // {{ url('getitems/' . $itemlist->id) }}
+    // public function newItemView($id){
+    //     $itemlist = ItemList::find($id);
+    //     $items = Item::where('item_list_id', $itemlist->id);
 
-        return view('item.newitem',[
-            'itemlist' => $itemlist
-        ]);
-    }
+    //     // return view('item.newitem',[
+    //     return view('itemlist.getitemslist',[
+    //         'itemlist' => $itemlist,
+    //         'item' => $items
+    //     ]);
+    // }
+
+
+
+
+
 
     public function newItem(Request $request, $id){
         $itemlist = ItemList::find($id);
@@ -59,8 +67,8 @@ class ItemsController extends Controller
 
         $item->save();
 
-        return redirect('/getitems')
-            ->with('message', 'El item se ha creado con éxito');
+        return redirect('/getlist')
+            ->with('message', 'El contacto se ha creado con éxito');
     }
 
     public function sendSingleSMSView(){

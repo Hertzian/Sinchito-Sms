@@ -11,6 +11,10 @@ class ItemList extends Model
         'name'
     ];
 
+    public function account(){
+        // return $this->hasOne('App/Account', 'account_id');
+    }
+
     public function item(){
         return $this->hasMany('App/Item');
     }

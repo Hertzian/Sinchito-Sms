@@ -65,14 +65,14 @@
                 </a>
             </li> --}}
         </ul>
-        {{-- <hr>
+        <hr>
         <p class="ml-2">Cuentas</p>
         <ul>
             <li><a href="{{ url('/single') }}">SMS sencillo</a></li>
             <li><a href="{{ url('/getaccounts') }}">Cuentas</a></li>
             <li><a href="{{ url('/newaccount') }}">Nueva cuenta</a></li>
             <hr>
-        </ul> --}}
+        </ul>
     </section>
 </aside>
 

@@ -30,6 +30,7 @@ Route::post('/newaccount', 'AccountsController@newAccount');
 // Batches
 Route::get('/getlist', 'ItemsListController@getBatches');
 Route::get('/newlist/{id}', 'ItemsListController@newBatchView');
+Route::get('/contactlist/{id}', 'ItemsListController@contactListView');
 Route::post('/newlist/{id}', 'ItemsListController@newBatch');
 Route::post('/send/{id}', 'ItemsListController@sendBatchSMS');
 Route::post('/deletebatch/{id}', 'ItemsListController@deleteBatch');
