@@ -26,7 +26,7 @@
 
             </div>
               <div class="icon">
-                <i class="fa fa-window-maximize"></i>
+                <i class="fa fa-address-book"></i>
               </div>
               <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Add batch <i class="fa fa-arrow-right"></i></a>
           </div>
@@ -80,9 +80,9 @@
       {{-- Modal 2 --}}
       <div class="col-xl-4 col-md-12 col-12">
           <!-- small box -->
-          <div class="small-box bg-primary">
+          <div class="small-box bg-info">
             <div class="inner">
-              <h3>+ Contactos</h3>
+              <h3>Contactos</h3>
               <p>Añadir contactos</p>
               {{-- <h3>{{ count($batches) }}</h3> --}}
               {{-- @if (count($batches) >= 2 || count($batches) < 1)
@@ -93,7 +93,7 @@
 
             </div>
               <div class="icon">
-                <i class="fa fa-window-maximize"></i>
+                <i class="fa fa-address-card"></i>
               </div>
               <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Add contact to batch <i class="fa fa-arrow-right"></i></a>
           </div>
@@ -165,13 +165,13 @@
       {{-- Modal 3 --}}
       <div class="col-xl-4 col-md-12 col-12">
           <!-- small box -->
-          <div class="small-box bg-warning">
+          <div class="small-box bg-primary">
             <div class="inner">              
               <h3>Mensajes</h3>
               <p>Enviar mensajes</p>
             </div>
               <div class="icon">
-                <i class="fa fa-window-maximize"></i>
+                <i class="fa fa-send"></i>
               </div>
               <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Send messages to batches <i class="fa fa-arrow-right"></i></a>
           </div>
@@ -236,6 +236,58 @@
         </div>
       <!-- /.modal -->
 
+
+      {{-- Modal body --}}
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="send-messages-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myLargeModalLabel">Send messages</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body ">                
+              <form action="{{ url('/send/' . $account->id) }}" method="post" class="">
+                @csrf
+                <div class="form-group row">
+                  <div class="col-2"></div>
+                  <label for="recupient-input" class="col-3 col-form-label">Batch name</label>
+                  <div class="col-xl-4 col-md-6 col-6">                  
+                    <select class="form-control" name="item_list_id" id="">
+                      <option value="">Seleccionauna opcion</option>
+                      @if (count($batches) >= 1)
+                        @foreach ($batches as $batch)
+                          <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
+                        @endforeach
+                      @else
+                        <option value="">There are no batches</option>
+                      @endif
+                    </select>
+                      {{-- <input class="form-control" type="text" name="name" placeholder="Batch name" required id="temaplate-name"> --}}
+                    </div>
+                </div>
+            
+                <div class="form-group row">
+                  <div class="col-2"></div>
+                    <label for="text-message" class="col-3 col-form-label">Text</label>
+                    <div class="col-xl-4 col-md-6 col-6">
+                      <textarea class="form-control" rows="5" placeholder="Enter ..." required name="texto_personalizado" id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
+                      <p id="letters">Message parts: 1, Characters: 0 </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-success float-right" onclick="ok()">Send</button>
+                </form>
+                <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
+              </div>
+            </div>
+          <!-- /.modal-content -->
+          </div>
+        <!-- /.modal-dialog -->
+        </div>
+      <!-- /.modal -->
+
       @endif
 
 
@@ -253,10 +305,10 @@
           <table id="table_template" class="table table-bordered table-striped table-responsive">
             <thead>
               <tr>
-                  <th>#</th>
-                  <th>Batch name</th>
-                  <th>Created</th>
-                  <th>Actions</th>
+                <th>#</th>
+                <th>Batch name</th>
+                <th>Created</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tfoot>
@@ -268,18 +320,6 @@
               </tr>
             </tfoot>
             <tbody>
-              {{-- <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td> 
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-success" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button>
-                  </div>
-                </td>
-              </tr> --}}
-              
               @if (count($batches) >= 1)                  
                 @foreach ($batches as $batch)
                 <tr>
@@ -288,19 +328,12 @@
                   <td>{{ $batch->created_at }}</td>
                   <td> 
                     <div class="btn-group">
-                      {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button> --}}
-                      
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-address-card" aria-hidden="true"></i></button>
+                      <a href="#{{ $batch->id }}-view-contacts-modal" class="btn btn-primary" data-target="#{{ $batch->id }}-view-contacts-modal" data-toggle="modal"><i class="fa fa-send" aria-hidden="true"></i></a>
                       <form action="{{ url('/deletebatch/' . $batch->id) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button> 
                       </form>
-                      
-
-                      <a href="#{{ $batch->id }}-view-contacts-modal" class="btn btn-success" data-target="#{{ $batch->id }}-view-contacts-modal" data-toggle="modal">Ver contactos</a>
-                      
-                      <a href="#" class="btn btn-success"></a>
-
-
                     </div>
                   </td>
                 </tr>
@@ -311,7 +344,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-
+                <td></td>
               @endif
 
 

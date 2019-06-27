@@ -1,6 +1,6 @@
 
   $(document).ready( function () {
-    $('#balance-table').DataTable();
+    $('#table_template').DataTable();
   } );
   
   
