@@ -234,11 +234,11 @@
                   <td> 
                     <div class="btn-group">
                       {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button> --}}
+                      <a href="{{ url('/ContactList/' . $batch->id) }}" class="btn btn-info mx-5"><i class="fa fa-users" aria-hidden="true"></i> Ver contactos</a>
                       <form action="{{ url('/deletebatch/' . $batch->id) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger mx-5" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button> 
                       </form>
-                      <a href="#{{ $batch->id }}-view-contacts-modal" class="btn btn-success mx-5" data-target="#{{ $batch->id }}-view-contacts-modal" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i> Ver contactos</a>
                       </div>
                   </td>
                 </tr>

@@ -107,5 +107,14 @@ class ItemsController extends Controller
         return redirect('/')->with('message', $message);
     }
 
+    public function getContact($id){
+        $batch = ItemList::find($id);
+        $items = Item::where('item_list_id', $batch->id)->get();
+
+        return view('itemlist.ContactList',[
+            'batch' => $batch,
+            'items' => $items
+        ]);
+    }
 
 }
