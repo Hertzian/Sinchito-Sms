@@ -81,7 +81,7 @@ class ItemsController extends Controller
             $batchParams = new MtBatchTextSmsCreate();
             $batchParams->setSender($this->sender);
 
-            $num = '+52' . $request->input('tel');
+            $num = '+52' . $request->input('number');
             // 
              
             $texto = $request->input('texto_personalizado');
