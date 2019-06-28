@@ -328,8 +328,8 @@
                   <td>{{ $batch->created_at }}</td>
                   <td> 
                     <div class="btn-group">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-address-card" aria-hidden="true"></i></button>
-                      <a href="#{{ $batch->id }}-view-contacts-modal" class="btn btn-primary" data-target="#{{ $batch->id }}-view-contacts-modal" data-toggle="modal"><i class="fa fa-send" aria-hidden="true"></i></a>
+                    <button type="button" class="btn btn-info mx-5" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-address-card" aria-hidden="true"></i></button>
+                      <a href="#{{ $batch->id }}-view-contacts-modal" class="btn btn-primary mx-5" data-target="#{{ $batch->id }}-view-contacts-modal" data-toggle="modal"><i class="fa fa-send" aria-hidden="true"></i></a>
                       <form action="{{ url('/deletebatch/' . $batch->id) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button> 
