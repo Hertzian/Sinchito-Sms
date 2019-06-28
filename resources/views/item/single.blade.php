@@ -43,7 +43,7 @@
                         <div class="col-1"></div>
                         <label for="tel" class="col-xl-2 col-md-2 col-4 col-form-label">Recipiente:</label>
                         <div class="col-xl-4 col-md-4 col-6">
-                            <input id="tel" class="form-control" name="tel" type="text" placeholder="Introduce el teléfono" required>
+                            <input id="tel" class="form-control" name="number" type="text" placeholder="Introduce el teléfono" required>
                         </div>
                     </div>
                     <div class="form-group row">

@@ -25,6 +25,8 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
+                <li class="my-5">Balance ${{ $balance }}</li>
+
                 <li class="search-box">
                 <a class="nav-link hidden-sm-down" href="javascript:void(0)"><i class="mdi mdi-magnify"></i></a>
                 <form class="app-search" style="display: none;">
@@ -286,8 +288,8 @@
                     <img src="{{ asset('images/user-128x128.jpg') }}" class="float-left rounded-circle" alt="User Image">
 
                     <p>
-                        Juliya Brus
-                        <small class="mb-5">jb@gmail.com</small>
+                        {{ $name }}
+                        <small class="mb-5">{{ $email }}</small>
                         <a href="#" class="btn btn-danger btn-sm btn-rounded">View Profile</a>
                     </p>
                     </li>

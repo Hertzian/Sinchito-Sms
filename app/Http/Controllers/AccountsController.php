@@ -24,20 +24,18 @@ class AccountsController extends Controller
         ]);
     }
 
-    public function getAccount($id){
-        $user = Auth::user();
-        $account = Account::find($id);
-        $batches = ItemList::where('account_id', $account->id)->get();
+    // public function getAccount($id){
+    //     $user = Auth::user();
+    //     $account = Account::find($id);
+    //     $batches = ItemList::where('account_id', $account->id)->get();
 
 
-        return view('account.getaccount', [
-            'user' => $user,
-            'account' => $account,
-            'batches' => $batches
-        ]);
-
-
-    }
+    //     return view('account.getaccount', [
+    //         'user' => $user,
+    //         'account' => $account,
+    //         'batches' => $batches
+    //     ]);
+    // }
 
     public function newAccountView(){
         $user = Auth::user();

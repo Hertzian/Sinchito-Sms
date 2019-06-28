@@ -1,0 +1,6 @@
+body > div > header > nav > div > ul > li:nth-child(1){
+
+    color: #fff;
+    padding-top: 1.1rem;
+    font-size: 1.3rem;
+}

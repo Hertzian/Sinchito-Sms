@@ -173,9 +173,15 @@ class ItemsListController extends Controller
             // $batchParams->setParameters($fulano);
 
             $result = $client->createTextBatch($batchParams);
+            $batchID = $result->getBatchId();
 
-            $message = 'El ID que se dio al batch es: ' . $result->getBatchId();
+            $batchSMS = new Item();
+            $batchSMS->name = $batchID;
+            $batchSMS->number = $this->sender;
+            $batchSMS->save();
 
+            $message = 'El ID que se dio al batch es: ' . $batchID;
+            
         } catch (Exception $ex) {
 
             $message = 'Error creating batch: ' . $ex->getMessage();

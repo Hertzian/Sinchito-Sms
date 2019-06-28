@@ -76,6 +76,9 @@ class ItemsController extends Controller
     }
 
     public function sendSingleSMS(Request $request){
+        
+
+        
         $client = new Client($this->splan, $this->token);
         $message;
         try {
@@ -90,10 +93,14 @@ class ItemsController extends Controller
             $batchParams->setBody($texto);
 
             $result = $client->createTextBatch($batchParams);
+            $batchID = $result->getBatchId();
 
-            $message = 'El ID que se dio al batch es: '
-            . $result->getBatchId()
-            ;
+            $singleSMS = new ItemList();
+            $singleSMS->name = $batchID;
+            // $singleSMS->number = $request->input('number');
+            $singleSMS->save();
+
+            $message = 'El ID que se dio al batch es: ' . $batchID;
 
         } catch (Exception $ex) {
 

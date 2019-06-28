@@ -11,7 +11,7 @@
                 {{ URL::route('profile') }}
                 ">
                     <img src="{{ asset('images/user-128x128.jpg') }}" alt="user">
-                    <span>Juliya Brus</span>
+                    <span>{{ $name }}</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
