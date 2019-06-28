@@ -27,6 +27,12 @@
       </div>
         <div class="icon">
           <i class="fa fa-window-maximize"></i>
+            </div>
+              <div class="icon">
+                <i class="fa fa-address-book"></i>
+              </div>
+              <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Add batch <i class="fa fa-arrow-right"></i></a>
+          </div>
         </div>
         <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Add batch <i class="fa fa-arrow-right"></i></a>
     </div>
@@ -74,26 +80,29 @@
   </div>
 <!-- /.modal -->
 
-@if (count($batches) >= 1)
-    
+      @if (count($batches) >= 1)
+          
+      
+      {{-- Modal 2 --}}
+      <div class="col-xl-4 col-md-12 col-12">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>Contactos</h3>
+              <p>Añadir contactos</p>
+              {{-- <h3>{{ count($batches) }}</h3> --}}
+              {{-- @if (count($batches) >= 2 || count($batches) < 1)
+                <p>Contacts</p>
+              @else
+                <p>Contact</p>              
+              @endif --}}
 
-{{-- Modal 2 --}}
-<div class="col-xl-4 col-md-12 col-12">
-    <!-- small box -->
-    <div class="small-box bg-primary">
-      <div class="inner">
-        <h3>+ Contactos</h3>
-        <p>Añadir contactos</p>
-        {{-- <h3>{{ count($batches) }}</h3> --}}
-        {{-- @if (count($batches) >= 2 || count($batches) < 1)
-          <p>Contacts</p>
-        @else
-          <p>Contact</p>              
-        @endif --}}
-
-      </div>
-        <div class="icon">
-          <i class="fa fa-window-maximize"></i>
+            </div>
+              <div class="icon">
+                <i class="fa fa-address-card"></i>
+              </div>
+              <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Add contact to batch <i class="fa fa-arrow-right"></i></a>
+          </div>
         </div>
         <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Add contact to batch <i class="fa fa-arrow-right"></i></a>
     </div>

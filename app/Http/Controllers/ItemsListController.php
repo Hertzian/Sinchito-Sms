@@ -34,7 +34,7 @@ class ItemsListController extends Controller
         $batches = ItemList::where('account_id', $user->id)->get();
 
         $items = Item::select('name', 'number')
-            ->where('item_list_id', '=', )
+            ->where('item_list_id', '=' )
             ->get();
         // select('name', 'email as user_email')->get()
 

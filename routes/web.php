@@ -43,6 +43,9 @@ Route::post('/newitem/{id}', 'ItemsController@newItem');
 Route::get('/single','ItemsController@sendSingleSMSView');
 Route::post('/single', 'ItemsController@sendSingleSMS');
 
+// Message 
+Route::get('/message','messageListController@MessajeListView');
+
 
 // check views routes
 Route::get('/dasch', function () {return view('vistas.dasch');})->name('dasch');
