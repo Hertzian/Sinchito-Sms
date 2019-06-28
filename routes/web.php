@@ -39,12 +39,14 @@ Route::post('/deletebatch/{id}', 'ItemsListController@deleteBatch');
 Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');
 Route::post('/newitem/{id}', 'ItemsController@newItem');
+
 // Single SMS
 Route::get('/single','ItemsController@sendSingleSMSView');
 Route::post('/single', 'ItemsController@sendSingleSMS');
 
 // Message 
-Route::get('/message','messageListController@MessajeListView');
+Route::get('/message','messageListController@MessageListView');
+Route::get('/messageItem','messageListController@MessageItemView');
 
 
 // check views routes

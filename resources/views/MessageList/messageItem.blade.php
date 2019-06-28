@@ -62,36 +62,38 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Mensajes</h3>
+                        <h3 class="box-title">Batch name</h3>
                     </div>
                     <div class="box-body">
                         <table id="table_sms" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Batch Name</th>
-                                    <th>Cliente</th> 
-                                    <th>Fecha</th>
-                                    <th>Acciones</th>
+                                    <th>sender</th>
+                                    <th>recipient</th> 
+                                    <th>body</th>
+                                    <th>msg_length</th>
+                                    <th>send_at</th>
+                                    <th>status</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Batch Name</th>
-                                    <th>Cliente</th> 
-                                    <th>Fecha</th>
-                                    <th>Acciones</th>
+                                    <th>sender</th>
+                                    <th>recipient</th> 
+                                    <th>body</th>
+                                    <th>msg_length</th>
+                                    <th>send_at</th>
+                                    <th>status</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <tr>
-                                    <td>Edinburgh</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>2011/04/25</td> 
-                                    <td> 
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-modal-sms"><i class="fas fa-sms" aria-hidden="true"></i> Ver batch</button>
-                                    </div>
-                                    </td>
+                                    <th>1234</th>
+                                    <th>3334424120</th> 
+                                    <th>Hola desde web</th>
+                                    <th>123</th>
+                                    <th>28/06/19</th>
+                                    <th><span class="badge badge-pill badge-warning">Enviado</span></th>
                                 </tr>              
                             </tbody>
                         </table>
@@ -100,40 +102,13 @@
             </div>
 
         </div>
-        
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal-sms" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Edit modal</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              </div>
-              <div class="modal-body ">
-                <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-3"><h4>Something</h4></div>
-                  <div class="col-4"><input class="form-control" type="text" placeholder="Default input"></div>
-                </div><br>
-                <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-3"><h4>Something</h4></div>
-                  <div class="col-4"><input class="form-control" type="text" placeholder="Default input"></div>
-                </div>      
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info float-right" onclick="ok()">Save changes</button>
-                </div>
-            </div>
-          </div>
-        </div>
 
-    <div class="card-body">
-        @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
+        <div class="card-body">
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
         </div>
-        @endif
-    </div>
     
 @endsection

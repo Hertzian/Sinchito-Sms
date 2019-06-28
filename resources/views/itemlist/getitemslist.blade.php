@@ -80,7 +80,7 @@
   </div>
 <!-- /.modal -->
 
-      @if (count($batches) >= 1)
+    @if (count($batches) >= 1)
           
       
       {{-- Modal 2 --}}

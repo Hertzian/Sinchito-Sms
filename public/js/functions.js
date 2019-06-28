@@ -146,13 +146,37 @@
       spotRadius: 3,
     });
 
-    $("#lineToday").sparkline([1,4,3,7,6,4,8,9,6,8,12], {
+    $("#lineAnalytics1").sparkline([1,9,3,7,3,4,8,9,2,8,12], {
 			type: 'line',
-			width: '100%',
-			height: '70',
-			lineColor: '#ffffff',
-			fillColor: '#398bf7',
+			width: '100',
+			height: '38',
+			lineColor: '#06d79c',
+			fillColor: '#ffffff',
 			lineWidth: 2,
-			spotRadius: 3,
-		});
+			minSpotColor: '#0fc491',
+			maxSpotColor: '#0fc491',
+    });
+    
+    $("#lineAnalytics2").sparkline([1,4,3,7,6,4,8,9,6,8,12], {
+			type: 'line',
+			width: '100',
+			height: '38',
+			lineColor: '#06d79c',
+			fillColor: '#ffffff',
+			lineWidth: 2,
+			minSpotColor: '#0fc491',
+			maxSpotColor: '#0fc491',
+    });
+    
+    $("#lineAnalytics3").sparkline([1,4,3,7,6,4,8,9,6,8,12], {
+			type: 'line',
+			width: '100',
+			height: '38',
+			lineColor: '#06d79c',
+			fillColor: '#ffffff',
+			lineWidth: 2,
+			minSpotColor: '#0fc491',
+			maxSpotColor: '#0fc491',
+    });
+    
   }); 

@@ -47,11 +47,6 @@ class ItemsController extends Controller
     //     ]);
     // }
 
-
-
-
-
-
     public function newItem(Request $request, $id){
         $itemlist = ItemList::find($id);
         $item = new Item();
@@ -87,6 +82,8 @@ class ItemsController extends Controller
             $batchParams->setSender($this->sender);
 
             $num = '+52' . $request->input('tel');
+            // 
+             
             $texto = $request->input('texto_personalizado');
 
             $batchParams->setRecipients([$num]);
