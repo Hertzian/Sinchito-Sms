@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Account;
 use App\ItemList;
 use Clx\Xms\Client;
+use App\MessageList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Clx\Xms\Api\MtBatchTextSmsCreate;
 
 class ItemsController extends Controller
@@ -35,23 +38,6 @@ class ItemsController extends Controller
         ]);
     }
 
-    // // {{ url('getitems/' . $itemlist->id) }}
-    // public function newItemView($id){
-    //     $itemlist = ItemList::find($id);
-    //     $items = Item::where('item_list_id', $itemlist->id);
-
-    //     // return view('item.newitem',[
-    //     return view('itemlist.getitemslist',[
-    //         'itemlist' => $itemlist,
-    //         'item' => $items
-    //     ]);
-    // }
-
-
-
-
-
-
     public function newItem(Request $request, $id){
         $itemlist = ItemList::find($id);
         $item = new Item();
@@ -77,34 +63,49 @@ class ItemsController extends Controller
 
     public function sendSingleSMS(Request $request){
         
-
+        $user = Auth::user();
+        $account = Account::find($user->id);
         
         $client = new Client($this->splan, $this->token);
         $message;
-        try {
 
-            $batchParams = new MtBatchTextSmsCreate();
-            $batchParams->setSender($this->sender);
+        if ($account->message_limit >= 1 && $account->balance >= 0.65) {
+        
+            try {
+                
+                $texto = $request->input('texto_personalizado');
+                $batchParams = new MtBatchTextSmsCreate();
+                $batchParams->setSender($this->sender);
 
-            $num = '+52' . $request->input('tel');
-            $texto = $request->input('texto_personalizado');
+                $num = '+52' . $request->input('number');
+                $texto = $request->input('texto_personalizado');
 
-            $batchParams->setRecipients([$num]);
-            $batchParams->setBody($texto);
+                $batchParams->setRecipients([$num]);
+                $batchParams->setBody($texto);
 
-            $result = $client->createTextBatch($batchParams);
-            $batchID = $result->getBatchId();
+                $result = $client->createTextBatch($batchParams);
+                $batchID = $result->getBatchId();
 
-            $singleSMS = new ItemList();
-            $singleSMS->name = $batchID;
-            // $singleSMS->number = $request->input('number');
-            $singleSMS->save();
+                $batchSMS = new MessageList();
+                $batchSMS->name = $batchID;
+                $batchSMS->account_id = $account->id;
+                $batchSMS->save();
 
-            $message = 'El ID que se dio al batch es: ' . $batchID;
+                $account->message_limit = $account->message_limit - 1;
+                $account->balance = $account->balance - .65;
+                $account->update();
 
-        } catch (Exception $ex) {
+                $message = 'El ID que se dio al batch es: ' . $batchID;
 
-            $message = 'Error creating batch: ' . $ex->getMessage();
+            } catch (Exception $ex) {
+
+                $message = 'Error al crear el lote: ' . $ex->getMessage();
+            }
+
+        }else{
+            $error = 'No cuentas con saldo disponible para enviar mensajes';
+
+            return redirect('/')->with('error', $error);
         }
 
         return redirect('/')->with('message', $message);

@@ -16,8 +16,9 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type')->default('normal');
-            $table->string('message_limit')->default('0');
-            $table->string('balance')->default('0');
+            $table->decimal('price', 5, 2)->default(.65);
+            $table->bigInteger('message_limit')->default(0);
+            $table->decimal('balance', 5, 2)->default(0);
             $table->string('status')->default('1');
             $table->timestamps();
             // need FK

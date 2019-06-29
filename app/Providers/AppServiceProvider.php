@@ -41,6 +41,15 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function (View $view){
             if (Auth::user()) {
                 $user = Auth::user();
+                $account = Account::find($user->id);
+                $smsLimit = $account->message_limit;
+                $view->with('smsLimit', $smsLimit);
+            }
+        });
+
+        view()->composer('*', function (View $view){
+            if (Auth::user()) {
+                $user = Auth::user();
                 $name = $user->name . ' ';
                 $view->with('name', $name);
             }

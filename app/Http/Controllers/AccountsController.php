@@ -14,6 +14,7 @@ class AccountsController extends Controller
         $this->middleware('auth');
     }
     
+    // For superAdmin purposes only********************************
     public function getAccounts(){
         $user = Auth::user();
         $accounts = Account::where('user_id', $user->id)->get();
@@ -23,45 +24,57 @@ class AccountsController extends Controller
             'accounts' => $accounts,
         ]);
     }
+    // /For superAdmin purposes only********************************
 
-    // public function getAccount($id){
-    //     $user = Auth::user();
-    //     $account = Account::find($id);
-    //     $batches = ItemList::where('account_id', $account->id)->get();
-
-
-    //     return view('account.getaccount', [
-    //         'user' => $user,
-    //         'account' => $account,
-    //         'batches' => $batches
-    //     ]);
-    // }
-
-    public function newAccountView(){
+    public function getBalanceView(){
         $user = Auth::user();
+        $account = Account::find($user->id);
         
-        return view('account.newaccount')->with('user', $user);
+        
+        return view('account.getbalance')->with('account', $account);
     }
     
-    public function newAccount(Request $request){
+    public function addCredit(Request $request){
         $user = Auth::user();
-        $account = new Account();
+        $account = Account::find($user->id);
 
-        $account->type = $request->input('type');
-        $account->message_limit = $request->input('message_limit');
-        $account->balance = $request->input('balance');
-        $account->status = $request->input('status');
-        $account->user_id = $user->id;
-
-        $request->validate([
-            'type' => 'required',
-            'message_limit' => 'required',
-            'balance' => 'required',
-            'status' => 'required'
+        $validatedData = $request->validate([
+            'balance' => 'required|gte:.1'
         ]);
+        
+        $account->balance = $account->balance + $request->input('balance');
 
-        $account->save();
+        if($account->balance <= .64){
+            $account->message_limit = 0;
+        }else{
+            $account->message_limit = $account->balance / .65;
+        }  
+        
 
-        return redirect('getaccount')->with('message', 'La cuenta se ha creado con éxito');
+        $account->update();
+
+        return redirect('/')->with('message', 'El crédito se ha adicionado con con éxito');
     }
+    
+    // public function newAccount(Request $request){
+    //     $user = Auth::user();
+    //     $account = new Account();
+
+    //     $account->type = $request->input('type');
+    //     $account->message_limit = $request->input('message_limit');
+    //     $account->balance = $request->input('balance');
+    //     $account->status = $request->input('status');
+    //     $account->user_id = $user->id;
+
+    //     $request->validate([
+    //         'type' => 'required',
+    //         'message_limit' => 'required',
+    //         'balance' => 'required',
+    //         'status' => 'required'
+    //     ]);
+
+    //     $account->save();
+
+    //     return redirect('getaccount')->with('message', 'La cuenta se ha creado con éxito');
+    // }
 }

@@ -117,7 +117,7 @@
                                             Agrega credito en tu cuenta.<br><br>
                                         </p>
                                         <span class="info-box-text"><p class="text-right">
-                                            <a href="{{ url('/balance') }}"class="text-left">Agregar credito</a>
+                                            <a href="{{ url('/getbalance') }}"class="text-left">Agregar credito</a>
                                         </p></span>
                                     </div>
                                     <!-- /.info-box-content -->

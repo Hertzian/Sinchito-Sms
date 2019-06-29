@@ -26,6 +26,8 @@ Route::get('/getaccounts', 'AccountsController@getAccounts');
 Route::get('/getaccount/{id}', 'AccountsController@getAccount');
 Route::get('/newaccount', 'AccountsController@newAccountView');
 Route::post('/newaccount', 'AccountsController@newAccount');
+Route::get('/getbalance', 'AccountsController@getBalanceView');
+Route::post('/addcredit', 'AccountsController@addCredit');
 
 // Batches
 Route::get('/getlist', 'ItemsListController@getBatches');
@@ -54,5 +56,5 @@ Route::get('/sms', function () {return view('vistas.sms');})->name('sms');
 Route::get('/template', function () {return view('vistas.template');})->name('template');
 Route::get('/settings', function () {return view('vistas.settings');})->name('settings');
 Route::get('/contacts', function () {return view('vistas.contacts');})->name('contacts');
-Route::get('/balance', function () {return view('vistas.balance');})->name('balance');
+// Route::get('/balance', function () {return view('vistas.balance');})->name('balance');
 Route::get('/sin', function () {return view('vistas.singleSms');})->name('sin');

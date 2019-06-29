@@ -6,6 +6,7 @@ use App\Item;
 use App\Account;
 use App\ItemList;
 use Clx\Xms\Client;
+use App\MessageList;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -142,60 +143,49 @@ class ItemsListController extends Controller
         $account = Account::find($id);
         $batchId = $request->input('item_list_id');
         $numbers = Item::where('item_list_id', $batchId)->pluck('number');
-
+        $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
+        // dd($account->message_limit);
         $texto = $request->input('texto_personalizado');
 
         $client = new Client($this->splan, $this->token);
 
+        if ((count($numCount) > $account->message_limit && $account->message_limit >= 1) || $account->message_limit >= 1 && $account->balance >= 0.65) {
+            try {
 
-        try {
+                $batchParams = new MtBatchTextSmsCreate();
+                $batchParams->setSender($this->sender);
 
-            $batchParams = new MtBatchTextSmsCreate();
-            $batchParams->setSender($this->sender);
+                $batchParams->setRecipients($numbers);
 
+                $batchParams->setBody($texto);
 
-            // $texto = $request->input('texto_personalizado');
+                $result = $client->createTextBatch($batchParams);
+                $batchID = $result->getBatchId();
 
-            $batchParams->setRecipients($numbers);
+                $batchSMS = new MessageList();
+                $batchSMS->name = $batchID;
+                $batchSMS->account_id = $account->id;
+                $batchSMS->save();
 
-            $batchParams->setBody($texto);
-            // $batchParams->setBody('Hola ${fulano}, ' . $texto);
+                $account->message_limit = $account->message_limit - 1;
+                $account->balance = $account->balance - .65;
+                $account->update();
 
-            // if (count($name) >=1) {
-            //     for ($i=0; $i < count($number); $i++) { 
-            //         $names = array_add($names, $number[$i], $name[$i]);
-            //     }
-            //     $names += ['default' => 'estimado cliente'];
-            // }
+                $message = 'El ID que se dio al batch es: ' . $batchID;
+                
+            } catch (Exception $ex) {
 
-            // $fulano = ['fulano' => $names];
+                $message = 'Error al crear el lote: ' . $ex->getMessage();
+            }
 
-            // $batchParams->setParameters($fulano);
+        }else{
+            $error = 'No cuentas con saldo disponible para enviar mensajes';
 
-            $result = $client->createTextBatch($batchParams);
-            $batchID = $result->getBatchId();
-
-            $batchSMS = new Item();
-            $batchSMS->name = $batchID;
-            $batchSMS->number = $this->sender;
-            $batchSMS->save();
-
-            $message = 'El ID que se dio al batch es: ' . $batchID;
-            
-        } catch (Exception $ex) {
-
-            $message = 'Error creating batch: ' . $ex->getMessage();
+            return redirect('/')->with('error', $error);
         }
 
         return redirect('/')->with('message', $message);
 
-
-
-        // $batchParams = new \Clx\Xms\Api\MtBatchTextSmsCreate();
-        // $batchParams->setSender('12345');
-        // $batchParams->setRecipients(['987654321']);
-        // $batchParams->setBody('Hello, World!');
-        // $result = $client->createTextBatch($batchParams);
     }
 
     public function deleteBatch($id){        

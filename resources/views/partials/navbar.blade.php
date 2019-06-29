@@ -25,8 +25,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
-                <li class="my-5">Balance ${{ $balance }}</li>
-
+                <li class="my-5">Mensajes @if($balance <= .64) 0 @else{{ $smsLimit }}@endif - Balance ${{ $balance }}</li>
                 <li class="search-box">
                 <a class="nav-link hidden-sm-down" href="javascript:void(0)"><i class="mdi mdi-magnify"></i></a>
                 <form class="app-search" style="display: none;">
@@ -305,7 +304,7 @@
                         <div class="col-12 text-left">
                         <a href="
                         {{-- # --}}
-                        {{ URL::route('balance') }}
+                        {{ url('/balance') }}
                         "><i class="ion ion-person"></i> My balance</a>
                         </div>
                         <div class="col-12 text-left">
