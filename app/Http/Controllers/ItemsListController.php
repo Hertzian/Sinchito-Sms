@@ -195,5 +195,11 @@ class ItemsListController extends Controller
         return redirect('/getlist')
         ->with('message', 'El batch se ha eliminado con éxito');;
     }
+
+    public function GetContact($id)
+    {
+        $user = Accont::find($id);
+        
+    }
     
 }

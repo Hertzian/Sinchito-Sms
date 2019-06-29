@@ -289,46 +289,42 @@
                     <p>
                         {{ $name }}
                         <small class="mb-5">{{ $email }}</small>
-                        <a href="#" class="btn btn-danger btn-sm btn-rounded">View Profile</a>
+                        <a href="{{ url('/profile') }}" class="btn btn-danger btn-sm btn-rounded">View Profile</a>
                     </p>
                     </li>
                     <!-- Menu Body -->
                     <li class="user-body">
                     <div class="row ">
                         <div class="col-12 text-left">
-                        <a href="
-                        {{-- # --}}
-                        {{ URL::route('profile') }}
-                        "><i class="ion ion-person"></i> My Profile</a>
+                            <a href="{{ url('/profile') }}"><i class="ion ion-person"></i> My Profile</a>
                         </div>
                         <div class="col-12 text-left">
+<<<<<<< HEAD
                         <a href="
                         {{-- # --}}
                         {{ url('/balance') }}
                         "><i class="ion ion-person"></i> My balance</a>
+=======
+                            <a href=" Balance ${{ $balance }}"><i class="ion ion-person"></i> My balance</a>
+>>>>>>> 5e6a1200b3a0d46e5b54493d639047542b54dbb1
                         </div>
                         <div class="col-12 text-left">
-                        <a href="#"><i class="ion ion-email-unread"></i> Inbox</a>
+                            <a href="#"><i class="ion ion-email-unread"></i> Inbox</a>
                         </div>
                         <div class="col-12 text-left">
-                        <a href="#"><i class="ion ion-settings"></i> Setting</a>
+                            <a href="#"><i class="ion ion-settings"></i> Setting</a>
                         </div>
-                                <div role="separator" class="divider col-12"></div>
-                                <div class="col-12 text-left">
-                        <a href="
-                        {{-- # --}}
-                        {{ URL::route('profile') }}
-                        "><i class="ti-settings"></i> Account Setting</a>
+                        <div role="separator" class="divider col-12"></div>
+                        <div class="col-12 text-left">
+                            <a href=""><i class="ti-settings"></i> Account Setting</a>
                         </div>
-                            <div role="separator" class="divider col-12"></div>
-                            <div class="col-12 text-left">
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ __('Logout') }}</a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-
+                        <div role="separator" class="divider col-12"></div>
+                        <div class="col-12 text-left">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ __('Logout') }}</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                     <!-- /.row -->
