@@ -104,11 +104,17 @@
                 <h6 class="text-uppercase text-center mb-30">Recarga tu credito aqui</h6>
                     <ul class="flexbox flex-justified text-cente mb-15">
                         <li class="br-1 botder-light text-center">
-                            <div class="font-size-18">953</div>
+                            <div class="font-size-18">
+                            {{-- @if ($account->balance < .65) --}}
+                                {{-- 0 --}}
+                            {{-- @else     --}}
+                                {{ $account->message_limit }}                
+                            {{-- @endif --}}
+                            </div>
                             <a href=""><small> <span class="badge badge-pill badge-warning">New York</span></small></a>
                         </li>
                         <li class="br-1 botder-light text-center">
-                            <div class="font-size-18">813</div>
+                            <div class="font-size-18"></div>
                             <small>Los Angeles</small>
                         </li>
                         <li class="text-center">
