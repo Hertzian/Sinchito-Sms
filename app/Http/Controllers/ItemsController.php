@@ -117,8 +117,7 @@ class ItemsController extends Controller
 
         return view('itemlist.ContactList',[
             'batch' => $batch,
-            'items' => $items,
-            'batches' => $batches
+            'items' => $items
         ]);
     }
 
