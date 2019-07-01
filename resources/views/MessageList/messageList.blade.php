@@ -89,7 +89,8 @@
                                     <td>2011/04/25</td> 
                                     <td> 
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-modal-sms"><i class="fas fa-sms" aria-hidden="true"></i> Ver batch</button>
+                                        <a class="btn btn-info" href="{{ url('/messageItem/' ) }}"><i class="fas fa-sms" aria-hidden="true"></i> Ver batch</a>
+                                        
                                     </div>
                                     </td>
                                 </tr>              
@@ -101,33 +102,6 @@
 
         </div>
         
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal-sms" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Edit modal</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              </div>
-              <div class="modal-body ">
-                <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-3"><h4>Something</h4></div>
-                  <div class="col-4"><input class="form-control" type="text" placeholder="Default input"></div>
-                </div><br>
-                <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-3"><h4>Something</h4></div>
-                  <div class="col-4"><input class="form-control" type="text" placeholder="Default input"></div>
-                </div>      
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info float-right" onclick="ok()">Save changes</button>
-                </div>
-            </div>
-          </div>
-        </div>
-
     <div class="card-body">
         @if (session('status'))
         <div class="alert alert-success" role="alert">

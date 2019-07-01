@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class TemplateController extends Controller
 {
     
-    public function newTemplate(Request $request, $id){
+    public function newTemplate(Request $request){
         $account = Account::find($id);
-        $template = new ItemList();
+        $template = new template();
 
         $template->name = $request->input('name');
-        $template->name = $request->input('content');
+        $template->content = $request->input('content');
         $template->account_id = $account->id;
 
         $request->validate([
@@ -29,10 +29,10 @@ class TemplateController extends Controller
 
     public function editTemplate(Request $request, $id){
         $account = Account::find($id);
-        $template = new ItemList();
+        $template = new template();
 
         $template->name = $request->input('name');
-        $template->name = $request->input('content');
+        $template->content = $request->input('content');
         $template->account_id = $account->id;
 
         $request->validate([
@@ -40,14 +40,14 @@ class TemplateController extends Controller
             'content' => 'required'
         ]);
 
-        $template->update();
+        $template->save();
 
         return redirect('/template')
         ->with('message', 'La plantilla se ha creado con éxito');
     }
 
     public function deleteTemplate($id){        
-        $template = ItemList::find($id);
+       
         $template->delete();
 
         return redirect('/template')

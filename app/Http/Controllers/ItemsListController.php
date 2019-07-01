@@ -252,10 +252,5 @@ class ItemsListController extends Controller
         ->with('message', 'El batch se ha eliminado con éxito');;
     }
 
-    public function GetContact($id)
-    {
-        $user = Accont::find($id);
-        
-    }
     
 }

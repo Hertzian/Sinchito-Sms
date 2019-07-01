@@ -13,8 +13,9 @@ class messageListController extends Controller
         $account = Account::find($user->id);
         $messaje = ItemList::where('account_id', $user->id)->get();
 
-        return view('MessageList.messageList',[
-
+        return view('itemlist.ContactList',[
+            'batch' => $batch,
+            'items' => $items
         ]);
     }
 

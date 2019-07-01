@@ -121,4 +121,13 @@ class ItemsController extends Controller
         ]);
     }
 
+    public function deleteContact($id_i, $id_b){        
+        $item -> ItemList::find($id_b);
+        $item -> Item::find($id_i);
+        $item->delete();
+
+        return redirect('/itemlist.ContactList')
+        ->with('message', 'El batch se ha eliminado con éxito');;
+    }
+
 }

@@ -125,26 +125,26 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           </div>
           <div class="modal-body ">
-            <form action="" method="post" class="">
+            <form  action="{{ url('/newTemplate/') }}" method="post">
               <div class="form-group row">
                 <div class="col-2"></div>
                 <label for="recupient-input" class="col-3 col-form-label">Template name</label>
                 <div class="col-xl-4 col-md-6 col-6">
-                  <input class="form-control" type="text" value="" placeholder="Template name" required id="temaplate-name">
+                  <input class="form-control" type="text" value="" placeholder="Template name" required id="name">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-2"></div>
                   <label for="text-message" class="col-3 col-form-label">Text</label>
                   <div class="col-xl-4 col-md-6 col-6">
-                    <textarea class="form-control" rows="5" placeholder="Enter ..." required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
+                    <textarea class="form-control" rows="5" placeholder="Enter ..." required id="content" onkeyup="valTextMessage(this);"></textarea><br>
                     <p id="letters">Message, Characters: 0 </p>
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info float-right" onclick="ok()">Save template</button>
+                <button type="sutmit" class="btn btn-info float-right" onclick="ok()">Save template</button>
                 <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
               </div>
               </form>
