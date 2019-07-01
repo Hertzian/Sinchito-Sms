@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,13 +12,13 @@ class messageListController extends Controller
     public function getMessajeList(){    
         $user = Auth::user();
         $account = Account::find($user->id);
-        $messaje = ItemList::where('account_id', $user->id)->get();
+        $message = Message::where('account_id', $user->id)->get();
 
-        return view('itemlist.ContactList',[
-            'batch' => $batch,
-            'items' => $items
+        return view('MessageList.messageList',[
+            'message' => $message
         ]);
     }
+
 
     public function MessageListView(){
         $user = Auth::user();

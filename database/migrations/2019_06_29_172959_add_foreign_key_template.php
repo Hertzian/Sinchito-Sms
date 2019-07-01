@@ -13,10 +13,10 @@ class AddForeignKeyTemplate extends Migration
      */
     public function up()
     {
-        Schema::table('template', function (Blueprint $table) {
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
+        Schema::table('templates', function(Blueprint $table){
+            $table->bigInteger('account_id')->unsigned();
+            $table->foreign('account_id')
+                ->references('id')->on('accounts')
                 ->onDelete('cascade');
         });
     }
@@ -28,8 +28,8 @@ class AddForeignKeyTemplate extends Migration
      */
     public function down()
     {
-        Schema::table('template', function (Blueprint $table) {
-            //
+        Schema::table('templates', function(Blueprint $table){
+            $table->dropForeign('template_account_id_foreign');
         });
     }
 }

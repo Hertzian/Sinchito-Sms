@@ -121,7 +121,7 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function deleteContact($id_i, $id_b){        
+    public function deleteContact($id_b, $id_i){        
         $item -> ItemList::find($id_b);
         $item -> Item::find($id_i);
         $item->delete();

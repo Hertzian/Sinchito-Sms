@@ -121,16 +121,18 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">New template</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">Agregar Pantilla</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           </div>
           <div class="modal-body ">
             <form  action="{{ url('/newTemplate/') }}" method="post">
+              @csrf
               <div class="form-group row">
                 <div class="col-2"></div>
                 <label for="recupient-input" class="col-3 col-form-label">Template name</label>
                 <div class="col-xl-4 col-md-6 col-6">
-                  <input class="form-control" type="text" value="" placeholder="Template name" required id="name">
+                  <input type="text" style="display:none;"value="{{$account->id}}" id="id">
+                  <input class="form-control" type="text" value="" placeholder="" required id="name">
                 </div>
               </div>
               <div class="form-group row">

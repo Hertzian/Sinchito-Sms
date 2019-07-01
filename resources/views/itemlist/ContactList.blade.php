@@ -64,7 +64,7 @@
                   <a class="box box-body box-hover-shadow" href="#">
                     <div class="font-size-18 flexbox align-items-center">
                       <small>Contacto</small>
-                        <form action="{{ url('/deleteContact/' . $item->id . $batch -> id ) }}"  method="post">
+                        <form action="{{ url('/deleteContact/' . $item->id) }}"  method="post">
                           @csrf
                           <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
                         </form>
@@ -79,7 +79,6 @@
                     </div>
                   </a>
                 </div>
-
             @endforeach
         @else
 

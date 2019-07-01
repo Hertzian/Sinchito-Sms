@@ -46,7 +46,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/single') }}"><i class="fa fa-envelope"></i>SMS Sencillo</a></li>
                     <li><a href="{{ url('/getlist') }}"><i class="fa fa-money mr-5"></i>Batches</a></li>
-                    <li><a href="{{ URL::route('template') }}"><i class="fa fa-window-maximize"></i>Plantilla</a></li>
+                    <li><a href="{{ url('/getTemplate') }}"><i class="fa fa-window-maximize"></i>Plantilla</a></li>
                     {{-- <li><a href="{{ URL::route('settings') }}"><i class="fa fa-cog mr-5"></i>Configuración</a></li> --}}
                 </ul>
             </li>

@@ -43,17 +43,18 @@ Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');
 Route::post('/newitem/{id}', 'ItemsController@newItem');
 Route::get('/ContactList/{id}', 'ItemsController@getContact');
-Route::post('/deleteContact/{id_b}/{id_i}', 'ItemsController@deleteContact');
+Route::get('/deleteContact/{id_b}/{id_i}', 'ItemsController@deleteContact');
 
 // Template
-Route::get('/single','ItemsController@sendSingleSMSView');
+Route::post('/newTemplate/{id}','TemplateController@newTemplate');
+Route::get('/getTemplate','TemplateController@gettemplate');
 
 // Single SMS
 Route::get('/single','ItemsController@sendSingleSMSView');
 Route::post('/single', 'ItemsController@sendSingleSMS');
 
 // Message 
-Route::get('/message','messageListController@MessageListView');
+Route::get('/message','messageListController@MessageList');
 Route::get('/messageItem','messageListController@MessageItemView');
 
 
