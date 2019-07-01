@@ -10,6 +10,8 @@ use App\MessageList;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Excel as Excs;
+use Maatwebsite\Excel\Facades\Excel;
 use Clx\Xms\Api\MtBatchTextSmsCreate;
 
 class ItemsListController extends Controller
@@ -79,6 +81,25 @@ class ItemsListController extends Controller
         ->with('message', 'El batch se ha creado con éxito');
     }
 
+    public function newCSVBatch(Request $request){       
+        $file = $request->file('csv');
+
+        // $request->validate([
+        //     'csv' => 'required|mimes:csv,text/csv',
+        // ]);
+
+    	Excs::import($file, function($contactsCSV) {
+ 
+            foreach ($contactsCSV->get() as $contact) {
+            Item::create([
+            'name' => $contact->name,
+            'number' =>$contact->number,
+            ]);
+            }
+        });
+        return redirect('/getlist')->with('message', 'Los contactos se han adicionado con éxito');
+    }
+
     // public function sendBatchSMS(Request $request, $id){
         
     //     $account = Account::find($id);
@@ -143,20 +164,22 @@ class ItemsListController extends Controller
         $account = Account::find($id);
         $batchId = $request->input('item_list_id');
         $numbers = Item::where('item_list_id', $batchId)->pluck('number');
-        $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
-        // dd($account->message_limit);
+
         $texto = $request->input('texto_personalizado');
+
+        $request->validate([
+            'texto_personalizado' => 'required',
+        ]);
 
         $client = new Client($this->splan, $this->token);
 
-        if ((count($numCount) > $account->message_limit && $account->message_limit >= 1) || $account->message_limit >= 1 && $account->balance >= 0.65) {
+
+        if (count($numbers) <= $account->message_limit && $account->message_limit >= 1) {
             try {
 
                 $batchParams = new MtBatchTextSmsCreate();
                 $batchParams->setSender($this->sender);
-
                 $batchParams->setRecipients($numbers);
-
                 $batchParams->setBody($texto);
 
                 $result = $client->createTextBatch($batchParams);
@@ -167,8 +190,8 @@ class ItemsListController extends Controller
                 $batchSMS->account_id = $account->id;
                 $batchSMS->save();
 
-                $account->message_limit = $account->message_limit - 1;
-                $account->balance = $account->balance - .65;
+                $account->message_limit = $account->message_limit - count($numbers);
+                $account->balance = $account->balance - (count($numbers) * .65);
                 $account->update();
 
                 $message = 'El ID que se dio al batch es: ' . $batchID;

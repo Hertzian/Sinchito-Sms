@@ -36,12 +36,14 @@ Route::get('/contactlist/{id}', 'ItemsListController@contactListView');
 Route::post('/newlist/{id}', 'ItemsListController@newBatch');
 Route::post('/send/{id}', 'ItemsListController@sendBatchSMS');
 Route::post('/deletebatch/{id}', 'ItemsListController@deleteBatch');
+Route::post('/newcsv/{id}', 'ItemsListController@newCSVBatch');
 
 // Item
 Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');
 Route::post('/newitem/{id}', 'ItemsController@newItem');
 Route::get('/ContactList/{id}', 'ItemsController@getContact');
+// Route::post('/newcsv/{id}', 'ItemsController@newCSVBatch');
 
 // Single SMS
 Route::get('/single','ItemsController@sendSingleSMSView');
