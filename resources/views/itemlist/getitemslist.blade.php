@@ -61,89 +61,127 @@
     </div>
   </div>
   
-    @if (count($batches) >= 1)
-      
-      {{-- Modal 2 --}}
-      <div class="col-xl-4 col-md-12 col-12">
-        <div class="small-box bg-info">
-          <div class="inner">
-            <h3>Contactos</h3>
-            <p>Añadir contactos</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-address-card"></i>
-          </div>
-          <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Add contact to batch <i class="fa fa-arrow-right"></i></a>
+  @if (count($batches) >= 1)
+    
+    {{-- Modal 2 --}}
+    <div class="col-xl-4 col-md-12 col-12">
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3>Contactos</h3>
+          <p>Añadir contactos</p>
         </div>
+        <div class="icon">
+          <i class="fa fa-address-card"></i>
+        </div>
+        <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Add contact to batch <i class="fa fa-arrow-right"></i></a>
       </div>
-  
-      {{-- Modal body --}}
-      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="contact-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myLargeModalLabel">Add contact</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body ">                
-              <form action="{{ url('/newitem/' . $account->id) }}" method="post" class="">
-                @csrf
-                {{-- <input type="hidden" name="item_list_id" value="{{ $account->id }}"> --}}
-                <div class="form-group row">
-                  <div class="col-2"></div>
-                  <label for="recupient-input" class="col-3 col-form-label">Batch name</label>
-                  <div class="col-xl-4 col-md-6 col-6">                      
-                    <select class="form-control" name="item_list_id" id="">
-                      <option value=""></option>                        
-                      @if (count($batches) >= 1)
-                        @foreach ($batches as $batch)
-                          <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
-                        @endforeach
-                      @else
-                        <option value="">There are no batches</option>
-                      @endif
-                    </select>
-                  </div>
-                </div>
+    </div>
 
-                <div class="form-group row">
-                  <div class="col-2"></div>
-                  <label for="recupient-input" class="col-3 col-form-label">Contact name</label>
-                  <div class="col-xl-4 col-md-6 col-6">
-                    <input class="form-control" type="text" name="name" placeholder="Contact name" required id="temaplate-name">
-                  </div>
-                </div>
+    {{-- Modal body --}}
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="contact-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
-                <div class="form-group row">
-                  <div class="col-2"></div>
-                  <label for="recupient-input" class="col-3 col-form-label">Contact number</label>
-                  <div class="col-xl-4 col-md-6 col-6">
-                    <input class="form-control" type="text" name="number" placeholder="Contact number" required id="temaplate-name">
-                  </div>
-                </div>                  
+          <div class="modal-header">
+            <h4 class="modal-title" id="myLargeModalLabel">Agregar contactos</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+
+          <div class="modal-body ">                
+            <form action="{{ url('/newitem/' . $account->id) }}" method="post" class="">
+              @csrf
+              {{-- <input type="hidden" name="item_list_id" value="{{ $account->id }}"> --}}
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre del lote</label>
+                <div class="col-xl-4 col-md-6 col-6">                      
+                  <select class="form-control" name="item_list_id" id="">
+                    <option value=""></option>                        
+                    @if (count($batches) >= 1)
+                      @foreach ($batches as $batch)
+                        <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
+                      @endforeach
+                    @else
+                      <option value="">No hay lotes registrados</option>
+                    @endif
+                  </select>
+                </div>
               </div>
 
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-info float-right" onclick="ok()">Add contact</button>
-              </form>
-              <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
-            </div>
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre de contacto</label>
+                <div class="col-xl-4 col-md-6 col-6">
+                  <input class="form-control" type="text" name="name" placeholder="Contact name" required id="temaplate-name">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Número de contacto</label>
+                <div class="col-xl-4 col-md-6 col-6">
+                  <input class="form-control" type="text" name="number" placeholder="Contact number" required id="temaplate-name">
+                </div>
+              </div>                  
+              <button type="submit" class="btn btn-info float-right" onclick="ok()">Agregar contacto</button>
+            </form>
           </div>
+
+          
+          <div class="modal-header">
+            <h4 class="modal-title" id="myLargeModalLabel">Agregar contactos mediante archivo csv</h4>
+          </div>          
+          <div class="modal-body ">  
+            <form action="{{ url('/newcsv/' . $account->id) }}" method="post" class="" enctype="multipart/form-data">
+              @csrf
+              {{-- <input type="hidden" name="item_list_id" value="{{ $account->id }}"> --}}
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre del lote</label>
+                <div class="col-xl-4 col-md-6 col-6">                      
+                  <select class="form-control" name="item_list_id" id="">
+                    <option value=""></option>                        
+                    @if (count($batches) >= 1)
+                      @foreach ($batches as $batch)
+                        <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
+                      @endforeach
+                    @else
+                      <option value="">There are no batches</option>
+                    @endif
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Selecciona un archivo en formato .csv</label>
+                <div class="col-xl-4 col-md-6 col-6">
+                  <input class="form-control" type="file" name="csv" name="myFile">
+                </div>
+              </div>                  
+              <button type="submit" class="btn btn-info float-right" onclick="ok()">Agregar contactos</button>
+            </form>
+          </div>
+            
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
+          </div>
+
         </div>
       </div>
+    </div>
 
-      {{-- Modal 3 --}}
-      <div class="col-xl-4 col-md-12 col-12">
-        <div class="small-box bg-warning">
-          <div class="inner">              
-            <h3>Mensajes</h3>
-            <p>Enviar mensajes</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-window-maximize"></i>
-          </div>
-          <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Send messages to batches <i class="fa fa-arrow-right"></i></a>
+    {{-- Modal 3 --}}
+    <div class="col-xl-4 col-md-12 col-12">
+      <div class="small-box bg-warning">
+        <div class="inner">              
+          <h3>Mensajes</h3>
+          <p>Enviar mensajes</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-window-maximize"></i>
+        </div>
+        <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Send messages to batches <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
       

@@ -7,10 +7,10 @@ use App\Account;
 use App\ItemList;
 use Clx\Xms\Client;
 use App\MessageList;
+use App\Imports\ItemImport;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Excel as Excs;
 use Maatwebsite\Excel\Facades\Excel;
 use Clx\Xms\Api\MtBatchTextSmsCreate;
 
@@ -81,81 +81,114 @@ class ItemsListController extends Controller
         ->with('message', 'El batch se ha creado con éxito');
     }
 
-    public function newCSVBatch(Request $request){       
-        $file = $request->file('csv');
 
-        // $request->validate([
-        //     'csv' => 'required|mimes:csv,text/csv',
-        // ]);
 
-    	Excs::import($file, function($contactsCSV) {
- 
-            foreach ($contactsCSV->get() as $contact) {
-            Item::create([
-            'name' => $contact->name,
-            'number' =>$contact->number,
-            ]);
-            }
-        });
+
+
+
+    // public function csvToArray($filename = '', $delimiter = ','){
+        
+    //     if (!file_exists($filename) || !is_readable($filename))
+    //     return false;
+
+    //     $header = null;
+    //     $data = array();
+    //     if (($handle = fopen($filename, 'r')) !== false)
+    //     {
+    //         while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
+    //         {
+    //             if (!$header)
+    //                 $header = $row;
+    //             else
+    //                 $data[] = array_combine($header, $row);
+    //         }
+    //         fclose($handle);
+    //     }
+
+    //     return $data;
+    // }
+
+    public function newCSVBatch(Request $request, $id){
+        $account = Account::find($id);
+
+        // $file = $request->file('csv')->getClientOriginalName();
+        // $extension = $request->file('csv')->getClientOriginalExtension();
+
+        $fileNameWithExt = $request->file('csv')->getClientOriginalName();
+
+        // get just the filename
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+        // get extension
+        $extension = $request->file('csv')->getClientOriginalExtension();
+
+        // create new filename
+        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+        // upload image
+        $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
+
+
+        $this->validate($request, [
+            'csv' => 'file'
+        ]);
+
+        Excel::import(new ItemImport, $path);
+
+        
+        // $file = public_path('file/test.csv');
+
+        // $customerArr = $this->csvToArray($file);
+
+        // for ($i = 0; $i < count($customerArr); $i ++)
+        // {
+        //     User::firstOrCreate($customerArr[$i]);
+        // }
+
         return redirect('/getlist')->with('message', 'Los contactos se han adicionado con éxito');
     }
 
-    // public function sendBatchSMS(Request $request, $id){
-        
+
+
+
+
+    // public function sendBatchSMS(Request $request, $id){        
     //     $account = Account::find($id);
     //     $batch = ItemList::find($account->id);
     //     // $batch = ItemList::where('account_id', $account->id)->get();
     //     // $name = Item::where('item_list_id', $batch->id)->pluck('name');
     //     $number = Item::where('item_list_id', $batch->id)
     //     // ->pluck('number')
-    //     ;
-
     //     $names = [];
     //     $numbers = [];
     //     $message;
-
     //     dd($number);
-    //     $client = new Client($this->splan, $this->token);
-        
+    //     $client = new Client($this->splan, $this->token);        
     //     try {
-
     //         $batchParams = new MtBatchTextSmsCreate();
     //         $batchParams->setSender($this->sender);
-
     //         // if(count($number) >=1){
     //         //     for ($i=0; $i < count($name); $i++) { 
     //         //         $numbers[] = $number[$i];
     //         //     }
     //         // }
-
     //         $texto = $request->input('texto_personalizado');
-
     //         // $batchParams->setRecipients($numbers);
-
-
     //         $batchParams->setBody($texto);
     //         // $batchParams->setBody('Hola ${fulano}, ' . $texto);
-
     //         // if (count($name) >=1) {
     //         //     for ($i=0; $i < count($number); $i++) { 
     //         //         $names = array_add($names, $number[$i], $name[$i]);
     //         //     }
     //         //     $names += ['default' => 'estimado cliente'];
     //         // }
-
     //         // $fulano = ['fulano' => $names];
-
     //         // $batchParams->setParameters($fulano);
-
     //         $result = $client->createTextBatch($batchParams);
-
     //         $message = 'El ID que se dio al batch es: ' . $result->getBatchId();
-
     //     } catch (Exception $ex) {
-
     //         $message = 'Error creating batch: ' . $ex->getMessage();
     //     }
-
     //     return redirect('/')->with('message', $message);
     // }
 
