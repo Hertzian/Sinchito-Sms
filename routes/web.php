@@ -54,8 +54,8 @@ Route::get('/single','ItemsController@sendSingleSMSView');
 Route::post('/single', 'ItemsController@sendSingleSMS');
 
 // Message 
-Route::get('/message','messageListController@MessageList');
-Route::get('/messageItem','messageListController@MessageItemView');
+Route::get('/message','messageListController@getMessajeList');
+Route::get('/messageItem/{id}','messageListController@getMessajeItem');
 
 
 // check views routes

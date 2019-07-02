@@ -9,30 +9,29 @@
         <!-- Estadisticas     -->
         <div class="row">
            
-            <div class="col-md-6 col-lg-4">
+            <div class="col-xl-4 col-md-6 col-12 ">
                 <div class="box box-body">
-                    <div class="flexbox">
-                        <div id="lineAnalytics1" >1,4,3,7,6,4,8,9,6,8,12</div>
-                        <div class="text-right">
-                            <span>First Data</span><br>
-                            <span>
-                                <i class="ion-ios-arrow-up text-success"></i>
-                                <span class="font-size-18 ml-1">113</span>
-                            </span>
+                    <a href="{{ URL::route('home') }}">
+                        <div class="font-size-18 flexbox align-items-center">
+                            <span><i class="fas fa-chevron-left"></i></span>
+                            <span>Regresar</span>
                         </div>
-                    </div>
+                        <div class="progress progress-xxs mt-10 mb-0">
+                            <div class="progress-bar" role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </a>
                 </div>
-            </div>
+            </div> 
 
             <div class="col-md-6 col-lg-4">
                 <div class="box box-body">
                     <div class="flexbox">
                         <div id="lineAnalytics2" >1,4,3,7,6,4,8,9,6,8,12</div>
                         <div class="text-right">
-                            <span>Second Data</span><br>
+                            <span>Paquetes de Mensajes</span><br>
                             <span>
                                 <i class="ion-ios-arrow-up text-success"></i>
-                                <span class="font-size-18 ml-1">113</span>
+                                <span class="font-size-18 ml-1">{{ count($message) }}</span>
                             </span>
                         </div>
                     </div>
@@ -65,12 +64,14 @@
                         <h3 class="box-title">Mensajes</h3>
                     </div>
                     <div class="box-body">
+                    @if (count($message) >= 1)  
                         <table id="table_sms" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th>Batch Name</th>
                                     <th>Cliente</th> 
                                     <th>Fecha</th>
+                                    <th>Account</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -79,21 +80,32 @@
                                     <th>Batch Name</th>
                                     <th>Cliente</th> 
                                     <th>Fecha</th>
+                                    <th>Account</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
                             <tbody>
+                            @foreach ($message as $message)
                                 <tr>
-                                    <td>Edinburgh</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>2011/04/25</td> 
+                                    <td>{{ $message->id }}</td>
+                                    <td>{{ $message->name }}</td>
+                                    <td>{{ $message->created_at }}</td>
+                                    <td>{{ $message->account_id }}</td> 
                                     <td> 
                                     <div class="btn-group">
-                                        <a class="btn btn-info" href="{{ url('/messageItem/' ) }}"><i class="fas fa-sms" aria-hidden="true"></i> Ver batch</a>
+                                        <a class="btn btn-info" href="{{ url('/messageItem/' . $message->id) }}"><i class="fas fa-sms" aria-hidden="true"></i> Ver batch</a>
                                         
                                     </div>
                                     </td>
-                                </tr>              
+                                </tr>
+                                @endforeach
+                                @else
+                                <div class="text-center">
+                                    <i class="fa fa-grav font-size-70"></i><br><br>
+                                    ¡No hay listas registradas aún! <br>
+                                    Agrega una lista para continuar. 
+                                    </div>   
+                                @endif              
                             </tbody>
                         </table>
                     </div>

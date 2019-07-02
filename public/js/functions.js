@@ -146,7 +146,7 @@
       spotRadius: 3,
     });
 
-    $("#lineAnalytics1").sparkline([1,9,3,7,3,4,8,9,2,8,12], {
+    $("#lineAnalytics1").sparkline([1,3,5,7,5,3,8,9,5,8,12], {
 			type: 'line',
 			width: '100',
 			height: '38',
