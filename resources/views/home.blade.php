@@ -5,13 +5,10 @@
 @endsection
 
 @section('content')
-
-<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12 mt-5">
             <div class="card">
-                    {{-- ************************************* --}}
-                    <div class="content">
+                    <div class="">
                         <div class="content box-body">
                             <div class="row">
                                 <div class="col-xl-4 col-md-6 col-6 homeBox">
@@ -130,7 +127,6 @@
             </div>
         </div>
     </div>
-</div>
 
     
 @endsection

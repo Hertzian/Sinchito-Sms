@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
+            <!-- <div class="col-md-6 col-lg-4">
                 <div class="box box-body">
                     <div class="flexbox">
                         <div id="lineAnalytics3" >1,4,3,7,6,4,8,9,6,8,12</div>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         
         </div>
 
@@ -61,26 +61,26 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Mensajes</h3>
+                        <h3 class="box-title">Historial</h3>
                     </div>
                     <div class="box-body">
                     @if (count($message) >= 1)  
                         <table id="table_sms" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Batch Name</th>
-                                    <th>Cliente</th> 
+                                    <th>#</th>
+                                    <th>Codigo de lote</th> 
                                     <th>Fecha</th>
-                                    <th>Account</th>
+                                    <th>Cuenta</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Batch Name</th>
-                                    <th>Cliente</th> 
+                                    <th>#</th>
+                                    <th>Codigo de lote</th> 
                                     <th>Fecha</th>
-                                    <th>Account</th>
+                                    <th>Cuenta</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>

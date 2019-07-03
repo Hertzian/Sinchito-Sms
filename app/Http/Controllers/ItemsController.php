@@ -122,9 +122,9 @@ class ItemsController extends Controller
     }
 
     public function deleteContact($id_b, $id_i){        
-        $item -> ItemList::find($id_b);
+        $item -> ItemList::find($id);
         $item -> Item::find($id_i);
-        $item->delete();
+        $item -> delete();
 
         return redirect('/itemlist.ContactList')
         ->with('message', 'El batch se ha eliminado con éxito');;

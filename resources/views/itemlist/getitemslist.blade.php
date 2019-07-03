@@ -14,15 +14,15 @@
       <div class="inner">
         <h3>{{ count($batches) }}</h3>
         @if (count($batches) >= 2 || count($batches) < 1)
-          <p>Batches</p>
+          <p>Lotes</p>
         @else
-          <p>Batch</p>              
+          <p>Lote</p>              
         @endif
       </div>
       <div class="icon">
         <i class="fa fa-address-book"></i>
       </div>
-      <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Add batch <i class="fa fa-arrow-right"></i></a>
+      <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Agregar lote de mensajes <i class="fa fa-arrow-right"></i></a>
     </div>
   </div>
   
@@ -31,7 +31,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="myLargeModalLabel">New batch</h4>
+          <h4 class="modal-title" id="myLargeModalLabel">Agregar lote</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
         <div class="modal-body ">
@@ -40,9 +40,9 @@
             @csrf
             <div class="form-group row">
               <div class="col-2"></div>
-              <label for="recupient-input" class="col-3 col-form-label">Batch name</label>
+              <label for="recupient-input" class="col-3 col-form-label">Nombre de lote</label>
               <div class="col-xl-4 col-md-6 col-6">
-                <input class="form-control" type="text" name="name" placeholder="Batch name" required id="temaplate-name">
+                <input class="form-control" type="text" name="name" placeholder="Nombre" required id="temaplate-name">
               </div>
             </div>
             <div class="form-group row">
@@ -51,8 +51,8 @@
             
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-info float-right" onclick="ok()">Save template</button>
+            <button type="button" class="btn btn-default "  data-dismiss="modal">Carrar</button>
+            <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar Lote</button>
           </form>
           
           <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
@@ -73,7 +73,7 @@
         <div class="icon">
           <i class="fa fa-address-card"></i>
         </div>
-        <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Add contact to batch <i class="fa fa-arrow-right"></i></a>
+        <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Agregar contectos<i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
 
@@ -96,7 +96,7 @@
                 <label for="recupient-input" class="col-3 col-form-label">Nombre del lote</label>
                 <div class="col-xl-4 col-md-6 col-6">                      
                   <select class="form-control" name="item_list_id" id="">
-                    <option value=""></option>                        
+                    <option value="">Selecciona un lote</option>                        
                     @if (count($batches) >= 1)
                       @foreach ($batches as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
@@ -112,7 +112,7 @@
                 <div class="col-2"></div>
                 <label for="recupient-input" class="col-3 col-form-label">Nombre de contacto</label>
                 <div class="col-xl-4 col-md-6 col-6">
-                  <input class="form-control" type="text" name="name" placeholder="Contact name" required id="temaplate-name">
+                  <input class="form-control" type="text" name="name" placeholder="Nombre" required id="temaplate-name">
                 </div>
               </div>
 
@@ -120,7 +120,7 @@
                 <div class="col-2"></div>
                 <label for="recupient-input" class="col-3 col-form-label">Número de contacto</label>
                 <div class="col-xl-4 col-md-6 col-6">
-                  <input class="form-control" type="text" name="number" placeholder="Contact number" required id="temaplate-name">
+                  <input class="form-control" type="text" name="number" placeholder="Numero" required id="temaplate-name">
                 </div>
               </div>                  
               <button type="submit" class="btn btn-info float-right" onclick="ok()">Agregar contacto</button>
@@ -140,7 +140,7 @@
                 <label for="recupient-input" class="col-3 col-form-label">Nombre del lote</label>
                 <div class="col-xl-4 col-md-6 col-6">                      
                   <select class="form-control" name="item_list_id" id="">
-                    <option value=""></option>                        
+                    <option value="">Selecciona un lote</option>                        
                     @if (count($batches) >= 1)
                       @foreach ($batches as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
@@ -164,7 +164,7 @@
           </div>
             
           <div class="modal-footer">
-            <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
           </div>
 
         </div>
@@ -181,7 +181,7 @@
         <div class="icon">
           <i class="fa fa-window-maximize"></i>
         </div>
-        <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Send messages to batches <i class="fa fa-arrow-right"></i></a>
+        <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Enviar mensajes <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
       
@@ -190,7 +190,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Send messages</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">Enviar mensajes</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           </div>
           <div class="modal-body ">
@@ -198,16 +198,16 @@
               @csrf
               <div class="form-group row">
                 <div class="col-2"></div>
-                <label for="recupient-input" class="col-3 col-form-label">Batch name</label>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre de lote</label>
                 <div class="col-xl-4 col-md-6 col-6">
                   <select class="form-control" name="item_list_id" id="">
-                    <option value="">Select batch</option>
+                    <option value="">Selecciona un lote</option>
                     @if (count($batches) >= 1)
                       @foreach ($batches as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
                       @endforeach
                     @else
-                      <option value="">There are no batches</option>
+                      <option value="">Sin lotes</option>
                     @endif
                    </select>
                   {{-- <input class="form-control" type="text" name="name" placeholder="Batch name" required id="temaplate-name"> --}}
@@ -215,16 +215,16 @@
               </div>
               <div class="form-group row">
                 <div class="col-2"></div>
-                  <label for="text-message" class="col-3 col-form-label">Text</label>
+                  <label for="text-message" class="col-3 col-form-label">Mensaje</label>
                   <div class="col-xl-4 col-md-6 col-6">
-                    <textarea class="form-control" rows="5" placeholder="Enter ..." required name="texto_personalizado" id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                    <p id="letters">Message parts: 1, Characters: 0 </p>
+                    <textarea class="form-control" rows="5" placeholder="Texto de mensajes" required name="texto_personalizado" id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
+                    <p id="letters">Mensaje, Caracters: 0 </p>
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success float-right" onclick="ok()">Send</button>
+                <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-success col-xl-2 col-md-2 col-3 float-right" onclick="ok()">Enviar</button>
                 <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
               </div>
             </form>
@@ -245,8 +245,8 @@
           <thead>
             <tr>
                 <th>#</th>
-                <th>Batch name</th>
-                <th>Created</th>
+                <th>Nombre del Lote</th>
+                <th>Fecha</th>
                 <th>Contactos</th>
                 <th>Eliminar lista</th>
             </tr>
@@ -254,8 +254,8 @@
           <tfoot>
             <tr>
                 <th>#</th>
-                <th>Batch name</th>
-                <th>Created</th>
+                <th>Nombre del Lote</th>
+                <th>Fecha</th>
                 <th>Contactos</th>
                 <th>Eliminar lista</th>
             </tr>

@@ -8,7 +8,7 @@ class Template extends Model
 {
     protected $table = 'template';
     protected $fillable = [
-        'name','content','account_id'
+        'name', 'content', 'account_id'
     ];
 
     public function template(){

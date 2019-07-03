@@ -245,10 +245,19 @@ class ItemsListController extends Controller
     }
 
     public function deleteBatch($id){        
-        $batch = ItemList::find($id);
+        $batch -> ItemList::find($id);
         $batch->delete();
 
         return redirect('/getlist')
+        ->with('message', 'El batch se ha eliminado con éxito');;
+    }
+
+    public function deleteContact($id_b, $id_i){        
+        $item -> ItemList::find($id_b);
+        $item -> Item::find($id_i);
+        $item->delete();
+
+        return redirect('/itemlist.ContactList')
         ->with('message', 'El batch se ha eliminado con éxito');;
     }
 

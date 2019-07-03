@@ -27,7 +27,7 @@
                 <a href="#">
                     <div class="font-size-18 flexbox align-items-center">
                         <!-- <span><i class="fas fa-user"></i></span> -->
-                        <span>{{ count($items) }} </span>
+                        <span> {{ count($items) }} </span>
                         <span>Usuarios</span>
                     </div>
                     <div class="progress progress-xxs mt-10 mb-0">
@@ -55,46 +55,44 @@
 
     <div class="row">
         
-
-
     @if (count($items) >= 1)
-            @foreach ($items as $item)
+      @foreach ($items as $item)
 
-                <div class="col-md-6 col-lg-3">
-                  <a class="box box-body box-hover-shadow" href="#">
-                    <div class="font-size-18 flexbox align-items-center">
-                      <small>Contacto</small>
-                        <form action="{{ url('/deleteContact/' . $item->id) }}"  method="post">
-                          @csrf
-                          <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
-                        </form>
-                    </div>
-                      <div class="flexbox align-items-center">
-                        <span class="ion ion-ios-person font-size-50"></span><br>
-                          <div class="text-right">
-                            <!-- <i class="fas fa-pencil-alt"></i><br> -->
-                            <h6 class="mb-0">{{ $item->name }}</h6>
-                            <small>{{ $item->number }}</small>
-                        </div><br>
-                    </div>
-                  </a>
-                </div>
-            @endforeach
-        @else
-
-            <div class="col-md-6 col-lg-3">
-                <a class="box box-body box-hover-shadow" href="#">
-                    <div class="flexbox align-items-center">
-                        <span class="fa fa-grav font-size-50"></span>
-                        <div class="text-right">
-                            <h6 class="mb-0">Sin Contactos</h6>
-                            <small></small>
-                        </div>
-                    </div>
-                </a>
+        <div class="col-md-6 col-lg-3">
+          <a class="box box-body box-hover-shadow" href="#">
+            <div class="font-size-18 flexbox align-items-center">
+              <small>Contacto</small>
+              <form action="{{ url('/deleteContact/' . $item->id) }}"  method="post">
+                @csrf
+                <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
+              </form>
             </div>
+            <div class="flexbox align-items-center">
+              <span class="ion ion-ios-person font-size-50"></span><br>
+                <div class="text-right">
+                  <!-- <i class="fas fa-pencil-alt"></i><br> -->
+                  <h6 class="mb-0">{{ $item->name }}</h6>
+                  <small>{{ $item->number }}</small>
+              </div>
+            </div>
+          </a>
+        </div>
+      @endforeach
+    @else
 
-        @endif
+    <div class="col-md-6 col-lg-3">
+      <a class="box box-body box-hover-shadow" href="#">
+        <div class="flexbox align-items-center">
+          <span class="fa fa-grav font-size-50"></span>
+          <div class="text-right">
+            <h6 class="mb-0">Sin Contactos</h6>
+            <small></small>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    @endif
         
     </div>
 
@@ -102,7 +100,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="myLargeModalLabel">Add contact</h4>
+              <h4 class="modal-title" id="myLargeModalLabel">Agregar contacto</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body ">                
@@ -117,24 +115,24 @@
 
                 <div class="form-group row">
                   <div class="col-2"></div>
-                  <label for="recupient-input" class="col-3 col-form-label">Contact name</label>
+                  <label for="recupient-input" class="col-3 col-form-label">Nombre del contacto</label>
                   <div class="col-xl-4 col-md-6 col-6">
-                    <input class="form-control" type="text" name="name" placeholder="Contact name" required id="temaplate-name">
+                    <input class="form-control" type="text" name="name" placeholder="Nombre" required id="temaplate-name">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-2"></div>
-                  <label for="recupient-input" class="col-3 col-form-label">Contact number</label>
+                  <label for="recupient-input" class="col-3 col-form-label">Numero del contacto</label>
                   <div class="col-xl-4 col-md-6 col-6">
-                    <input class="form-control" type="text" name="number" placeholder="Contact number" required id="temaplate-name">
+                    <input class="form-control" type="text" name="number" placeholder="Numero" required id="temaplate-name">
                   </div>
                 </div>                  
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-info float-right" onclick="ok()">Add contact</button>
+                <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-info float-right" onclick="ok()">Añadir contacto</button>
               </form>
               <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
             </div>

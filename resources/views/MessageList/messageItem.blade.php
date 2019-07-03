@@ -28,7 +28,7 @@
                     <div class="flexbox">
                         <div id="lineAnalytics2" >1,4,3,7,6,4,8,9,6,8,12</div>
                         <div class="text-right">
-                            <span>Second Data</span><br>
+                            <span>Estatus de mensaje</span><br>
                             <span>
                                 <i class="ion-ios-arrow-up text-success"></i>
                                 <span class="font-size-18 ml-1">113</span>
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
+            <!-- <div class="col-md-6 col-lg-4">
                 <div class="box box-body">
                     <div class="flexbox">
                         <div id="lineAnalytics3" >1,4,3,7,6,4,8,9,6,8,12</div>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         
         </div>
 
@@ -61,29 +61,29 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Batch name</h3>
+                        <h3 class="box-title">Mensajes</h3>
                     </div>
                     <div class="box-body">
                     @if (count($message) >= 1)  
                         <table id="table_sms" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
-                                    <th>sender</th>
-                                    <th>recipient</th> 
-                                    <th>body</th>
-                                    <th>msg_length</th>
+                                    <th>Numero de envio</th>
+                                    <th>Numero receptor</th> 
+                                    <th>Cuerpo del mensaje</th>
+                                    <th>Longitud </th>
                                     <th>send_at</th>
-                                    <th>status</th>
+                                    <th>Estatus</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>sender</th>
-                                    <th>recipient</th> 
-                                    <th>body</th>
-                                    <th>msg_length</th>
+                                    <th>Numero de envio</th>
+                                    <th>Numero receptor</th> 
+                                    <th>Cuerpo del mensaje</th>
+                                    <th>Longitud </th>
                                     <th>send_at</th>
-                                    <th>status</th>
+                                    <th>Estatus</th>
                                 </tr>
                             </tfoot>
                             <tbody>
