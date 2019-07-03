@@ -100,18 +100,14 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body ">                
-              <form action="{{-- {{ url('/newitem/' . $account->id) }} --}}" method="post" class="">
-                <!-- @csrf -->
+              <form action="{{ url('/newitem/' . $batch -> id) }} " method="post" class="">
+                @csrf
                 <div class="form-group row">
                   <div class="col-2"></div>
-                  <label for="recupient-input" class="col-3 col-form-label">Batch name</label>
-                  <div class="col-xl-4 col-md-6 col-6">                      
-                    <select class="form-control" name="item_list_id" id="">
-                      <option value="{{ $items }}">{{ $batches->id }}</option>                        
-                      
+                    <select class="form-control" name="item_list_id" id="" style="display:none;">
+                      <option value="{{ $batch -> id }}">{{ $batch -> id }}</option>                        
                     </select>
                   </div>
-                </div>
 
                 <div class="form-group row">
                   <div class="col-2"></div>

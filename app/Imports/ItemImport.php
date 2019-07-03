@@ -24,7 +24,9 @@ class ItemImport implements ToModel
         ]);
     }
 
-    public function bindValue()
+    public function bindValue(){
+        
+    }
 
 
     
