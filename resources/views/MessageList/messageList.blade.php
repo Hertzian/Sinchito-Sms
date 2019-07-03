@@ -9,30 +9,29 @@
         <!-- Estadisticas     -->
         <div class="row">
            
-            <div class="col-md-6 col-lg-4">
+            <div class="col-xl-4 col-md-6 col-12 ">
                 <div class="box box-body">
-                    <div class="flexbox">
-                        <div id="lineAnalytics1" >1,4,3,7,6,4,8,9,6,8,12</div>
-                        <div class="text-right">
-                            <span>First Data</span><br>
-                            <span>
-                                <i class="ion-ios-arrow-up text-success"></i>
-                                <span class="font-size-18 ml-1">113</span>
-                            </span>
+                    <a href="{{ URL::route('home') }}">
+                        <div class="font-size-18 flexbox align-items-center">
+                            <span><i class="fas fa-chevron-left"></i></span>
+                            <span>Regresar</span>
                         </div>
-                    </div>
+                        <div class="progress progress-xxs mt-10 mb-0">
+                            <div class="progress-bar" role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </a>
                 </div>
-            </div>
+            </div> 
 
             <div class="col-md-6 col-lg-4">
                 <div class="box box-body">
                     <div class="flexbox">
                         <div id="lineAnalytics2" >1,4,3,7,6,4,8,9,6,8,12</div>
                         <div class="text-right">
-                            <span>Second Data</span><br>
+                            <span>Paquetes de Mensajes</span><br>
                             <span>
                                 <i class="ion-ios-arrow-up text-success"></i>
-                                <span class="font-size-18 ml-1">113</span>
+                                <span class="font-size-18 ml-1">{{ count($message) }}</span>
                             </span>
                         </div>
                     </div>
@@ -65,12 +64,14 @@
                         <h3 class="box-title">Mensajes</h3>
                     </div>
                     <div class="box-body">
+                    @if (count($message) >= 1)  
                         <table id="table_sms" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th>Batch Name</th>
                                     <th>Cliente</th> 
                                     <th>Fecha</th>
+                                    <th>Account</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -79,20 +80,32 @@
                                     <th>Batch Name</th>
                                     <th>Cliente</th> 
                                     <th>Fecha</th>
+                                    <th>Account</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
                             <tbody>
+                            @foreach ($message as $message)
                                 <tr>
-                                    <td>Edinburgh</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>2011/04/25</td> 
+                                    <td>{{ $message->id }}</td>
+                                    <td>{{ $message->name }}</td>
+                                    <td>{{ $message->created_at }}</td>
+                                    <td>{{ $message->account_id }}</td> 
                                     <td> 
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit-modal-sms"><i class="fas fa-sms" aria-hidden="true"></i> Ver batch</button>
+                                        <a class="btn btn-info" href="{{ url('/messageItem/' . $message->id) }}"><i class="fas fa-sms" aria-hidden="true"></i> Ver batch</a>
+                                        
                                     </div>
                                     </td>
-                                </tr>              
+                                </tr>
+                                @endforeach
+                                @else
+                                <div class="text-center">
+                                    <i class="fa fa-grav font-size-70"></i><br><br>
+                                    ¡No hay listas registradas aún! <br>
+                                    Agrega una lista para continuar. 
+                                    </div>   
+                                @endif              
                             </tbody>
                         </table>
                     </div>
@@ -101,33 +114,6 @@
 
         </div>
         
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal-sms" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Edit modal</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              </div>
-              <div class="modal-body ">
-                <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-3"><h4>Something</h4></div>
-                  <div class="col-4"><input class="form-control" type="text" placeholder="Default input"></div>
-                </div><br>
-                <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-3"><h4>Something</h4></div>
-                  <div class="col-4"><input class="form-control" type="text" placeholder="Default input"></div>
-                </div>      
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info float-right" onclick="ok()">Save changes</button>
-                </div>
-            </div>
-          </div>
-        </div>
-
     <div class="card-body">
         @if (session('status'))
         <div class="alert alert-success" role="alert">

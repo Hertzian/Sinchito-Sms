@@ -23,4 +23,8 @@ class Account extends Model
     public function message_list(){
         return $this->hasMany('App/MessageList', 'account_id');
     }
+
+    public function template(){
+        return $this->hasMany('App/Template', 'account_id');
+    }
 }

@@ -61,18 +61,24 @@
             @foreach ($items as $item)
 
                 <div class="col-md-6 col-lg-3">
-                    <a class="box box-body box-hover-shadow" href="#">
-                        <div class="flexbox align-items-center">
-                            <span class="ion ion-ios-person font-size-50"></span><br>
-                            <div class="text-right">
-                                <!-- <i class="fas fa-pencil-alt"></i><br> -->
-                                <h6 class="mb-0">{{ $item->name }}</h6>
-                                <small>{{ $item->number }}</small>
-                            </div>
-                        </div>
-                    </a>
+                  <a class="box box-body box-hover-shadow" href="#">
+                    <div class="font-size-18 flexbox align-items-center">
+                      <small>Contacto</small>
+                        <form action="{{ url('/deleteContact/' . $item->id) }}"  method="post">
+                          @csrf
+                          <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
+                        </form>
+                    </div>
+                      <div class="flexbox align-items-center">
+                        <span class="ion ion-ios-person font-size-50"></span><br>
+                          <div class="text-right">
+                            <!-- <i class="fas fa-pencil-alt"></i><br> -->
+                            <h6 class="mb-0">{{ $item->name }}</h6>
+                            <small>{{ $item->number }}</small>
+                        </div><br>
+                    </div>
+                  </a>
                 </div>
-
             @endforeach
         @else
 

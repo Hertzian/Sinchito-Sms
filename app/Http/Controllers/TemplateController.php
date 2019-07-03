@@ -3,17 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Template;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TemplateController extends Controller
 {
     
-    public function newTemplate(Request $request, $id){
+    public function newTemplate(Request $request0, Request $request1, Request $request2){
         $account = Account::find($id);
-        $template = new ItemList();
+        $template = new Template();
+
+        $template->name = $request1->input('name');
+        $template->content = $request2->input('content');
+        $template->id = $request0->input('id');
+
+        $request->validate([
+            // '' => 'required',
+            'name' => 'required',
+            'content' => 'required'
+        ]);
+
+        $template->save();
+
+        return view('/vistas.template')
+        ->with('message', 'La plantilla se ha creado con éxito');
+    }
+
+    public function gettemplate(){    
+        $user = Auth::user();
+        $account = Account::find($user->id);
+
+        return view('vistas.template',[
+            'account' => $account,
+        ]);
+    }
+
+    public function editTemplate(Request $request, $id){
+        $account = Account::find($id);
+        $template = new template();
 
         $template->name = $request->input('name');
-        $template->name = $request->input('content');
+        $template->content = $request->input('content');
         $template->account_id = $account->id;
 
         $request->validate([
@@ -27,27 +58,8 @@ class TemplateController extends Controller
         ->with('message', 'La plantilla se ha creado con éxito');
     }
 
-    public function editTemplate(Request $request, $id){
-        $account = Account::find($id);
-        $template = new ItemList();
-
-        $template->name = $request->input('name');
-        $template->name = $request->input('content');
-        $template->account_id = $account->id;
-
-        $request->validate([
-            'name' => 'required',
-            'content' => 'required'
-        ]);
-
-        $template->update();
-
-        return redirect('/template')
-        ->with('message', 'La plantilla se ha creado con éxito');
-    }
-
     public function deleteTemplate($id){        
-        $template = ItemList::find($id);
+       
         $template->delete();
 
         return redirect('/template')
