@@ -131,8 +131,8 @@
                 <div class="col-2"></div>
                 <label for="recupient-input" class="col-3 col-form-label">Template name</label>
                 <div class="col-xl-4 col-md-6 col-6">
-                  <input type="text" style="display:none;"value="{{$account->id}}" id="id">
-                  <input class="form-control" type="text" value="" placeholder="" required id="name">
+                  <input type="text" style="display:none;" value="{{$account->id}}" id="id" required>
+                  <input class="form-control" type="text" placeholder="" required id="name">
                 </div>
               </div>
               <div class="form-group row">

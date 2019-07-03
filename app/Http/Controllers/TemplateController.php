@@ -26,7 +26,7 @@ class TemplateController extends Controller
 
         $template->save();
 
-        return redirect('/template')
+        return view('/vistas.template')
         ->with('message', 'La plantilla se ha creado con éxito');
     }
 
