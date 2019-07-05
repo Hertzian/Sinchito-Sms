@@ -61,12 +61,12 @@
             @foreach ($items as $item)
 
                 <div class="col-md-6 col-lg-3">
-                  <a class="box box-body box-hover-shadow" href="#">
+                  <div class="box box-body box-hover-shadow">
                     <div class="font-size-18 flexbox align-items-center">
                       <small>Contacto</small>
-                        <form action="{{ url('/deleteContact/' . $item->id) }}"  method="post">
+                        <form action="{{ url('/deletecontact/' . $item->id) }}"  method="post">
                           @csrf
-                          <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
+                          <button type="submit" class="btn btn-danger mx-5" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button> 
                         </form>
                     </div>
                       <div class="flexbox align-items-center">
@@ -77,7 +77,7 @@
                             <small>{{ $item->number }}</small>
                         </div><br>
                     </div>
-                  </a>
+                  </div>
                 </div>
             @endforeach
         @else
@@ -106,7 +106,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body ">                
-              <form action="{{ url('/newitem/' . $batch -> id) }} " method="post" class="">
+              <form action="{{ url('/newitem/' . $batch->id) }} " method="post" class="">
                 @csrf
                 <div class="form-group row">
                   <div class="col-2"></div>

@@ -15,7 +15,7 @@ class CreateItemTable extends Migration
     {
         Schema::create('item', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->default('customer');
             $table->string('number');
             $table->timestamps();
             // need FK

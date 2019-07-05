@@ -17,7 +17,7 @@
 	<!-- MinimalLite Admin skins -->
 	<link rel="stylesheet" href="{{ asset('css/_all-skins.css') }}">
 </head>
-
+    @include('partials.message')
     @yield('content')
 
 <!-- jQuery 3 -->

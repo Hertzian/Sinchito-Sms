@@ -270,7 +270,7 @@
                   <td> 
                     <div class="btn-group">
                       {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button> --}}
-                      <a href="{{ url('/ContactList/' . $batch->id) }}" class="btn btn-info mx-5"><i class="fa fa-users" aria-hidden="true"></i> Ver contactos</a>
+                      <a href="{{ url('/contactlist/' . $batch->id) }}" class="btn btn-info mx-5"><i class="fa fa-users" aria-hidden="true"></i> Ver contactos</a>
                     </div>
                   </td>
                   <td> 
