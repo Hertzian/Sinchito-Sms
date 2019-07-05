@@ -28,5 +28,8 @@
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <!-- Functions.js -->
 <script src="{{ asset('js/functions.js') }}"></script>
+<!-- Editable -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
 
 </html>

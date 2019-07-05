@@ -14560,3 +14560,23 @@ hr {
   height: 4px;
 
 }
+
+.baseinput{
+  text-align:center; 
+  display: none;
+}
+
+.cambioinput{
+  text-align:center; 
+  display: block;
+}
+
+.historialbox{
+  max-width: 150px;
+	margin: 0 auto;
+  text-align: justify;
+  width: auto;
+  height: auto;
+  overflow: scroll;
+  
+}

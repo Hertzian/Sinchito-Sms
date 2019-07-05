@@ -130,6 +130,38 @@
     document.getElementById('number').value = '';
   }
 
+  function change_info() {
+
+    
+    // document.getElementById('name-a').classList.add('cambioinput');
+    // document.getElementById('name-i').classList.remove('baseinput');
+
+    // document.getElementById('lastname-a').classList.add('baseinput');
+    // document.getElementById('lastname-i').classList.remove('cambioinput');
+    
+    // document.getElementById('name-a').classList.add('baseinput');
+    // document.getElementById('name-i').classList.remove('cambioinput');
+
+    // document.getElementById('email-a').classList.add('baseinput');
+    // document.getElementById('email-i').classList.remove('cambioinput');
+
+    // document.getElementById('phone-a').classList.add('baseinput');
+    // document.getElementById('phone-i').classList.remove('cambioinput');
+
+    // document.getElementById('country-a').classList.add('baseinput');
+    // document.getElementById('country-i').classList.remove('cambioinput');
+
+    // document.getElementById('state-a').classList.add('baseinput');
+    // document.getElementById('state-i').classList.remove('cambioinput');
+
+    // document.getElementById('city-a').classList.add('baseinput');
+    // document.getElementById('city-i').classList.remove('cambioinput');
+
+    // document.getElementById('address-a').classList.add('baseinput');
+    // document.getElementById('address-i').classList.remove('cambioinput');
+    
+  }
+
   $(function () {
     'use strict'
     // Composite line charts, the second using values supplied via javascript

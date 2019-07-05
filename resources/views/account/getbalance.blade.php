@@ -7,47 +7,96 @@
 @section('content')
 <div class="row">
 
-    <div class="col-md-6 col-lg-6">
-    
+    <div class="col-md-6">
         <div class="box">
-			<div class="box-header with-border">
-      		    <h5 class="box-title">Historial</h5>
-			</div>
-		    <div class="box-body p-0">
-				<div class="media-list media-list-hover media-list-divided">
-			        <a class="media media-single" href="#">
-					    <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
-					    <div class="media-body">
-					        <p>Agregaste $200.00 MNX a tu credito.</p>
-				            <time datetime="2017-07-14 20:00">24 min ago</time>
-			            </div>
-			        </a>
+            <div class="box-header with-border">
+                <h5 class="box-title">Historial</h5>
+            </div>
+            <div class="box-body p-0">
+				<div class="media-list media-list-hover media-list-divided inner-user-div" style="overflow: auto; height: 350px">
 
-                    <a class="media media-single" href="#">
-                        <span class="avatar avatar-sm bg-danger"><i class="fa fa-usd"></i></span>
-                        <div class="media-body">
-                            <p>Se Desconto $50.00 MNX de tu credito.</p>
-                            <time datetime="2017-07-14 20:00">2 hours ago</time>
-                        </div>
-                    </a>
+                    <div class="media media-single">
+                        <a href="#" class="">
+                            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
+                        </a>
 
-                    <a class="media media-single" href="#">
-                        <span class="avatar avatar-sm bg-danger"><i class="fa fa-usd"></i></span>
                         <div class="media-body">
-                            <p>Se Desconto $50.00 MNX de tu credito.</p>
-                            <time datetime="2017-07-14 20:00">2 hours ago</time>
+                            <h6><a href="#">Agregaste $200.00 MNX a tu credito.</a></h6>
+                            <time datetime="2017-07-14 20:00">24 min ago</time>
                         </div>
-                    </a>
-                            
-                    <a class="media media-single" href="#">
-			            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
-					    <div class="media-body">
-				            <p>Agregaste $200.00 MNX a tu credito.</p>
-				            <time datetime="2017-07-14 20:00">24 min ago</time>
-			            </div>
-				    </a>
+                    </div>
+
+                    <div class="media media-single">
+                        <a href="#">
+                            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
+                        </a>
+
+                        <div class="media-body">
+                            <h6><a href="#">Agregaste $200.00 MNX a tu credito.</a></h6>
+                            <time datetime="2017-07-14 20:00">24 min ago</time>
+                        </div>
+                    </div>
+
+                    <div class="media media-single">
+                        <a href="#">
+                            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
+                        </a>
+
+                        <div class="media-body">
+                            <h6><a href="#">Agregaste $200.00 MNX a tu credito.</a></h6>
+                            <time datetime="2017-07-14 20:00">24 min ago</time>
+                        </div>
+                    </div>
+
+                    <div class="media media-single">
+                        <a href="#">
+                            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
+                        </a>
+
+                        <div class="media-body">
+                            <h6><a href="#">Agregaste $200.00 MNX a tu credito.</a></h6>
+                            <time datetime="2017-07-14 20:00">24 min ago</time>
+                        </div>
+                    </div>
+
+                    <div class="media media-single">
+                        <a href="#">
+                            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
+                        </a>
+
+                        <div class="media-body">
+                            <h6><a href="#">Agregaste $200.00 MNX a tu credito.</a></h6>
+                            <time datetime="2017-07-14 20:00">24 min ago</time>
+                        </div>
+                    </div>
+
+                    <div class="media media-single">
+                        <a href="#">
+                            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
+                        </a>
+
+                        <div class="media-body">
+                            <h6><a href="#">Agregaste $200.00 MNX a tu credito.</a></h6>
+                            <time datetime="2017-07-14 20:00">24 min ago</time>
+                        </div>
+                    </div>
+
+                    <div class="media media-single">
+                        <a href="#">
+                            <span class="avatar avatar-sm bg-info"><i class="fa fa-usd"></i></span>
+                        </a>
+
+                        <div class="media-body">
+                            <h6><a href="#">Agregaste $200.00 MNX a tu credito.</a></h6>
+                            <time datetime="2017-07-14 20:00">24 min ago</time>
+                        </div>
+                    </div>
+
                 </div>
-			</div>
+            </div>
+            <div class="text-center bt-1 border-light p-2">
+                <a class="text-uppercase d-block font-size-12" href="#">Invite Friends</a>
+            </div>
         </div>
     </div>
 
@@ -64,11 +113,11 @@
                             <a class="dropdown-item" href="#">Last month</a> -->
                         </div>
                     </div>
-                    <h6 class="text-white"><i class="ion-android-arrow-dropup"></i> %20</h6>
+                    <h6 class="text-white"><i class="ion-android-arrow-dropup"></i> </h6>
                 </div>
-                <div class="font-size-50 font-weight-200">${{ $balance }}</div>
-                    <p>Credito</p>
-                </div>
+                    <div class="font-size-50 font-weight-200">${{ $balance }}</div>
+                        <p>Credito</p>
+                    </div>
                 <h6 class="text-uppercase text-center mb-30"><a href="#add-modal" data-target="#add-modal" data-toggle="modal" class="btn btn-dark showbottom">Recarga tu credito aqui</a></h6>
                     <ul class="flexbox flex-justified text-cente mb-15">
                          <li class="br-1 botder-light text-center">

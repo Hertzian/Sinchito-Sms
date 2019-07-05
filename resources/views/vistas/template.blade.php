@@ -12,7 +12,7 @@
       <div class="col-xl-4 col-md-12 col-12">
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>{{ count($template) }}</h3>
+            <h3>{{-- {{ count($template) }} --}}0</h3>
             <p>Pantillas</p>
           </div>
           <div class="icon">
@@ -60,45 +60,47 @@
     
     </div>
 
+    <form  action="{{ url('/newTemplate/' ) }}" method="post">
+
     <!-- Contenido de Modal agregar plantilla  -->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="add-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Agregar Pantilla</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          </div>
-          <form  action="{{ url('/newTemplate/' ) }}" method="post">
-            @csrf
-            <div class="modal-body ">
-                <div class="form-group row">
-                <div classs="col-2"></div>
-                <label for="recupient-input" class="col-3 col-form-label">Nombre de plantilla</label>
-                <div class="col-xl-4 col-md-6 col-6">
-                  <input type="text" style="display:none;" value="{{-- {{$account->id}} --}}" id="id" required>
-                  <input class="form-control" type="text" placeholder="Nombre" required id="name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-2"></div>
-                  <label for="text-message" class="col-3 col-form-label">Plantilla</label>
-                  <div class="col-xl-4 col-md-6 col-6">
-                    <textarea class="form-control" rows="5" placeholder="Texto de plantilla" required id="content" onkeyup="valTextMessage(this);"></textarea><br>
-                    <p id="letters">Mensaje, Caracters: 0</p>
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Agregar Contacto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="" method="post">
+                @csrf
+                <div class="modal-body ">
+                  <div class="form-group row">
+                      <div class="col-2"></div>
+                      <label for="name" class="col-3 col-form-label">Nombre</label>
+                      <div class="col-xl-4 col-md-6 col-6">
+                          <input type="hidden" name="item_list_id" value="">  
+                          <input class="form-control" type="text" id="name" name="name" placeholder="Nombre de Plantilla" required >
+                      </div>
                   </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar plantilla</button>
-              <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
-            </div>
-          </form>
-            </div>
-          </div>
+                  <div class="form-group row">
+                    <div class="col-2"></div>
+                      <label for="text-message" class="col-3 col-form-label">Mensaje</label>
+                      <div class="col-xl-4 col-md-6 col-6">
+                        <textarea class="form-control" rows="5" placeholder="Texto de mensajes" required name="texto_personalizado" id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
+                        <p id="letters">Mensaje, Caracters: 0 </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar Lista</button>
+                      <button type="button" class="btn btn-warning float-right" onclick="limpiar_newitem();">Limpiar</button>
+                  </div>
+            </form>
         </div>
       </div>
-
+    </div>
+   
       <!-- Contenido de Modal Editar plantilla  -->
       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-lg">
@@ -127,9 +129,9 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info float-right" onclick="ok()">Save template</button>
-                <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
+                <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar Lista</button>
+                <button type="button" class="btn btn-warning float-right" onclick="limpiar_newitem();">Limpiar</button>
               </div>
             </div>
           </div>

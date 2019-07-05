@@ -27,7 +27,8 @@
 	<!-- daterange picker -->
 	<link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
 	<!-- bootstrap wysihtml5 - text editor -->
-	
+	<!-- text eitable -->
+	<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="{{ asset('css/bootstrap3-wysihtml5.css') }}">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
