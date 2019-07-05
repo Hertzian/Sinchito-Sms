@@ -6,10 +6,7 @@
         <!-- sidebar menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="user-profile treeview">
-                <a href="
-                {{-- # --}}
-                {{ URL::route('profile') }}
-                ">
+                <a href="">
                     <img src="{{ asset('images/user-128x128.jpg') }}" alt="user">
                     <span>{{ $name }}</span>
                     <span class="pull-right-container">
@@ -18,7 +15,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/profile') }}"><i class="fa fa-user mr-5"></i> Profile </a></li>
-                    <li><a href="{{ url('/balance') }}"><i class="fa fa-money mr-5"></i>Balance</a></li>
+                    <li><a href="{{ url('/getbalance') }}"><i class="fa fa-money mr-5"></i>Balance</a></li>
                     <li><a href="#"><i class="fa fa-envelope-open mr-5"></i>Inbox</a></li>
                     <li><a href="#"><i class="fa fa-cog mr-5"></i>Configuración</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -33,10 +30,7 @@
                 </a>
             </li>
             <li class=" treeview">
-                <a href="
-                {{-- # --}}
-                {{ URL::route('sms') }}
-                ">
+                <a href="#">
                     <i class="fa fa-envelope"></i>
                     <span>SMS</span>
                     <span class="pull-right-container">

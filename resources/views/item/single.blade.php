@@ -31,41 +31,35 @@
     @endif
 </div>        
 --}}
-
-<section class="content">
-    <!-- row -->
     <div class="row">
         <div class="col-12">
-            <div class="box content"><br><br>
+            <div class="info-box"><br><br>
                 <form action="{{ url('/single') }}" method="post">
                     @csrf                 
                     <div class="form-group row">
                         <div class="col-1"></div>
-                        <label for="tel" class="col-xl-2 col-md-2 col-4 col-form-label">Recipiente:</label>
-                        <div class="col-xl-4 col-md-4 col-6">
+                        <label for="tel" class="col-xl-2 col-md-2 col-3 col-form-label">Numero:</label>
+                        <div class="col-xl-4 col-md-4 col-7">
                             <input id="tel" class="form-control" name="number" type="text" placeholder="Introduce el teléfono" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-1"></div>
-                        <label for="text-message" class="col-xl-2 col-md-2 col-4 col-form-label">Texto:</label>
-                        <div class="col-xl-4 col-md-4 col-6">
+                        <label for="text-message" class="col-xl-2 col-md-2 col-3 col-form-label">Texto:</label>
+                        <div class="col-xl-4 col-md-4 col-7">
                             <textarea class="form-control" name="texto_personalizado" rows="6" placeholder="Introduce el mensaje" required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                             <p id="letters">Message parts: 1, Characters: 0 </p>
+                            <p id="letters">Mensaje Cararcteres: 0 </p>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xl-3 col-md-3 col-3"></div>
-                        {{-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --}}
                         <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3" onclick="limpiar_single();">Limpiar</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="submit" class="btn btn-success col-xl-2 col-md-2 col-3">Enviar</button>
                     </div>
-                        {{-- <br><br><br> --}}
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
 
 @endsection

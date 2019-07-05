@@ -1,9 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="
-    #
-    {{-- {{ URL::route('home') }} --}}
-    " class="logo">
+    <a href="{{ URL::route('home') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <b class="logo-mini">
             <span class="light-logo"><img src="{{ asset('images/aries-light.png') }}" alt="logo"></span>
@@ -24,26 +21,67 @@
 
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                    <li class="my-5 notifications-menu">
+                        <div class="btn btn-dark showbottom">
+                            <a href="{{ url('/getbalance') }}" class=""style="color: white;">  
+                                Credito ${{ $balance }}
+                            </a>
+                        </div>
+                    </li>
+                </a>
 
-                <li class="my-5">Mensajes @if($balance <= .64) 0 @else{{ $smsLimit }}@endif - Balance ${{ $balance }}</li>
-                <li class="search-box">
+            <!-- <ul class="nav navbar-nav">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                    <li class="my-5 notifications-menu">
+                        <div class="btn btn-dark showbottom">
+                            <a href="{{ url('/getbalance') }}" style="color: white;">  
+                                Mensajes @if($balance <= .64) 0 @else{{ $smsLimit }}@endif
+                            </a>
+                        </div>
+                    </li>
+                </a>
+            </ul> -->
+                    <!-- <li>
+                        <ul class="menu inner-content-div">
+                            <li>
+                                <a href="#">
+                                    <h6>
+                                        Credito
+                                        <span class="pull-right font-size-20">${{ $balance }}</span>
+                                    </h6>
+                                    <div class="progress xs">
+                                    <div class="progress-bar progress-bar-aqua" style="width: 100%" role="progressbar"
+                                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="sr-only">30% Complete</span>
+                                    </div>
+                                    </div>
+                                </a>
+                            </li>
+                        <a href="#">
+                            
+                        </a>
+                    </li> -->
+                
+                <!-- <li class="search-box">
                 <a class="nav-link hidden-sm-down" href="javascript:void(0)"><i class="mdi mdi-magnify"></i></a>
                 <form class="app-search" style="display: none;">
                     <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
                 </form>
-                </li>
+                </li> -->
 
-                <!-- Messages -->
-                <li class="dropdown messages-menu">
+                <!-- Balance -->
+                <!-- <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="mdi mdi-email"></i>
                 </a>
                 <ul class="dropdown-menu scale-up">
                     <li class="header">You have 5 messages</li>
-                    <li>
+                    <li> -->
                     <!-- inner menu: contains the actual data -->
-                    <ul class="menu inner-content-div">
-                        <li><!-- start message -->
+                    <!-- <ul class="menu inner-content-div"> -->
+                    <!-- start message -->
+                    <!-- <li>
                         <a href="#">
                             <div class="pull-left">
                             <img src="{{ asset('images/user-160x160.jpg') }}" class="rounded-circle" alt="User Image">
@@ -56,9 +94,9 @@
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
                             </div>
                         </a>
-                        </li>
+                        </li> -->
                         <!-- end message -->
-                        <li>
+                        <!-- <li>
                         <a href="#">
                             <div class="pull-left">
                             <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle" alt="User Image">
@@ -99,8 +137,8 @@
                             <span>Curabitur quis risus aliquet, luctus arcu nec, venenatis neque.</span>
                             </div>
                         </a>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                         <a href="#">
                             <div class="pull-left">
                             <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle" alt="User Image">
@@ -118,16 +156,17 @@
                     </li>
                     <li class="footer"><a href="#">See all e-Mails</a></li>
                 </ul>
-                </li>
+                </li> -->
+                
                 <!-- Notifications -->
-                <li class="dropdown notifications-menu">
+                <!-- <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="mdi mdi-bell"></i>
                 </a>
                 <ul class="dropdown-menu scale-up">
                     <li class="header">You have 7 notifications</li>
                     <li>
-                    <!-- inner menu: contains the actual data -->
+                    
                     <ul class="menu inner-content-div">
                         <li>
                         <a href="#">
@@ -168,33 +207,59 @@
                     </li>
                     <li class="footer"><a href="#">View all</a></li>
                 </ul>
-                </li>
+                </li> -->
                 <!-- Tasks -->
-                <li class="dropdown tasks-menu">
+
+                <!-- <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="mdi mdi-message"></i>
+                    <i class="mdi mdi-bell"></i>
+                </a> -->
+
+
+                <!-- <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-money">  ${{ $balance }}</i>
                 </a>
                 <ul class="dropdown-menu scale-up">
-                    <li class="header">You have 6 tasks</li>
                     <li>
-                    <!-- inner menu: contains the actual data -->
+                    
                     <ul class="menu inner-content-div">
-                        <li><!-- Task item -->
-                        <a href="#">
-                            <h3>
-                            Lorem ipsum dolor sit amet
-                            <small class="pull-right">30%</small>
-                            </h3>
-                            <div class="progress xs">
-                            <div class="progress-bar progress-bar-aqua" style="width: 30%" role="progressbar"
-                                aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">30% Complete</span>
-                            </div>
-                            </div>
-                        </a>
+                        <li>
+                            <a href="#">
+                                <h6>
+                                    Credito
+                                    <span class="pull-right font-size-20">${{ $balance }}</span>
+                                </h6>
+                                <div class="progress xs">
+                                <div class="progress-bar progress-bar-aqua" style="width: 100%" role="progressbar"
+                                    aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="sr-only">30% Complete</span>
+                                </div>
+                                </div>
+                            </a>
                         </li>
+                        <li>
+                            <a href="#">
+                                <h6>
+                                    Mensajes Disponibles
+                                <span class="pull-right font-size-20">@if($balance <= .64) 0 @else{{ $smsLimit }}@endif</span>
+                                </h6>
+                                <div class="progress xs">
+                                <div class="progress-bar progress-bar-aqua" style="width: 100%" role="progressbar"
+                                    aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="sr-only">30% Complete</span>
+                                </div>2
+                                </div>
+                            </a>
+                        </li>
+                        <li class="footer text-center">
+                            <h5>
+                                <a href="#">Recargar credito</a>
+                            </h5>
+                        </li> -->
                         <!-- end task item -->
-                        <li><!-- Task item -->
+                        <!-- Task item -->
+                        <!-- <li>
                         <a href="#">
                             <h3>
                             Vestibulum nec ligula
@@ -207,9 +272,9 @@
                             </div>
                             </div>
                         </a>
-                        </li>
+                        </li> -->
                         <!-- end task item -->
-                        <li><!-- Task item -->
+                        <!-- <li>
                         <a href="#">
                             <h3>
                             Donec id leo ut ipsum
@@ -222,9 +287,9 @@
                             </div>
                             </div>
                         </a>
-                        </li>
+                        </li> -->
                         <!-- end task item -->
-                        <li><!-- Task item -->
+                        <!-- <li>
                         <a href="#">
                             <h3>
                             Praesent vitae tellus
@@ -237,9 +302,9 @@
                             </div>
                             </div>
                         </a>
-                        </li>
+                        </li> -->
                         <!-- end task item -->
-                        <li><!-- Task item -->
+                        <!-- <li>
                         <a href="#">
                             <h3>
                             Nam varius sapien
@@ -252,9 +317,9 @@
                             </div>
                             </div>
                         </a>
-                        </li>
+                        </li> -->
                         <!-- end task item -->
-                        <li><!-- Task item -->
+                        <!-- <li>
                         <a href="#">
                             <h3>
                             Nunc fringilla
@@ -267,14 +332,13 @@
                             </div>
                             </div>
                         </a>
-                        </li>
-                        <!-- end task item -->
-                    </ul>
-                    </li>
+                        </li> -->
+                    <!-- </ul> -->
+                    <!-- </li>
                     <li class="footer">
                     <a href="#">View all tasks</a>
-                    </li>
-                </ul>
+                    </li> -->
+                <!-- </ul> -->
                 </li>
                 <!-- User Account -->
                 <li class="dropdown user user-menu">
@@ -299,7 +363,7 @@
                             <a href="{{ url('/profile') }}"><i class="ion ion-person"></i> My Profile</a>
                         </div>
                         <div class="col-12 text-left">
-                            <a href=" Balance ${{ $balance }}"><i class="ion ion-person"></i> My balance</a>
+                            <a href="{{ url('/getbalance') }}"><i class="ion ion-person"></i> My balance</a>
                         </div>
                         <div class="col-12 text-left">
                             <a href="#"><i class="ion ion-email-unread"></i> Inbox</a>
@@ -324,10 +388,10 @@
                     </li>
                 </ul>
                 </li>
-                <!-- Control Sidebar Toggle Button -->
+                <!-- Control Sidebar Toggle Button
                 <li>
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-cog fa-spin"></i></a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>

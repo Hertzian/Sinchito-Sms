@@ -52,7 +52,7 @@ class AccountsController extends Controller
         
         $account->update();
 
-        return redirect('/')->with('message', 'El crédito se ha adicionado con con éxito');
+        return redirect('/getbalance')->with('message', 'El crédito se ha adicionado con con éxito');
     }
     
     // public function newAccount(Request $request){

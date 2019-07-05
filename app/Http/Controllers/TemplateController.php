@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class TemplateController extends Controller
 {
     
-    public function newTemplate(Request $request0, Request $request1, Request $request2){
+    public function newTemplate($id, Request $request1, Request $request2){
         $account = Account::find($id);
         $template = new Template();
 
         $template->name = $request1->input('name');
         $template->content = $request2->input('content');
-        $template->id = $request0->input('id');
+        // $template->id = $request0->input('id');
 
         $request->validate([
             // '' => 'required',
@@ -33,9 +33,10 @@ class TemplateController extends Controller
     public function gettemplate(){    
         $user = Auth::user();
         $account = Account::find($user->id);
+        $template = Template::where('account_id', $account)->get();
 
         return view('vistas.template',[
-            'account' => $account,
+            'template' => $template,
         ]);
     }
 
@@ -59,7 +60,7 @@ class TemplateController extends Controller
     }
 
     public function deleteTemplate($id){        
-       
+        $template = Template::find($id);
         $template->delete();
 
         return redirect('/template')

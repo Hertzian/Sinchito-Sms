@@ -33,16 +33,15 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::user()) {
                 $user = Auth::user();
                 $account = Account::find($user->id);
-                $balance = $account->balance;
+                $balance = bcdiv($account->balance , '1', 1);
                 $view->with('balance', $balance);
             }
         });
-
         view()->composer('*', function (View $view){
             if (Auth::user()) {
                 $user = Auth::user();
                 $account = Account::find($user->id);
-                $smsLimit = $account->message_limit;
+                $smsLimit = bcdiv($account->message_limit, '1', 1);
                 $view->with('smsLimit', $smsLimit);
             }
         });

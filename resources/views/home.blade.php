@@ -5,16 +5,13 @@
 @endsection
 
 @section('content')
-
-<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12 mt-5">
             <div class="card">
-                    {{-- ************************************* --}}
-                    <div class="content">
+                    <div class="">
                         <div class="content box-body">
                             <div class="row">
-                                <div class="col-xl-4 col-md-6 col-6 homeBox">
+                                <div class="col-xl-4 col-md-6 col-12 homeBox">
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success"><i class="fa fa-envelope"></i></span>
                                         <div class="info-box-content box-body">
@@ -28,12 +25,10 @@
                                                     <a href="{{ url('/single') }}"> Envia mensaje sencillo</a>
                                             </p></span> 
                                         </div>
-                                        <!-- /.info-box-content -->
                                     </div>
-                                    <!-- /.info-box -->
                                 </div><br>
 
-                                <div class="col-xl-4 col-md-6 col-6 homeBox">
+                                <div class="col-xl-4 col-md-6 col-12 homeBox">
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success"><i class="fa fa-envelope"></i></span>
                                         <div class="info-box-content box-body">
@@ -46,12 +41,10 @@
                                             <a href="{{ url('/getlist') }}" class="text-left">Enviar lote de mendajes</a>
                                             </p></span> 
                                         </div>
-                                        <!-- /.info-box-content -->
                                     </div>
-                                    <!-- /.info-box -->
                                 </div><br>
 
-                                <div class="col-xl-4 col-md-6 col-6 homeBox">
+                                <div class="col-xl-4 col-md-6 col-12 homeBox">
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success"><i class="fa fa-envelope"></i></span>
                                         <div class="info-box-content box-body">
@@ -61,18 +54,16 @@
                                                 Crea mensajes personalizados.<br><br><br>
                                             </p>
                                             <span class="info-box-text"><p class="text-right">
-                                            <a href="{{ URL::route('template') }}" class="text-left">Personaliza tus mensajes</a>
+                                            <a href="{{ url('/getTemplate') }}" class="text-left">Personaliza tus mensajes</a>
                                             </p></span> 
                                         </div>
-                                        <!-- /.info-box-content -->
                                     </div>
-                                    <!-- /.info-box -->
                                 </div>
                             </div>
 
                             <div class="row ">
 
-                            <div class="col-xl-4 col-md-6 col-6 homeBox">
+                            <div class="col-xl-4 col-md-6 col-12 homeBox">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-success"><i class="ion ion-person-stalker"></i></span>
                                     <div class="info-box-content box-body">
@@ -90,7 +81,7 @@
                                 <!-- /.info-box -->
                             </div><br>
 
-                            <div class="col-xl-4 col-md-6 col-6 homeBox">
+                            <div class="col-xl-4 col-md-6 col-12 homeBox">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-success"><i class="fa fa-exclamation"></i></span>
                                     <div class="info-box-content box-body">
@@ -107,7 +98,7 @@
                                 <!-- /.info-box -->
                             </div><br>
 
-                            <div class="col-xl-4 col-md-6 col-6 homeBox">
+                            <div class="col-xl-4 col-md-6 col-12 homeBox">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-success"><i class="fa fa-gears"></i></span>
                                     <div class="info-box-content box-body">
@@ -130,7 +121,6 @@
             </div>
         </div>
     </div>
-</div>
 
     
 @endsection
