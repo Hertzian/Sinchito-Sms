@@ -104,14 +104,14 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body ">                
-              <form action=" {{ url('/newitem/' . $batch->id) }} " method="post" class="">
-                 @csrf 
+              <form action="{{ url('/newitem/' . $batch -> id) }} " method="post" class="">
+                @csrf
                 <div class="form-group row">
-                  <div class="col-2"></div>                
-                  <select class="form-control" style="display: none;" name="item_list_id" id="">
-                    <option value="{{ $batch -> id }}">{{ $batch -> id }}</option>                        
-                  </select>
-                </div>
+                  <div class="col-2"></div>
+                    <select class="form-control" name="item_list_id" id="" style="display:none;">
+                      <option value="{{ $batch -> id }}">{{ $batch -> id }}</option>                        
+                    </select>
+                  </div>
 
                 <div class="form-group row">
                   <div class="col-2"></div>
