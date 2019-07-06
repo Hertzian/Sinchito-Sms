@@ -39,18 +39,10 @@ class ItemsListController extends Controller
         $items = Item::select('name', 'number')
             ->where('item_list_id', '=' )
             ->get();
-        // select('name', 'email as user_email')->get()
-
-        // $name = Item::where('item_list_id', $batch->id)->pluck('name');
-
-        // dd($items);
-        // dd($id_batch);
 
         return view('itemlist.getitemslist',[
             'account' => $account,
             'batches' => $batches,
-            // 'batch' => $id_batch,
-            // 'itemlist' => $itemlist,
             'items' => $items
         ]);
     }

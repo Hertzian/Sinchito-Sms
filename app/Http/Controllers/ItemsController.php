@@ -126,8 +126,8 @@ class ItemsController extends Controller
         $item -> Item::find($id_i);
         $item -> delete();
 
-        return redirect('/itemlist.ContactList')
-        ->with('message', 'El batch se ha eliminado con éxito');;
+        return view('/getlist')
+        ->with('message', 'El Contacto se ha eliminado con éxito');;
     }
 
 }

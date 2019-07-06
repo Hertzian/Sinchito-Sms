@@ -59,10 +59,10 @@
       @foreach ($items as $item)
 
         <div class="col-md-6 col-lg-3">
-          <a class="box box-body box-hover-shadow" href="#">
+          <div class="box box-body box-hover-shadow" href="#">
             <div class="font-size-18 flexbox align-items-center">
               <small>Contacto</small>
-              <form action="{{ url('/deleteContact/' . $item->id) }}"  method="post">
+              <form action="{{ url('/deleteContact/' . $batch->id . '/'. $item->id) }}"  method="post">
                 @csrf
                 <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
               </form>
@@ -75,7 +75,7 @@
                   <small>{{ $item->number }}</small>
               </div>
             </div>
-          </a>
+          </div>
         </div>
       @endforeach
     @else
@@ -127,7 +127,7 @@
                   <div class="col-xl-4 col-md-6 col-6">
                     <input class="form-control" type="text" name="number" placeholder="Numero" required id="temaplate-name">
                   </div>
-                </div>                  
+                </div>                 
               </div>
 
               <div class="modal-footer">

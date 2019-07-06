@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="text-center bt-1 border-light p-2">
-                <a class="text-uppercase d-block font-size-12" href="#">Invite Friends</a>
+                <a class="text-uppercase d-block font-size-12" href="#">&nbsp;</a>
             </div>
         </div>
     </div>
@@ -116,8 +116,9 @@
                     <h6 class="text-white"><i class="ion-android-arrow-dropup"></i> </h6>
                 </div>
                     <div class="font-size-50 font-weight-200">${{ $balance }}</div>
-                        <p>Credito</p>
+                        <p class="font-size-20">Credito</p>
                     </div>
+                    
                 <h6 class="text-uppercase text-center mb-30"><a href="#add-modal" data-target="#add-modal" data-toggle="modal" class="btn btn-dark showbottom">Recarga tu credito aqui</a></h6>
                     <ul class="flexbox flex-justified text-cente mb-15">
                          <li class="br-1 botder-light text-center">

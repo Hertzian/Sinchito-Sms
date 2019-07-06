@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyTemplate extends Migration
+class AddForeignKeyTemplateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddForeignKeyTemplate extends Migration
      */
     public function up()
     {
-        Schema::table('templates', function(Blueprint $table){
+        Schema::table('template', function (Blueprint $table) {
             $table->bigInteger('account_id')->unsigned();
             $table->foreign('account_id')
-                ->references('id')->on('accounts')
+                ->references('id')->on('account_id')
                 ->onDelete('cascade');
         });
     }
@@ -28,8 +28,8 @@ class AddForeignKeyTemplate extends Migration
      */
     public function down()
     {
-        Schema::table('templates', function(Blueprint $table){
-            $table->dropForeign('template_account_id_foreign');
+        Schema::table('template', function (Blueprint $table) {
+            //
         });
     }
 }

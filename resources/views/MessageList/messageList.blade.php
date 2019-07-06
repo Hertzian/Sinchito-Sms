@@ -102,8 +102,8 @@
                                 @else
                                 <div class="text-center">
                                     <i class="fa fa-grav font-size-70"></i><br><br>
-                                    ¡No hay listas registradas aún! <br>
-                                    Agrega una lista para continuar. 
+                                    ¡No hay listas de mensajes registradas aún! <br>
+                                    Agrega una lista de mensajes para continuar. 
                                     </div>   
                                 @endif              
                             </tbody>
