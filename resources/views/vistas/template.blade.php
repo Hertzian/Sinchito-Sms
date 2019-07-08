@@ -61,7 +61,7 @@
         </div>
       </div>
       
-      {{-- Modal 3 --}}
+      <!-- {{-- Modal 3 --}}
       <div class="col-xl-4 col-md-12 col-12">
         <div class="small-box bg-warning">
           <div class="inner">              
@@ -127,7 +127,7 @@
               </form>
           </div>
         </div>
-      </div>
+      </div> -->
 
   </div> 
 
@@ -141,11 +141,12 @@
           </div>
           <div class="box-body">
           @if (count($template) >= 1)  
-              <table id="table_sms" class="table table-bordered table-striped table-responsive">
+              <table id="table_sms" class="table table-bordered table-striped col-12 table-responsive">
                   <thead>
                       <tr>
                           <th>Nombre</th> 
                           <th>Contenido</th>
+                          <th>SMS</th>
                           <th>Acciones</th>
                       </tr>
                   </thead>
@@ -153,24 +154,27 @@
                       <tr>
                           <th>Nombre</th> 
                           <th>Contenido</th>
+                          <th>SMS</th>
                           <th>Acciones</th>
                       </tr>
                   </tfoot>
                   <tbody>
                   @foreach ($template as $template)
                       <tr>
-                          <td>{{ $template->name }}</td>
-                          <td>{{ $template->content }}</td>
-                          <td> 
-                            <div class="btn-group">
-                              <!-- <a class="btn btn-info" href="#edit-modal" data-target="#edit-modal" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a> -->
-                              <a class="btn btn-info" href="{{ url('/gettemplateitem/' . $template -> id) }}" ><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
-                              <form action="{{ url('/deleteTemplate/' . $template -> id ) }}" method="post">
-                                @csrf
-                                <button type="submit" class="btn btn-danger " href="#"><i class="fa fa fa-remove"></i> Eliminar</button>
-                              </form>
-                            </div>
-                          </td>
+                        <td>{{ $template->name }}</td>
+                        <td>{{ $template->content }}</td>
+                        <td>
+                        <a class="btn btn-warning" href="{{ url('/gettemplatesms/' . $template -> id) }}" ><i class="fas fa-sms" aria-hidden="true"></i> Enviar mensaje</a>
+                        </td>
+                        <td> 
+                          <div class="btn-group">
+                            <a class="btn btn-info" href="{{ url('/gettemplateitem/' . $template -> id) }}" ><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                            <form action="{{ url('/deleteTemplate/' . $template -> id ) }}" method="post">
+                              @csrf
+                              <button type="submit" class="btn btn-danger " href="#"><i class="fa fa fa-remove"></i> Eliminar</button>
+                            </form>
+                          </div>
+                        </td>
                       </tr>
                       @endforeach
                       @else 
@@ -187,45 +191,5 @@
     </div>
 
   </div>
-
-   
-    
-
-    <!-- Contenido de Modal Editar plantilla  -->
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Editar Pantilla</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          </div>
-          <div class="modal-body ">
-            <form action="" method="post" class="">
-              <div class="form-group row">
-                <div class="col-2"></div>
-                <label for="recupient-input" class="col-3 col-form-label">Nombre de plantilla</label>
-                <div class="col-xl-4 col-md-6 col-6">
-                  <input class="form-control" type="text" value="" placeholder="{{-- {{ $template -> name}} --}}" required id="temaplate-name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-2"></div>
-                  <label for="text-message" class="col-3 col-form-label">Pantilla</label>
-                  <div class="col-xl-4 col-md-6 col-6">
-                    <textarea class="form-control" rows="5" placeholder="{{-- {{ $template -> content}} --}}" required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                    <p id="letters">Mensaje, Caracters: 0 </p>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar Lista</button>
-              <button type="button" class="btn btn-warning float-right" onclick="limpiar_newitem();">Limpiar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 @endsection

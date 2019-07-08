@@ -80,4 +80,19 @@ class TemplateController extends Controller
         return redirect('/getTemplate')
         ->with('message', 'El plantilla se ha eliminado con éxito');;
     }
+
+    public function gettemplatesms($id){    
+        $user = Auth::user();
+        $account = Account::find($user->id);
+        $template = Template::where('id',  $id)->get();
+        $temitem = Template::where('account_id',  $user->id)->get();
+        $batches = ItemList::where('account_id', $user->id)->get();
+
+        return view('template.templatesms',[
+            'template' => $template,
+            'account' => $account,
+            'batches' => $batches,
+            'temitem' => $temitem
+        ]);
+    }
 }

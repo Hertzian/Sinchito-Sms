@@ -166,7 +166,7 @@
               <div class="col-2"></div>
               <label for="balance" class="col-3 col-form-label">Agregar balance</label>
               <div class="col-xl-4 col-md-6 col-6">
-                <input class="form-control" type="text" name="balance" placeholder="¿Cuánto credito quieres añanir?" required id="temaplate-name">
+                <input class="form-control" type="number" name="balance" placeholder="¿Cuánto credito quieres añanir?" required id="temaplate-name">
               </div>
             </div>
             <div class="form-group row">

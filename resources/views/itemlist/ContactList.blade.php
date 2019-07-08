@@ -60,13 +60,16 @@
 
         <div class="col-md-6 col-lg-3">
           <div class="box box-body box-hover-shadow" href="#">
-            <div class="font-size-18 flexbox align-items-center">
-              <small>Contacto</small>
-              <form action="{{ url('/deleteContact/' . $batch->id . '/'. $item->id) }}"  method="post">
-                @csrf
-                <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
-              </form>
-            </div>
+            <div class="font-size-18 flexbox ">
+                <!-- <form action="{{ url('//' . $batch->id . '/'. $item->id) }}"  method="post">
+                  @csrf
+                  <button type="submit" class="btn btn-flat mx-5"><small><i class="fa fa-pencil"></i></small></button>
+                </form> -->
+                <form action="{{ url('/deleteContact/' . $batch->id . '/'. $item->id) }}"  method="post">
+                  @csrf
+                  <button type="submit" class="btn btn-flat mx-5"><small><i class="fas fa-remove"></i></small></button>
+                </form>
+          </div>
             <div class="flexbox align-items-center">
               <span class="ion ion-ios-person font-size-50"></span><br>
                 <div class="text-right">

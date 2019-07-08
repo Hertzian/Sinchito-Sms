@@ -43,10 +43,11 @@ Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');
 Route::post('/newitem/{id}', 'ItemsController@newItem');
 Route::get('/ContactList/{id}', 'ItemsController@getContact');
-Route::post('/deleteContact/{id}', 'ItemsController@deleteContact');
+Route::post('/deleteContact/{id_b}/{id_i}', 'ItemsController@deleteContact');
 
 // Template
 Route::get('/getTemplate','TemplateController@gettemplate');
+Route::get('/gettemplatesms/{id}','TemplateController@gettemplatesms');
 Route::get('/gettemplateitem/{id}','TemplateController@gettemplateitem');
 Route::post('/deleteTemplate/{id}','TemplateController@deleteTemplate');
 Route::post('/editTemplate/{id}','TemplateController@editTemplate');
