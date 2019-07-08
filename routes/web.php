@@ -42,8 +42,8 @@ Route::post('/newcsv/{id}', 'ItemsListController@newCSVBatch');
 Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');
 Route::post('/newitem/{id}', 'ItemsController@newItem');
-Route::get('/ContactList/{id}', 'ItemsController@getContact');
-Route::post('/deleteContact/{id_b}/{id_i}', 'ItemsController@deleteContact');
+Route::get('/contactlist/{id}', 'ItemsController@getContact');
+Route::post('/deletecontact/{id}', 'ItemsController@deleteContact');
 
 // Template
 Route::get('/getTemplate','TemplateController@gettemplate');
@@ -60,7 +60,6 @@ Route::post('/single', 'ItemsController@sendSingleSMS');
 // Message 
 Route::get('/message','messageListController@getMessajeList');
 Route::get('/messageItem/{id}','messageListController@getMessajeItem');
-
 
 // check views routes
 Route::get('/dasch', function () {return view('vistas.dasch');})->name('dasch');

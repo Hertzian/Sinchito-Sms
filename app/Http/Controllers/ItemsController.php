@@ -121,13 +121,11 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function deleteContact($id_b, $id_i){        
-        $item -> ItemList::find($id);
-        $item -> Item::find($id_i);
-        $item -> delete();
+    public function deleteContact($id){        
+        $item = Item::find($id);
+        $item->delete();
 
-        return view('/getlist')
-        ->with('message', 'El Contacto se ha eliminado con éxito');;
+        return redirect('/getlist')->with('message', 'El contacto se ha eliminado con éxito');
     }
 
 }

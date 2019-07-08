@@ -44,13 +44,12 @@ class AccountsController extends Controller
         
         $account->balance = $account->balance + $request->input('balance');
 
-        if($account->balance <= .64){
+        if($account->balance / .65 <= .64){
             $account->message_limit = 0;
         }else{
-            $account->message_limit = $account->balance / .65;
+            $account->message_limit = floor($account->balance / .65);
         }  
         
-
         $account->update();
 
         return redirect('/getbalance')->with('message', 'El crédito se ha adicionado con con éxito');

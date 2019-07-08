@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Clx\Xms\Api\MtBatchTextSmsCreate;
+use Illuminate\Support\Facades\Storage;
 
 class ItemsListController extends Controller
 {
@@ -73,26 +74,128 @@ class ItemsListController extends Controller
         ->with('message', 'El batch se ha creado con éxito');
     }
 
+    public function itemListId($item_list_id)
+    {
+
+        $Item_list_id->item_list_id = $item_list_id;
+        
+        return $this;
+    }
 
 
 
 
 
+
+
+    public function newCSVBatch(Request $request, $id){
+        $account = Account::find($id);
+
+        $item_list_id = $request->input('item_list_id');
+
+        $extension = $request->file('csv')->getClientOriginalExtension();
+        $fileNameWithExt = $request->file('csv')->getClientOriginalName();
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('csv')->getClientOriginalExtension();
+        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+        $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
+
+        $this->validate($request, [
+            'csv' => 'file'
+        ]);
+
+        $file = Storage::get($path);
+
+        $arr = str_getcsv($file, ',');
+
+        // dd($arr);
+        
+        // for ($i=0; $i < count($arr); $i++) {
+
+            
+            // for ($j=0; $j < count($arr); $j++) { 
+                
+            //     if($j % 2 == 0  || $j == 0 ){
+            //         $item->number = $arr[$i];
+            //         for ($n=0; $n < $i + 1; $n++) { 
+            //             $item->name = $arr[$n];
+            //             // dd($item->name);
+            //         }
+            //     }else{
+            //         $item->number = $arr[$i];
+            //         for ($k=0; $k < $i + 1; $k++) { 
+            //             $item->name = $arr[$k++];
+            //         }
+            //     }
+            // }
+                    
+            
+            for ($i=0; $i < count($arr); $i++) { 
+                $item = new Item();
+                $item->number = '+52' . $arr[$i];
+                $item->item_list_id = $item_list_id;
+                $item->save();
+            }
+
+        // }
+
+        // $i = 0;
+        // while ($i <= count($arr)-1) {
+        //     $item = new Item();
+
+        //     $item->name = $arr[$i];
+        //     $item->number = $arr[$i++];
+
+        //     $item->item_list_id = $item_list_id;
+
+        //     $item->save();
+        // }
+
+
+
+        return redirect('/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
+    }
+
+    // public function csv_to_array($filename = '', $delimiter = ',') {
+	// 	if (!file_exists($filename) || !is_readable($filename))
+	// 		return FALSE;
+	// 	$header = NULL;
+	// 	$data = array();
+	// 	if (($handle = fopen($filename, 'r')) !== FALSE) {
+	// 		while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE) {
+	// 			if (!$header)
+	// 				$header = $row;
+	// 			else
+	// 				$data[] = array_combine($header, $row);
+	// 		}
+	// 		fclose($handle);
+	// 	}
+	// 	return $data;
+	// }
+
+
+    // **********************csv helper
     // public function csvToArray($filename = '', $delimiter = ','){
         
-    //     if (!file_exists($filename) || !is_readable($filename))
-    //     return false;
+    //     if (
+    //         file_exists($filename)
+    //      || 
+    //      !is_readable($filename)
+    //      ){
+    //         // return false;
+    //         return 'weee!';
+    //     }
 
     //     $header = null;
     //     $data = array();
-    //     if (($handle = fopen($filename, 'r')) !== false)
-    //     {
-    //         while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
-    //         {
-    //             if (!$header)
+    //     if (($handle = fopen($filename, 'r')) !== false){
+    //         while (($row = fgetcsv($handle, 1000, $delimiter)) !== false){
+    //             if (!$header){
     //                 $header = $row;
-    //             else
+    //             }
+    //             else{
     //                 $data[] = array_combine($header, $row);
+    //             }
     //         }
     //         fclose($handle);
     //     }
@@ -100,45 +203,7 @@ class ItemsListController extends Controller
     //     return $data;
     // }
 
-    public function newCSVBatch(Request $request, $id){
-        $account = Account::find($id);
-
-        // $file = $request->file('csv')->getClientOriginalName();
-        // $extension = $request->file('csv')->getClientOriginalExtension();
-
-        $fileNameWithExt = $request->file('csv')->getClientOriginalName();
-
-        // get just the filename
-        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-        // get extension
-        $extension = $request->file('csv')->getClientOriginalExtension();
-
-        // create new filename
-        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-
-        // upload image
-        $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
-
-
-        $this->validate($request, [
-            'csv' => 'file'
-        ]);
-
-        Excel::import(new ItemImport, $path);
-
-        
-        // $file = public_path('file/test.csv');
-
-        // $customerArr = $this->csvToArray($file);
-
-        // for ($i = 0; $i < count($customerArr); $i ++)
-        // {
-        //     User::firstOrCreate($customerArr[$i]);
-        // }
-
-        return redirect('/getlist')->with('message', 'Los contactos se han adicionado con éxito');
-    }
+    
 
 
 

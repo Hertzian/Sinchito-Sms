@@ -53,15 +53,16 @@
                         <div class="col-1"></div>
                         <label for="tel" class="col-xl-2 col-md-2 col-3 col-form-label">Plantilla</label>
                         <div class="col-xl-4 col-md-4 col-7">
-                            <input id="tel" class="form-control" name="name" type="text" value="{{ $template->content }}" placeholder="{{ $template->name }}" required>
+                            <p>{{ $template->name }}</p>
+                            <!-- <input id="tel" class="form-control" name="name" type="text" value="{{ $template->name }}" placeholder="{{ $template->name }}" required> -->
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-1"></div>
                         <label for="text-message" class="col-xl-2 col-md-2 col-3 col-form-label"></label>
                         <div class="col-xl-4 col-md-4 col-7">
-                            <textarea class="form-control"  name="content" rows="6" placeholder="Escribe el contenido de plantilla" required id="texto_personalizado" onkeyup="valTextMessage(this);">{{ $template->content }}</textarea><br>
-                            <p id="letters">Mensaje, Cararcteres: 0 </p>
+                            <p>{{ $template->content }}</p>
+                            <!-- <textarea class="form-control"  name="content" rows="6" placeholder="Escribe el contenido de plantilla" required id="texto_personalizado" onkeyup="valTextMessage(this);">{{ $template->content }}</textarea><br> -->
                         </div>
                     </div>
                     <div class="form-group row">

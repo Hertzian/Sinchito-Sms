@@ -107,7 +107,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body ">                
-              <form action="{{ url('/newitem/' . $batch -> id) }} " method="post" class="">
+              <form action="{{ url('/newitem/' . $batch->id) }} " method="post" class="">
                 @csrf
                 <div class="form-group row">
                   <div class="col-2"></div>
