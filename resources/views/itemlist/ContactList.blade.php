@@ -63,15 +63,19 @@
             @foreach ($items as $item)
 
                 <div class="col-md-6 col-lg-3">
-                    <a class="box box-body box-hover-shadow" href="#">
+                    <div class="box box-body box-hover-shadow" href="#">
                         <div class="flexbox align-items-center">
+                            <form action="{{ url('/deleteitem/' . $item->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger mx-5" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button> 
+                            </form>
                             <span class="ion ion-ios-person font-size-50"></span>
                             <div class="text-right">
                                 <h6 class="mb-0">{{ $item->name }}</h6>
                                 <small>{{ $item->number }}</small>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
 
             @endforeach

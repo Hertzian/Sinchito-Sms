@@ -71,45 +71,45 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        view()->composer('*', function (View $view){
-            if (Auth::user()) {
-                $user = Auth::user();
-                $phone = $user->phone;
-                $view->with('phone', $phone);                
-            }
-        });
+        // view()->composer('*', function (View $view){
+        //     if (Auth::user()) {
+        //         $user = Auth::user();
+        //         $phone = $user->phone;
+        //         $view->with('phone', $phone);                
+        //     }
+        // });
 
-        view()->composer('*', function (View $view){
-            if (Auth::user()) {
-                $user = Auth::user();
-                $country = $user->phone;
-                $view->with('country', $country);                
-            }
-        });
+        // view()->composer('*', function (View $view){
+        //     if (Auth::user()) {
+        //         $user = Auth::user();
+        //         $country = $user->phone;
+        //         $view->with('country', $country);                
+        //     }
+        // });
 
-        view()->composer('*', function (View $view){
-            if (Auth::user()) {
-                $user = Auth::user();
-                $state = $user->state;
-                $view->with('state', $state);                
-            }
-        });
+        // view()->composer('*', function (View $view){
+        //     if (Auth::user()) {
+        //         $user = Auth::user();
+        //         $state = $user->state;
+        //         $view->with('state', $state);                
+        //     }
+        // });
 
-        view()->composer('*', function (View $view){
-            if (Auth::user()) {
-                $user = Auth::user();
-                $city = $user->city;
-                $view->with('city', $city);                
-            }
-        });
+        // view()->composer('*', function (View $view){
+        //     if (Auth::user()) {
+        //         $user = Auth::user();
+        //         $city = $user->city;
+        //         $view->with('city', $city);                
+        //     }
+        // });
 
-        view()->composer('*', function (View $view){
-            if (Auth::user()) {
-                $user = Auth::user();
-                $address = $user->address;
-                $view->with('address', $address);                
-            }
-        });
+        // view()->composer('*', function (View $view){
+        //     if (Auth::user()) {
+        //         $user = Auth::user();
+        //         $address = $user->address;
+        //         $view->with('address', $address);                
+        //     }
+        // });
 
 
     }

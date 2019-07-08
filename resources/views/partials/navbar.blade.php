@@ -299,14 +299,7 @@
                             <a href="{{ url('/profile') }}"><i class="ion ion-person"></i> My Profile</a>
                         </div>
                         <div class="col-12 text-left">
-<<<<<<< HEAD
-                        <a href="
-                        {{-- # --}}
-                        {{ url('/balance') }}
-                        "><i class="ion ion-person"></i> My balance</a>
-=======
-                            <a href=" Balance ${{ $balance }}"><i class="ion ion-person"></i> My balance</a>
->>>>>>> 5e6a1200b3a0d46e5b54493d639047542b54dbb1
+                            <a href="{{ url('/getbalance') }}"><i class="ion ion-person"></i> My balance</a>
                         </div>
                         <div class="col-12 text-left">
                             <a href="#"><i class="ion ion-email-unread"></i> Inbox</a>

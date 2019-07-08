@@ -111,14 +111,13 @@ class ItemsController extends Controller
         return redirect('/')->with('message', $message);
     }
 
-    public function getContact($id){
-        $batch = ItemList::find($id);
-        $items = Item::where('item_list_id', $batch->id)->get();
+    public function deleteItem($id){
+        $item = Item::find($id);
 
-        return view('itemlist.ContactList',[
-            'batch' => $batch,
-            'items' => $items
-        ]);
+        $item->delete();
+
+        return redirect('/getlist')->with('message', 'El contacto se ha eliminado con éxito');
     }
 
+    
 }

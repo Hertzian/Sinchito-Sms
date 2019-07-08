@@ -32,16 +32,18 @@ Route::post('/addcredit', 'AccountsController@addCredit');
 // Batches
 Route::get('/getlist', 'ItemsListController@getBatches');
 Route::get('/newlist/{id}', 'ItemsListController@newBatchView');
-Route::get('/contactlist/{id}', 'ItemsListController@contactListView');
+Route::get('/contactlist/{id}', 'ItemsListController@getContacts');
 Route::post('/newlist/{id}', 'ItemsListController@newBatch');
 Route::post('/send/{id}', 'ItemsListController@sendBatchSMS');
 Route::post('/deletebatch/{id}', 'ItemsListController@deleteBatch');
+Route::post('/newcsv/{id}', 'ItemsListController@newCSVBatch');
 
 // Item
 Route::get('/getitems/{id}', 'ItemsController@getBatch');
 Route::get('/newitem/{id}', 'ItemsController@newItemView');
 Route::post('/newitem/{id}', 'ItemsController@newItem');
-Route::get('/ContactList/{id}', 'ItemsController@getContact');
+Route::post('/deleteitem/{id}', 'ItemsController@deleteItem');
+// Route::get('/contactlist/{id}', 'ItemsController@getContact');
 
 // Single SMS
 Route::get('/single','ItemsController@sendSingleSMSView');

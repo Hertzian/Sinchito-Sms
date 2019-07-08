@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Clx\Xms\Api\MtBatchTextSmsCreate;
+use Illuminate\Support\Facades\Storage;
 
 class ItemsListController extends Controller
 {
@@ -77,6 +78,36 @@ class ItemsListController extends Controller
 
         return redirect('/getlist')
         ->with('message', 'El batch se ha creado con éxito');
+    }
+
+    public function newCSVBatch(Request $request, $id){
+        $account = Account::find($id);
+
+        $item_list_id = $request->input('item_list_id');
+
+        $extension = $request->file('csv')->getClientOriginalExtension();
+        $fileNameWithExt = $request->file('csv')->getClientOriginalName();
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('csv')->getClientOriginalExtension();
+        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+        $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
+        
+        $this->validate($request, [
+            'csv' => 'file'
+        ]);
+
+        $file = Storage::get($path);
+        $arr = str_getcsv($file, ',');
+           
+            
+        for ($i=0; $i < count($arr); $i++) { 
+            $item = new Item();
+            $item->number = '+52' . $arr[$i];
+            $item->item_list_id = $item_list_id;
+            $item->save();
+        }
+        
+        return redirect('/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
     }
 
     // public function sendBatchSMS(Request $request, $id){
@@ -149,7 +180,8 @@ class ItemsListController extends Controller
 
         $client = new Client($this->splan, $this->token);
 
-        if ((count($numCount) > $account->message_limit && $account->message_limit >= 1) || $account->message_limit >= 1 && $account->balance >= 0.65) {
+        // if ((count($numCount) <= $account->message_limit && $account->message_limit >= 1) || $account->message_limit >= 1 && $account->balance >= 0.65) {
+        if (count($numbers) <= $account->message_limit && $account->message_limit >= 1){
             try {
 
                 $batchParams = new MtBatchTextSmsCreate();
@@ -196,10 +228,14 @@ class ItemsListController extends Controller
         ->with('message', 'El batch se ha eliminado con éxito');;
     }
 
-    public function GetContact($id)
-    {
-        $user = Accont::find($id);
-        
+    public function getContacts($id){
+        $batch = ItemList::find($id);
+        $items = Item::where('item_list_id', $batch->id)->get();
+
+        return view('itemlist.contactList',[
+            'batch' => $batch,
+            'items' => $items
+        ]);
     }
     
 }
