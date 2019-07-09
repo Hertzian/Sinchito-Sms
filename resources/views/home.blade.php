@@ -61,7 +61,7 @@
                                                 Crea mensajes personalizados.<br><br><br>
                                             </p>
                                             <span class="info-box-text"><p class="text-right">
-                                            <a href="{{ URL::route('template') }}" class="text-left">Personaliza tus mensajes</a>
+                                            <a href="{{ url('/gettemplates') }}" class="text-left">Personaliza tus mensajes</a>
                                             </p></span> 
                                         </div>
                                         <!-- /.info-box-content -->

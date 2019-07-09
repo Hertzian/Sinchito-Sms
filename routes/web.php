@@ -53,12 +53,17 @@ Route::post('/single', 'ItemsController@sendSingleSMS');
 Route::get('/message','messageListController@MessageListView');
 Route::get('/messageItem','messageListController@MessageItemView');
 
+// Templates
+Route::get('/gettemplates', 'TemplatesController@getTemplatesView');
+Route::post('/newtemplate', 'TemplatesController@newTemplate');
+Route::post('/edittemplate/{id}', 'TemplatesController@editTemplate');
+Route::post('/deletetemplate/{id}', 'TemplatesController@deleteTemplate');
 
 // check views routes
 Route::get('/dasch', function () {return view('vistas.dasch');})->name('dasch');
 Route::get('/profile', function () {return view('vistas.profile');})->name('profile');
 Route::get('/sms', function () {return view('vistas.sms');})->name('sms');
-Route::get('/template', function () {return view('vistas.template');})->name('template');
+// Route::get('/template', function () {return view('vistas.template');})->name('template');
 Route::get('/settings', function () {return view('vistas.settings');})->name('settings');
 Route::get('/contacts', function () {return view('vistas.contacts');})->name('contacts');
 // Route::get('/balance', function () {return view('vistas.balance');})->name('balance');
