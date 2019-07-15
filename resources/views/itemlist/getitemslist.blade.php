@@ -241,7 +241,7 @@
       </div>
       <div class="box-body">
       @if (count($batches) >= 1)  
-        <table id="table_template" class="table table-bordered table-striped table-responsive">
+        <table id="table-batches" class="table table-bordered table-striped table-responsive">
           <thead>
             <tr>
                 <th>#</th>

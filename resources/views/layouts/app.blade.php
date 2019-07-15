@@ -26,6 +26,8 @@
 	<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
 	<!-- daterange picker -->
 	<link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }}">
+	<!-- Data table -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
 	<!-- bootstrap wysihtml5 - text editor -->
 	<!-- text eitable -->
 	<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>

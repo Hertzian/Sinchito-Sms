@@ -65,7 +65,7 @@
                     </div>
                     <div class="box-body">
                     @if (count($message) >= 1)  
-                        <table id="table_sms" class="table table-bordered table-striped table-responsive">
+                        <table id="table-sms-item" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th>Numero de envio</th>

@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="{{ asset('css/bootstrap-extends.css') }}">
 	<!-- theme style -->
 	<link rel="stylesheet" href="{{ asset('css/master-style.css') }}">
+    <!-- Data table  -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<!-- MinimalLite Admin skins -->
 	<link rel="stylesheet" href="{{ asset('css/_all-skins.css') }}">
 </head>
@@ -28,6 +30,8 @@
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <!-- Functions.js -->
 <script src="{{ asset('js/functions.js') }}"></script>
+<!-- data table scrip -->
+<script src="{{ asset('js/datatable.js') }}"></script>
 <!-- Editable -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
