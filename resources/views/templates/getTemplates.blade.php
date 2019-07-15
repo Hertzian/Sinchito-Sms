@@ -28,21 +28,26 @@
         </div>
       </div>
 
-      <!-- Enviar mensajes -->
+      {{-- Modal SMS --}}
       <div class="col-xl-4 col-md-12 col-12">
         <div class="small-box bg-warning">
-          <div class="inner">
-            <h3>SMS</h3>
-            <p>Enviar mensajes</p>                
+          <div class="inner">              
+            <h3>Mensajes</h3>
+            <p>Enviar mensajes</p>
           </div>
           <div class="icon">
             <i class="fa fa-window-maximize"></i>
           </div>
-          <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Enviar nuevo mensaje con plantilla <i class="fa fa-arrow-right"></i></a>
+          <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Send messages to batches <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
 
     </div> 
+
+    
+  
+  
+    
 
 
     <!-- Contenido tabla -->
@@ -184,42 +189,70 @@
         </div>
       </div>
 
-      <!-- Contenido de Modal Editar plantilla  -->
-      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="myLargeModalLabel">New template</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body ">
-              <form action="" method="post" class="">
-                <div class="form-group row">
-                  <div class="col-2"></div>
-                  <label for="recupient-input" class="col-3 col-form-label">Template name</label>
-                  <div class="col-xl-4 col-md-6 col-6">
-                    <input class="form-control" type="text" value="" placeholder="Template name" required id="temaplate-name">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-2"></div>
-                    <label for="text-message" class="col-3 col-form-label">Text</label>
-                    <div class="col-xl-4 col-md-6 col-6">
-                      <textarea class="form-control" rows="5" placeholder="Enter ..." required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                      <p id="letters">Message, Characters: 0 </p>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info float-right" onclick="ok()">Save template</button>
-                <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
-              </div>
-            </div>
+      
+
+      {{-- Contenido de Modal enviar SMS --}}
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="send-messages-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myLargeModalLabel">Enviar plantilla de mensajes a lista de contactos</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           </div>
+
+          <div class="modal-body ">            
+            <form action="{{ url('/sendtemplate/' . $account->id) }}" method="post" class="">
+              @csrf
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre de lote de contactos</label>
+                <div class="col-xl-4 col-md-6 col-6">                  
+                  <select class="form-control" name="item_list_id" id="">
+                    <option value=""></option>
+                    
+                    @if (count($batches) >= 1)
+                      @foreach ($batches as $batch)
+                        <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
+                      @endforeach
+                    @else
+                      <option value="">There are no batches</option>
+                    @endif
+
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre de plantilla</label>
+                <div class="col-xl-4 col-md-6 col-6">                  
+                  <select class="form-control" name="template_id" id="">
+                    <option value=""></option>
+                    
+                    @if (count($templates) >= 1)
+                      @foreach ($templates as $template)
+                        <option value="{{ $template->id }}">{{ $template->name }}</option>          
+                      @endforeach
+                    @else
+                      <option value="">No hay plantillas aun :(</option>
+                    @endif
+
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success float-right" onclick="ok()">Send</button>
+              <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
+            </div>
+            </form>
+
         </div>
       </div>
+    </div>
 
       
 

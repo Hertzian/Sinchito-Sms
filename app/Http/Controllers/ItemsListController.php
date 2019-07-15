@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\Account;
 use App\ItemList;
+use App\Template;
 use Clx\Xms\Client;
 use App\MessageList;
 use Illuminate\Support\Arr;
@@ -110,15 +111,13 @@ class ItemsListController extends Controller
         return redirect('/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
     }
 
-    // public function sendBatchSMS(Request $request, $id){
+    // public function sendTemplate(Request $request, $id){
         
     //     $account = Account::find($id);
     //     $batch = ItemList::find($account->id);
     //     // $batch = ItemList::where('account_id', $account->id)->get();
-    //     // $name = Item::where('item_list_id', $batch->id)->pluck('name');
-    //     $number = Item::where('item_list_id', $batch->id)
-    //     // ->pluck('number')
-    //     ;
+    //     $name = Item::where('item_list_id', $batch->id)->pluck('name');
+    //     $number = Item::where('item_list_id', $batch->id)->pluck('number');
 
     //     $names = [];
     //     $numbers = [];
@@ -131,12 +130,6 @@ class ItemsListController extends Controller
 
     //         $batchParams = new MtBatchTextSmsCreate();
     //         $batchParams->setSender($this->sender);
-
-    //         // if(count($number) >=1){
-    //         //     for ($i=0; $i < count($name); $i++) { 
-    //         //         $numbers[] = $number[$i];
-    //         //     }
-    //         // }
 
     //         $texto = $request->input('texto_personalizado');
 
@@ -169,6 +162,92 @@ class ItemsListController extends Controller
     //     return redirect('/')->with('message', $message);
     // }
 
+    public function sendTemplate(Request $request, $id){
+        $account = Account::find($id);
+        $batchId = $request->input('item_list_id');
+
+        // $contacts = Item::select('name', 'number')->where('item_list_id', $batchId)->get();
+        // dd($contacts);
+
+        $names = Item::where('item_list_id', $batchId)->pluck('name');
+        $numbers = Item::where('item_list_id', $batchId)->pluck('number');
+        $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
+        $texto = $request->input('template_id');
+        $template = Template::find($texto);
+        
+        // $res = ['cliente' => [$contacts]];
+
+        // dd($res);
+
+        $client = new Client($this->splan, $this->token);
+
+        if (count($numbers) <= $account->message_limit && $account->message_limit >= 1){
+            try {
+                
+                // dd($names);
+                // $arr = array_merge($numbers, $names);
+
+                // dd($arr);
+
+                $batchParams = new MtBatchTextSmsCreate();
+                $batchParams->setSender($this->sender);
+
+                $batchParams->setRecipients($numbers);
+
+                $batchParams->setBody($template->content);
+
+
+
+                if (count($name) >=1) {
+                    for ($i=0; $i < count($number); $i++) { 
+                        $names = array_add($names, $number[$i], $name[$i]);
+                    }
+                    $names += ['default' => 'estimado cliente'];
+                }
+
+                $fulano = ['cliente' => $names];
+
+                
+                $batchParams->setParameters(
+                    $fulano
+                    // [
+                    //     'cliente' => [$contacts]
+                    // ]
+                );
+
+
+                // $batchParams->setParameters([
+                // ]);
+
+
+                $result = $client->createTextBatch($batchParams);
+                $batchID = $result->getBatchId();
+
+                $batchSMS = new MessageList();
+                $batchSMS->name = $batchID;
+                $batchSMS->account_id = $account->id;
+                $batchSMS->save();
+
+                $account->message_limit = $account->message_limit - count($numbers);
+                $account->balance = $account->balance - (count($numbers) * .65)
+                ;
+                $account->update();
+
+                $message = 'El ID que se dio al batch es: ' . $batchID;
+
+            } catch (Exception $ex) {
+
+                $message = 'Error: ' . $ex->getMessage();
+            }
+        }else{
+            $error = 'No cuentas con saldo disponible para enviar mensajes';
+
+            return redirect('/')->with('error', $error);
+        }
+
+        return redirect('/')->with('message', $message);
+    }
+
     public function sendBatchSMS(Request $request, $id){
 
         $account = Account::find($id);
@@ -199,8 +278,8 @@ class ItemsListController extends Controller
                 $batchSMS->account_id = $account->id;
                 $batchSMS->save();
 
-                $account->message_limit = $account->message_limit - 1;
-                $account->balance = $account->balance - .65;
+                $account->message_limit = $account->message_limit - count($numbers);
+                $account->balance = $account->balance - (count($numbers) * .65);
                 $account->update();
 
                 $message = 'El ID que se dio al batch es: ' . $batchID;

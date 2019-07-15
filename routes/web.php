@@ -37,6 +37,7 @@ Route::post('/newlist/{id}', 'ItemsListController@newBatch');
 Route::post('/send/{id}', 'ItemsListController@sendBatchSMS');
 Route::post('/deletebatch/{id}', 'ItemsListController@deleteBatch');
 Route::post('/newcsv/{id}', 'ItemsListController@newCSVBatch');
+Route::post('/sendtemplate/{id}', 'ItemsListController@sendTemplate');
 
 // Item
 Route::get('/getitems/{id}', 'ItemsController@getBatch');
@@ -58,6 +59,7 @@ Route::get('/gettemplates', 'TemplatesController@getTemplatesView');
 Route::post('/newtemplate', 'TemplatesController@newTemplate');
 Route::post('/edittemplate/{id}', 'TemplatesController@editTemplate');
 Route::post('/deletetemplate/{id}', 'TemplatesController@deleteTemplate');
+
 
 // check views routes
 Route::get('/dasch', function () {return view('vistas.dasch');})->name('dasch');

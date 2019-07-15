@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\ItemList;
 use App\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +13,12 @@ class TemplatesController extends Controller
     public function getTemplatesView(){
         $user = Auth::user();
         $account = Account::find($user->id);
+        $batches = ItemList::where('account_id', $user->id)->get();
         $templates = Template::where('account_id', $user->id)->get();
 
         return view('templates.getTemplates', [
+            'account' => $account,
+            'batches' => $batches,
             'templates' => $templates
         ]);
     }
@@ -25,7 +29,8 @@ class TemplatesController extends Controller
 
         $template = new Template();
 
-        $this->validate([
+        
+        $request->validate([
             'name' => 'required',
             'content' => 'required'
         ]);
@@ -44,7 +49,7 @@ class TemplatesController extends Controller
         $account = Account::find($user->id);
         $template = Template::find($id);
 
-        $this->validate([
+        $request->validate([
             'name' => 'required',
             'content' => 'required'
         ]);
@@ -64,6 +69,7 @@ class TemplatesController extends Controller
         $template->delete();
 
         return redirect('/gettemplates')->with('message', 'La plantilla fue eliminada');
-
     }
+
+
 }
