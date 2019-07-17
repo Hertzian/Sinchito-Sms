@@ -9,35 +9,35 @@
     <form action="#" class="form-element">
       <div class="row">
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $name }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">First Name</span>
         </div>
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $Lname }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">Last Name</span>
         </div>
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $email }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">Email address</span>
         </div>
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $phone }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">Phone number</span>
         </div>
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $email }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">Country</span>
         </div>
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $email }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">State</span>
         </div>
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $email }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">City</span>
         </div>
         <div class="col-md-4 info-box-content text-center">
-          <span class="info-box-number">{{ $email }}</span>
+          <span class="info-box-number"></span>
           <span class="info-box-text">Address</span>
         </div>
       </div>

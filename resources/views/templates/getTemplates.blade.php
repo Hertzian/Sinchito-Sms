@@ -85,14 +85,14 @@
                       <td>{{ $template->created_at }}</td>
                       <td> 
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal" href="#edit-modal" >Editar <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal{{ $template->id }}" href="#edit-modal" >Editar <i class="fa fa-pencil" aria-hidden="true"></i></button>
                           <form action="{{ url('/deletetemplate/' . $template->id) }}" method="post">
                             @csrf
                             <button type="submit" class="btn btn-danger mx-5" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button>
                           </form>
                           {{-- Modal ************************************** --}}
                           <!-- Contenido de Modal Editar plantilla  -->
-                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal{{ $template->id }}" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                   <div class="modal-content">
                                     <div class="modal-header">

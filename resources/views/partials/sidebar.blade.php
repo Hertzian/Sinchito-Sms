@@ -8,7 +8,7 @@
             <li class="user-profile treeview">
                 <a href="
                 {{-- # --}}
-                {{ URL::route('profile') }}
+                {{ url('/profile') }}
                 ">
                     <img src="{{ asset('images/user-128x128.jpg') }}" alt="user">
                     <span>{{ $name }}</span>
@@ -27,22 +27,19 @@
             </li>
             <li class="header nav-small-cap">PERSONAL</li>
             <li class="">
-                <a href="{{ URL::route('home') }}">
+                <a href="{{ url('/') }}">
                     <i class="fa fa-dashboard"></i> <span>Panel de Control</span>
                     {{-- <span class="pull-right-container"></span> --}}
                 </a>
             </li>
             <li class=" treeview">
-                <a href="
-                {{-- # --}}
-                {{ URL::route('sms') }}
-                ">
+                <a href="#">
                     <i class="fa fa-envelope"></i>
                     <span>SMS</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                     </span>
-                </a>
+                {{-- </a> --}}
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/single') }}"><i class="fa fa-envelope"></i>SMS Sencillo</a></li>
                     <li><a href="{{ url('/getlist') }}"><i class="fa fa-money mr-5"></i>Batches</a></li>
@@ -60,13 +57,13 @@
             </li> --}}
         </ul>
         <hr>
-        <p class="ml-2">Cuentas</p>
+        {{-- <p class="ml-2">Cuentas</p>
         <ul>
             <li><a href="{{ url('/single') }}">SMS sencillo</a></li>
             <li><a href="{{ url('/getaccounts') }}">Cuentas</a></li>
             <li><a href="{{ url('/newaccount') }}">Nueva cuenta</a></li>
             <hr>
-        </ul>
+        </ul> --}}
     </section>
 </aside>
 

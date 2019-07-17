@@ -169,58 +169,42 @@ class ItemsListController extends Controller
         // $contacts = Item::select('name', 'number')->where('item_list_id', $batchId)->get();
         // dd($contacts);
 
-        $names = Item::where('item_list_id', $batchId)->pluck('name');
-        $numbers = Item::where('item_list_id', $batchId)->pluck('number');
+        $name = Item::where('item_list_id', $batchId)->pluck('name');
+        $number = Item::where('item_list_id', $batchId)->pluck('number');
         $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
         $texto = $request->input('template_id');
         $template = Template::find($texto);
-        
-        // $res = ['cliente' => [$contacts]];
-
-        // dd($res);
 
         $client = new Client($this->splan, $this->token);
 
-        if (count($numbers) <= $account->message_limit && $account->message_limit >= 1){
+        $nombres = [];
+        $numeros = [];
+
+        if (count($number) <= $account->message_limit && $account->message_limit >= 1){
             try {
                 
-                // dd($names);
-                // $arr = array_merge($numbers, $names);
-
-                // dd($arr);
-
                 $batchParams = new MtBatchTextSmsCreate();
                 $batchParams->setSender($this->sender);
 
-                $batchParams->setRecipients($numbers);
+                $batchParams->setRecipients($number);
+
+                // dd($number);
 
                 $batchParams->setBody($template->content);
 
-
-
                 if (count($name) >=1) {
                     for ($i=0; $i < count($number); $i++) { 
-                        $names = array_add($names, $number[$i], $name[$i]);
+                        $nombres = array_add($nombres, $number[$i], $name[$i]);
                     }
-                    $names += ['default' => 'estimado cliente'];
+                    $nombres += ['default' => 'estimado cliente'];
                 }
 
-                $fulano = ['cliente' => $names];
-
+                $fulano = ['cliente' => $nombres];
                 
-                $batchParams->setParameters(
-                    $fulano
-                    // [
-                    //     'cliente' => [$contacts]
-                    // ]
-                );
-
-
-                // $batchParams->setParameters([
-                // ]);
-
+                $batchParams->setParameters($fulano);
 
                 $result = $client->createTextBatch($batchParams);
+
                 $batchID = $result->getBatchId();
 
                 $batchSMS = new MessageList();
@@ -228,8 +212,8 @@ class ItemsListController extends Controller
                 $batchSMS->account_id = $account->id;
                 $batchSMS->save();
 
-                $account->message_limit = $account->message_limit - count($numbers);
-                $account->balance = $account->balance - (count($numbers) * .65)
+                $account->message_limit = $account->message_limit - count($number);
+                $account->balance = $account->balance - (count($number) * .65)
                 ;
                 $account->update();
 

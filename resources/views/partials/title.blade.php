@@ -4,10 +4,10 @@
     
     {{-- pendientes breadcrumbs --}}
 
-    <ol class="breadcrumb">
+    {{-- <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="breadcrumb-item active"><a href="#">SMS</a></li>
-    </ol>
+    </ol> --}}
 
 </section>
 
