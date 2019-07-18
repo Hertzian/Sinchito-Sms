@@ -68,7 +68,7 @@ class TemplatesController extends Controller
 
         $template->delete();
 
-        return redirect('/gettemplates')->with('message', 'La plantilla fue eliminada');
+        return redirect('/gettemplates')->with('message', 'La plantilla fue eliminada con éxito');
     }
 
 

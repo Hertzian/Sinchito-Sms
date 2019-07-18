@@ -298,20 +298,20 @@
                         <div class="col-12 text-left">
                             <a href="{{ url('/profile') }}"><i class="ion ion-person"></i> My Profile</a>
                         </div>
-                        <div class="col-12 text-left">
+                        {{-- <div class="col-12 text-left">
                             <a href="{{ url('/getbalance') }}"><i class="ion ion-person"></i> My balance</a>
-                        </div>
-                        <div class="col-12 text-left">
+                        </div> --}}
+                        {{-- <div class="col-12 text-left">
                             <a href="#"><i class="ion ion-email-unread"></i> Inbox</a>
-                        </div>
-                        <div class="col-12 text-left">
+                        </div> --}}
+                        {{-- <div class="col-12 text-left">
                             <a href="#"><i class="ion ion-settings"></i> Setting</a>
-                        </div>
-                        <div role="separator" class="divider col-12"></div>
-                        <div class="col-12 text-left">
+                        </div> --}}
+                        {{-- <div role="separator" class="divider col-12"></div> --}}
+                        {{-- <div class="col-12 text-left">
                             <a href=""><i class="ti-settings"></i> Account Setting</a>
-                        </div>
-                        <div role="separator" class="divider col-12"></div>
+                        </div> --}}
+                        {{-- <div role="separator" class="divider col-12"></div> --}}
                         <div class="col-12 text-left">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ __('Logout') }}</a>

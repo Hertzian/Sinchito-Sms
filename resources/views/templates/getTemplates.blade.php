@@ -28,6 +28,8 @@
         </div>
       </div>
 
+      @if (count($templates) >= 1)
+          
       {{-- Modal SMS --}}
       <div class="col-xl-4 col-md-12 col-12">
         <div class="small-box bg-warning">
@@ -41,7 +43,9 @@
           <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Send messages to batches <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
-
+      
+      @endif
+      
     </div> 
 
     

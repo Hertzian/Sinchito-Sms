@@ -69,7 +69,7 @@ class ItemsController extends Controller
         $client = new Client($this->splan, $this->token);
         $message;
 
-        if ($account->message_limit >= 1 && $account->balance >= 0.65) {
+        if ($account->message_limit >= 1 && $account->balance >= $account->price) {
         
             try {
                 
@@ -92,7 +92,7 @@ class ItemsController extends Controller
                 $batchSMS->save();
 
                 $account->message_limit = $account->message_limit - 1;
-                $account->balance = $account->balance - .65;
+                $account->balance = $account->balance - $account->price;
                 $account->update();
 
                 $message = 'El ID que se dio al batch es: ' . $batchID;

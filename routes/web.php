@@ -21,6 +21,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/nuevavista', 'SmsController@vista');
 
+// Profile
+Route::get('/profile', 'Users\\UsersController@getProfileView');
+
 // Accounts
 Route::get('/getaccounts', 'AccountsController@getAccounts');
 Route::get('/getaccount/{id}', 'AccountsController@getAccount');
@@ -63,7 +66,7 @@ Route::post('/deletetemplate/{id}', 'TemplatesController@deleteTemplate');
 
 // check views routes
 Route::get('/dasch', function () {return view('vistas.dasch');})->name('dasch');
-Route::get('/profile', function () {return view('vistas.profile');})->name('profile');
+// Route::get('/profile', function () {return view('vistas.profile');})->name('profile');
 Route::get('/sms', function () {return view('vistas.sms');})->name('sms');
 // Route::get('/template', function () {return view('vistas.template');})->name('template');
 Route::get('/settings', function () {return view('vistas.settings');})->name('settings');

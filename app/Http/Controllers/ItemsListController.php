@@ -213,8 +213,7 @@ class ItemsListController extends Controller
                 $batchSMS->save();
 
                 $account->message_limit = $account->message_limit - count($number);
-                $account->balance = $account->balance - (count($number) * .65)
-                ;
+                $account->balance = $account->balance - (count($number) * $account->price);
                 $account->update();
 
                 $message = 'El ID que se dio al batch es: ' . $batchID;
@@ -243,7 +242,7 @@ class ItemsListController extends Controller
 
         $client = new Client($this->splan, $this->token);
 
-        // if ((count($numCount) <= $account->message_limit && $account->message_limit >= 1) || $account->message_limit >= 1 && $account->balance >= 0.65) {
+        // if ((count($numCount) <= $account->message_limit && $account->message_limit >= 1) || $account->message_limit >= 1 && $account->balance >= $account->price) {
         if (count($numbers) <= $account->message_limit && $account->message_limit >= 1){
             try {
 
@@ -263,7 +262,7 @@ class ItemsListController extends Controller
                 $batchSMS->save();
 
                 $account->message_limit = $account->message_limit - count($numbers);
-                $account->balance = $account->balance - (count($numbers) * .65);
+                $account->balance = $account->balance - (count($numbers) * $account->price);
                 $account->update();
 
                 $message = 'El ID que se dio al batch es: ' . $batchID;

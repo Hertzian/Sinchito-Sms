@@ -1,6 +1,47 @@
-body > div > header > nav > div > ul > li{
+/* Elementos propios */
 
+.marginstyle{
+    margin-left: 40px;
+}
+
+.scroll {
+    width: auto;
+    height: auto;
+    overflow: scroll;
+}
+
+.homeBoxx{
+    height:200px;
+}
+
+.contact-menu{
+    width: 0%; 
+    height: 4px;
+}
+
+.contact-menu:hover{
+    width: 100%; 
+    height: 4px;
+}
+
+body > div > header > nav > div > ul > li{
     color: #fff;
-    padding-top: 1.1rem;
+    /* padding-top: 1.1rem; */
     font-size: 1.3rem;
+}
+
+.navbar-custom-menu .navbar-nav > li {
+    height: 50px;
+}
+
+.navbar-custom-menu .navbar-nav > li:nth-child(1) {
+    padding-top: 12px;
+}
+
+span.logo-lg img.light-logo {
+    filter: brightness(0) invert(1);
+}
+
+b.logo-mini {
+    filter: brightness(0) invert(1);
 }

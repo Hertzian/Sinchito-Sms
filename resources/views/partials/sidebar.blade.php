@@ -18,9 +18,9 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/profile') }}"><i class="fa fa-user mr-5"></i> Profile </a></li>
-                    <li><a href="{{ url('/balance') }}"><i class="fa fa-money mr-5"></i>Balance</a></li>
-                    <li><a href="#"><i class="fa fa-envelope-open mr-5"></i>Inbox</a></li>
-                    <li><a href="#"><i class="fa fa-cog mr-5"></i>Configuración</a></li>
+                    {{-- <li><a href="{{ url('/balance') }}"><i class="fa fa-money mr-5"></i>Balance</a></li> --}}
+                    {{-- <li><a href="#"><i class="fa fa-envelope-open mr-5"></i>Inbox</a></li> --}}
+                    {{-- <li><a href="#"><i class="fa fa-cog mr-5"></i>Configuración</a></li> --}}
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ __('Logout') }}</a></li>
                 </ul>
