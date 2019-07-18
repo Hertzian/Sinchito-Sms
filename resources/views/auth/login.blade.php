@@ -5,11 +5,11 @@
 <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href=""><b>Sinchito</b>Admin</a>
+        <a href=""><b>SMS</b>Admin</a>
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Inicia sesión</p>
 
         <form method="POST" action="{{ route('login') }}" class="form-element">
         @csrf
