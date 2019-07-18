@@ -55,13 +55,13 @@
                 <div class="form-group row mb-0">
                     <div class="col-12 text-center">
                         <button type="submit" class="btn btn-info btn-block margin-top-10">
-                            Métase!
+                            Ingresar
                         </button>
 
-                        @if (Route::has('password.request'))
+                        {{-- @if (Route::has('password.request'))
                             <i class="ion ion-locked"></i>
                             <a href="{{ route('password.request') }}">Olvidaste tu contraseña?</a>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
 
@@ -69,9 +69,9 @@
         </form>
     
     
-        <div class="margin-top-30 text-center">
+        {{-- <div class="margin-top-30 text-center">
             <p>No tienes cuenta? <a href="{{ route('register')}}" class="text-info m-l-5">Registrate</a></p>
-        </div>
+        </div> --}}
     
       </div>
       <!-- /.login-box-body -->

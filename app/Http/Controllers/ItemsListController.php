@@ -94,7 +94,8 @@ class ItemsListController extends Controller
         $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
         
         $this->validate($request, [
-            'csv' => 'file'
+            'item_list_id' => 'required',
+            'csv' => 'required|file'
         ]);
 
         $file = Storage::get($path);

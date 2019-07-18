@@ -48,7 +48,8 @@ class ItemsController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'number' => 'required'
+            'number' => 'required',
+            'item_list_id' => 'required'
         ]);
 
         $item->save();

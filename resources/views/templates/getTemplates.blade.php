@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <h1>Template</h1>
+    <h1>Plantillas</h1>
 @endsection
 
 @section('content')
@@ -40,19 +40,13 @@
           <div class="icon">
             <i class="fa fa-window-maximize"></i>
           </div>
-          <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Send messages to batches <i class="fa fa-arrow-right"></i></a>
+          <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Enviar mensajes a lote de contactos <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
       
       @endif
       
     </div> 
-
-    
-  
-  
-    
-
 
     <!-- Contenido tabla -->
     <div class="row">
@@ -177,8 +171,10 @@
                 <div class="col-2"></div>
                   <label for="text-message" class="col-3 col-form-label">Contenido</label>
                   <div class="col-xl-4 col-md-6 col-6">
-                    <textarea name="content" class="form-control" rows="5" placeholder="Escribe el contenido..." required id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                    <p id="letters">Message, Characters: 0 </p>
+                    <textarea class="form-control" rows="5" placeholder="Escribe tu mensaje" required name="content" id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
+                    {{-- <p id="letters">
+                      Partes del mensaje: 1, 
+                      Caracteres: 0 </p> --}}
                   </div>
                 </div>
               </div>
@@ -219,7 +215,7 @@
                         <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
                       @endforeach
                     @else
-                      <option value="">There are no batches</option>
+                      <option value="">No hay lotes registrados aún</option>
                     @endif
 
                   </select>
@@ -238,7 +234,7 @@
                         <option value="{{ $template->id }}">{{ $template->name }}</option>          
                       @endforeach
                     @else
-                      <option value="">No hay plantillas aun :(</option>
+                      <option value="">No hay plantillas aún</option>
                     @endif
 
                   </select>
@@ -248,8 +244,8 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success float-right" onclick="ok()">Send</button>
+              <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-success float-right" onclick="ok()">Enviar</button>
               <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
             </div>
             </form>
