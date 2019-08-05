@@ -11634,7 +11634,8 @@ table.dataTable thead .sorting:after {
 }
 /*lockscreen*/
 .lockscreen {
-    background: url(../images//login-register.jpg) center center no-repeat #d2d6de;
+    /* background: url(../images/login-register.jpg) center center no-repeat #d2d6de; */
+    background-color: #d2d6de;
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -11697,7 +11698,8 @@ table.dataTable thead .sorting:after {
     color: #fff;
 }
 .login-page, .register-page {
-    background: url(../images//login-register.jpg) center center no-repeat #d2d6de;
+    /* background: url(../images/login-register.jpg) center center no-repeat #d2d6de; */
+    background-color: #d2d6de;
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -11736,7 +11738,8 @@ table.dataTable thead .sorting:after {
 }
 
 .register-page-back{    
-  background: url(../images//login-register.jpg) center center no-repeat #d2d6de;
+  /* background: url(../images/login-register.jpg) center center no-repeat #d2d6de; */
+  background-color: #d2d6de;
   background-size: auto;
 }
 
@@ -14533,3 +14536,4 @@ hr {
   border-right-color: #e4e7ea;
   border-bottom-color: transparent;
 }
+
