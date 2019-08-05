@@ -68,6 +68,10 @@ Route::prefix('user')->group(function(){
   // Message 
   Route::get('/message','user\MessageListController@MessageListView');
   Route::get('/messageItem','user\MessageListController@MessageItemView');
+  // Message list
+  Route::get('/sendmessagelist','user\MessageListController@SendListView');
+  Route::get('/getsenditems/{id}','user\MessageListController@SendItemsView');
+
   // Templates
   Route::get('/gettemplates', 'user\TemplatesController@getTemplatesView');
   Route::post('/newtemplate', 'user\TemplatesController@newTemplate');

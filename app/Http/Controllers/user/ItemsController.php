@@ -98,7 +98,7 @@ class ItemsController extends Controller
                 $account->balance = $account->balance - $account->price;
                 $account->update();
 
-                $message = 'El ID que se dio al batch es: ' . $batchID;
+                $message = 'El ID que se dio al lote es: ' . $batchID;
 
             } catch (Exception $ex) {
 
@@ -108,7 +108,7 @@ class ItemsController extends Controller
         }else{
             $error = 'No cuentas con saldo disponible para enviar mensajes';
 
-            return redirect('/')->with('error', $error);
+            return redirect('user/')->with('error', $error);
         }
 
         return redirect('user/')->with('message', $message);
