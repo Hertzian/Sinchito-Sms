@@ -12,7 +12,7 @@
         <p class="login-box-msg">Inicia sesión</p>
 
         <form method="POST" action="{{ route('login') }}" class="form-element">
-        @csrf
+            @csrf
             <div class="form-group has-feedback">
 
                 <div class="form-group has-feedback">
@@ -28,7 +28,6 @@
                 <div class="form-group has-feedback">
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
                     <span class="ion ion-locked form-control-feedback"></span>
-
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
