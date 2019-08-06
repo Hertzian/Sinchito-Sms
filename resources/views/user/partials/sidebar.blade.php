@@ -44,6 +44,7 @@
                     <li><a href="{{ url('/user/single') }}"><i class="fa fa-envelope"></i>SMS Sencillo</a></li>
                     <li><a href="{{ url('/user/getlist') }}"><i class="fa fa-money mr-5"></i>Batches</a></li>
                     <li><a href="{{ url('/user/gettemplates') }}"><i class="fa fa-window-maximize"></i>Plantilla</a></li>
+                    <li><a href="{{ url('/user/sendmessagelist') }}"><i class="fa fa-arrow-right"></i>Lista de envíos</a></li>
                     {{-- <li><a href="{{ URL::route('settings') }}"><i class="fa fa-cog mr-5"></i>Configuración</a></li> --}}
                 </ul>
             </li>

@@ -115,6 +115,7 @@
                                               <p id="letters">Message, Characters: 0 </p>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
@@ -177,6 +178,10 @@
                       Caracteres: 0 </p> --}}
                   </div>
                 </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="" class="col-3">*Para personalizar incluir ${cliente} en el contenido de la plantilla</label>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>

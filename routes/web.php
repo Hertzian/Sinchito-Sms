@@ -40,9 +40,7 @@ Route::prefix('admin')->group(function () {
   Route::post('/statusaccount/{id}', 'admin\AccountsController@statusAccount');
 });
 
-
-
-Route::prefix('user')->group(function(){
+Route::prefix('user')->middleware('auth')->group(function(){
   // Home
   Route::get('/', 'user\UsersController@dashboard')->name('dashboard');
   // Profile

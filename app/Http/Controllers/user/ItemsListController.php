@@ -39,18 +39,10 @@ class ItemsListController extends Controller
         $items = Item::select('name', 'number')
             ->where('item_list_id', '=' )
             ->get();
-        // select('name', 'email as user_email')->get()
-
-        // $name = Item::where('item_list_id', $batch->id)->pluck('name');
-
-        // dd($items);
-        // dd($id_batch);
 
         return view('user.itemlist.getitemslist',[
             'account' => $account,
             'batches' => $batches,
-            // 'batch' => $id_batch,
-            // 'itemlist' => $itemlist,
             'items' => $items
         ]);
     }
@@ -72,7 +64,6 @@ class ItemsListController extends Controller
 
         $request->validate([
             'name' => 'required',
-            // 'account_id' => 'required'
         ]);
 
         $batch->save();
@@ -84,19 +75,18 @@ class ItemsListController extends Controller
     public function newCSVBatch(Request $request, $id){
         $account = Account::find($id);
 
+        $this->validate($request, [
+            'item_list_id' => 'required',
+            'csv' => 'required|file'
+        ]);
+
         $item_list_id = $request->input('item_list_id');
 
         $extension = $request->file('csv')->getClientOriginalExtension();
         $fileNameWithExt = $request->file('csv')->getClientOriginalName();
         $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-        $extension = $request->file('csv')->getClientOriginalExtension();
         $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
         $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
-        
-        $this->validate($request, [
-            'item_list_id' => 'required',
-            'csv' => 'required|file'
-        ]);
 
         $file = Storage::get($path);
         $arr = str_getcsv($file, ',');
@@ -117,9 +107,6 @@ class ItemsListController extends Controller
         $account = Account::find($id);
         $batchId = $request->input('item_list_id');
 
-        // $contacts = Item::select('name', 'number')->where('item_list_id', $batchId)->get();
-        // dd($contacts);
-
         $name = Item::where('item_list_id', $batchId)->pluck('name');
         $number = Item::where('item_list_id', $batchId)->pluck('number');
         $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
@@ -138,8 +125,6 @@ class ItemsListController extends Controller
                 $batchParams->setSender($this->sender);
 
                 $batchParams->setRecipients($number);
-
-                // dd($number);
 
                 $batchParams->setBody($template->content);
 
@@ -188,12 +173,10 @@ class ItemsListController extends Controller
         $batchId = $request->input('item_list_id');
         $numbers = Item::where('item_list_id', $batchId)->pluck('number');
         $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
-        // dd($account->message_limit);
         $texto = $request->input('texto_personalizado');
 
         $client = new Client($this->splan, $this->token);
 
-        // if ((count($numCount) <= $account->message_limit && $account->message_limit >= 1) || $account->message_limit >= 1 && $account->balance >= $account->price) {
         if (count($numbers) <= $account->message_limit && $account->message_limit >= 1){
             try {
 

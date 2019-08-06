@@ -10,7 +10,7 @@
 
   {{-- Modal 1 --}}
   <div class="col-xl-4 col-md-12 col-12">
-    <div class="small-box bg-success">
+    <div class="small-box bg-warning">
       <div class="inner">
         <h3>{{ count($messageList) }}</h3>
         @if (count($messageList) >= 2 || count($messageList) < 1)

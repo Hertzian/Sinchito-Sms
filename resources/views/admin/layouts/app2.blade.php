@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>SMS Admin - Dashboard</title>
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<!-- Bootstrap 4.0-->

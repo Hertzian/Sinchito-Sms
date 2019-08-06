@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TemplatesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function getTemplatesView(){
         $user = Auth::user();
         $account = Account::find($user->id);
