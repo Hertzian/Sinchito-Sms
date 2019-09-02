@@ -12,12 +12,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $chenson = new User();
-        $chenson->name = 'Chenson';
-        $chenson->email = 'alberto.magana@chenson.com.mx';
-        $chenson->password = Hash::make('Chenson123!');
-        $chenson->save();
-
         $user = new User();
         $user->name = 'user';
         $user->email = 'user@user.com';

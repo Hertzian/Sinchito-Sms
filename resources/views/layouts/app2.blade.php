@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SmsDynamic') }}</title>
+    <title>{{ config('app.name', 'SmsSinchAPI') }}</title>
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<!-- Bootstrap 4.0-->

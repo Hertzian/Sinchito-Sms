@@ -6,7 +6,7 @@
     " class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <b class="logo-mini">
-            <span class="light-logo"><img src="{{ asset('images/dynamic-icono.png') }}" alt="logo"></span>
+            <span class="light-logo"><img src="{{ asset('images/') }}" alt="logo"></span>
             {{-- <span class="dark-logo"><img src="{{ asset('images/aries-dark.png') }}" alt="logo"></span> --}}
         </b>
         <!-- logo for regular state and mobile devices -->

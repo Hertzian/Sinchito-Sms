@@ -15,9 +15,6 @@ class AccountTableSeeder extends Seeder
         $chenson = new Account();
         $chenson->user_id = '1';
         $chenson->save();
-
-        $account = new Account();
-        $account->user_id = '2';
-        $account->save();
+        
     }
 }

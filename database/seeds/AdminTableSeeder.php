@@ -15,7 +15,7 @@ class AdminTableSeeder extends Seeder
         $admin = new Admin();
         $admin->name = 'admin';
         $admin->email = 'admin@admin.com';
-        $admin->password = Hash::make('Dynamic123!');
+        $admin->password = Hash::make('12345678');
         $admin->save();
     }
 }

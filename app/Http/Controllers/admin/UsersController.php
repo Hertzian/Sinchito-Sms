@@ -36,7 +36,7 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'unique:users,email,' . $user->id,
-            'password' => 'string|min:8'
+            'password' => 'nullable|min:8'
         ]);
 
         $user->name = $request->input('name');

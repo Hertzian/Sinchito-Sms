@@ -10,7 +10,7 @@
             </li>
         </ul> --}}
     </div>
-    &copy; 2019 <a href="https://www.dynamicsolutions.mx/">DynamicSolutions</a>. All Rights Reserved.
+    <a href="https://www.tutofrutti.com">Eduardo Aguilar</a> &copy; 2019 
 </footer>
 
 <!-- ./wrapper -->

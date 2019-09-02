@@ -5,7 +5,7 @@
 <body class="register-page-back hold-transition">        
     <div class="register-box ">
         <div class="register-logo">
-            <a href="{{ route('register') }}"><b>Sms</b>Dynamic Registro</a>
+            <a href="{{ route('register') }}"><b>Sms</b>SinchApi Registro</a>
         </div>
         <div class="register-box-body">
             <h3 class="login-box-msg">Bienvenido</h3> 
