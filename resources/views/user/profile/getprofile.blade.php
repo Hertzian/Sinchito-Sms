@@ -10,38 +10,6 @@
   {{-- <form action="#" class="form-element"> --}}
     <div class="row">
       <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number">{{ $user->name }}</span>
-        <span class="info-box-text">First Name</span>
-      </div>
-      {{-- <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number"></span>
-        <span class="info-box-text">Last Name</span>
-      </div> --}}
-      <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number">{{ $user->email }}</span>
-        <span class="info-box-text">Email address</span>
-      </div>
-      {{-- <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number"></span>
-        <span class="info-box-text">Phone number</span>
-      </div> --}}
-      {{-- <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number"></span>
-        <span class="info-box-text">Country</span>
-      </div> --}}
-      {{-- <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number"></span>
-        <span class="info-box-text">State</span>
-      </div> --}}
-      {{-- <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number"></span>
-        <span class="info-box-text">City</span>
-      </div> --}}
-      {{-- <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number"></span>
-        <span class="info-box-text">Address</span>
-      </div> --}}
-      <div class="col-md-4 info-box-content text-center">
         <span class="info-box-number">{{ $account->message_limit }}</span>
         <span class="info-box-text">Límite de mensajes</span>
       </div>
@@ -52,65 +20,82 @@
     </div>
   {{-- </form> --}}
 
-  {{-- <form action="#" class="form-element">
-    <div class="row">
-      <div class="col-md-12">
-        <h3>Change you'r password</h3>
-      </div>
-      <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number">
-          <input class="form-control" type="password" value="Johen Doe" id="example-text-input">
-        </span>
-        <span class="info-box-text">Type you'r Password </span>
-      </div>
-      <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number">
-          <input class="form-control" type="password" value="Johen Doe" id="example-text-input">
-        </span>
-        <span class="info-box-text">Type you'r new Password </span>
-      </div>
-      <div class="col-md-4 info-box-content text-center">
-        <span class="info-box-number">
-          <input class="form-control" type="password" value="Johen Doe" id="example-text-input">
-        </span>
-        <span class="info-box-text">Reype you'r new Password </span>
-      </div>        
-      <div class="col-md-4 info-box-content text-center"></div>
-      
-      <div class="col-6">
-        <div class="form-group row">
-          <label for="example-text-input" class="col-sm-4 col-form-label">Type you'r old Password </label>
-          <div class="col-sm-8">
-            <input class="form-control" type="password" value="Johen Doe" id="example-text-input">
+
+
+</div>
+
+<div class="box">
+  <div class="box-body ">
+    <form action="{{  url('/user/updateprofile') }}" class="form-element" method="POST" enctype="multipart/form-data">
+      @csrf
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Tus datos</h3>
+        </div>
+
+        <div class="col-md-12">
+          @if ($user->avatar == '0')
+            <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle">
+          @else
+            <img src="{{ url('storage/avatar/' . $user->avatar) }}" class="rounded-circle">
+          @endif
+          <div class="form-group">
+          <label for="avatar">imagen de perfil:</label>
+          <input type="file" class="form-control" id="" name="avatar" value="{{ $user->avatar }}"> 
           </div>
         </div>
-      </div>
-      <div class="col-6">
-        <div class="form-group row">
-          <label for="example-text-input" class="col-sm-4 col-form-label">Type you'r old Password </label>
-          <div class="col-sm-8">
-            <input class="form-control" type="password" value="Johen Doe" id="example-text-input">
+
+        <div class="col-md-4">
+          <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" class="form-control" id="" name="name" value="{{ $user->name }}"> 
           </div>
         </div>
-      </div>
-      <div class="col-6">
-        <div class="form-group row">
-          <label for="example-text-input" class="col-sm-4 col-form-label">Retype you'r new password </label>
-          <div class="col-sm-8">
-            <input class="form-control" type="password" value="Exapmle" id="example-text-input">
+        <div class="col-md-4">
+          <div class="form-group">
+          <label for="last_name">Apellido Paterno:</label>
+          <input type="text" class="form-control" id="" name="last_name" value="{{ $user->last_name }}"> 
           </div>
         </div>
+        <div class="col-md-4">
+          <div class="form-group">
+          <label for="sec_last_name">Apellido Materno:</label>
+          <input type="text" class="form-control" id="" name="sec_last_name" value="{{ $user->sec_last_name }}"> 
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" class="form-control" id="" name="email" value="{{ $user->email }}"> 
+          </div>
+        </div>          
+        <div class="col-md-6">
+          <div class="form-group">
+          <label for="phone">phone:</label>
+          <input type="text" class="form-control" id="" name="phone" value="{{ $user->phone }}"> 
+          </div>
+        </div>  
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="" name="password"> 
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="">Reescribe password :</label>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"> 
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <button type="submit" class="btn btn-block btn-success">Actualizar datos</button>
+        </div>
       </div>
-      <div class="alert alert-warning col-md-10 hide" role="alert" id="alert">
-        <p>
-          The password must have a minimum of 8 characters and at least one upper case letter
-        </p> 
-      </div>
-      <div class="col-md-3">
-        <button type="submit" disabled class="btn btn-block btn-warning" id="change-pass">Change Password</button>
-      </div>               
-    </div>
-  </form> --}}
+    </form>
+  </div>
 </div>
 
 <div class="card-body">

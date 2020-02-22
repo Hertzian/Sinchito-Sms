@@ -1,38 +1,38 @@
 @extends('user.layouts.app')
 
 @section('title')
-  <h1>Lista de lotes</h1>
+  <h1>Listas de Contactos</h1>
 @endsection
 
 @section('content')
     
 <div class="row">
 
-  {{-- Modal 1 --}}
+  {{-- Modal 1 New list --}}
   <div class="col-xl-4 col-md-12 col-12">
     <div class="small-box bg-success">
       <div class="inner">
         <h3>{{ count($batches) }}</h3>
         @if (count($batches) >= 2 || count($batches) < 1)
-          <p>Lotes</p>
+          <p>Listas</p>
         @else
-          <p>Lote</p>              
+          <p>Lista</p>              
         @endif
       </div>
       
       <div class="icon">
         <i class="fa fa-address-book"></i>
       </div>
-        <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Agregar lote <i class="fa fa-arrow-right"></i></a>
+        <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Nueva lista <i class="fa fa-arrow-right"></i></a>
     </div>
   </div>
   
-  {{-- Modal body --}}
+  {{-- Modal body New list--}}
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="add-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="myLargeModalLabel">Nuevo lote</h4>
+          <h4 class="modal-title" id="myLargeModalLabel">Nueva lista</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
         <div class="modal-body ">
@@ -41,7 +41,7 @@
             @csrf
             <div class="form-group row">
               <div class="col-2"></div>
-              <label for="recupient-input" class="col-3 col-form-label">Nombre de lote</label>
+              <label for="recupient-input" class="col-3 col-form-label">Nombre de lista</label>
               <div class="col-xl-4 col-md-6 col-6">
                 <input class="form-control" type="text" name="name" placeholder="Batch name" required id="temaplate-name">
               </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar lote</button>
+            <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar lista</button>
           </form>
           
           <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
@@ -65,22 +65,22 @@
 
   @if (count($batches) >= 1)          
       
-    {{-- Modal 2 --}}
+    {{-- Modal 2 Contacts --}}
     <div class="col-xl-4 col-md-12 col-12">
       <!-- small box -->
       <div class="small-box bg-info">
         <div class="inner">
           <h3>Contactos</h3>
-          <p>Añadir contactos</p>
+          <p>Agregar contactos</p>
         </div>
         <div class="icon">
           <i class="fa fa-address-card"></i>
         </div>
-        <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Agregar contacto a lote <i class="fa fa-arrow-right"></i></a>
+        <a href="#contact-modal" class="small-box-footer" data-target="#contact-modal" data-toggle="modal">Agregar a lista de contactos <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
   
-    {{-- Modal body --}}
+    {{-- Modal body Contacts --}}
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="contact-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -96,7 +96,7 @@
               {{-- <input type="hidden" name="item_list_id" value="{{ $account->id }}"> --}}
               <div class="form-group row">
                 <div class="col-2"></div>
-                <label for="recupient-input" class="col-3 col-form-label">Nombre de lote</label>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre de lista</label>
                 <div class="col-xl-4 col-md-6 col-6">                      
                   <select class="form-control" name="item_list_id" id="">
                     <option value=""></option>                        
@@ -144,7 +144,7 @@
             @csrf
             <div class="form-group row">
               <div class="col-2"></div>
-              <label for="recupient-input" class="col-3 col-form-label">Nombre de lote</label>
+              <label for="recupient-input" class="col-3 col-form-label">Nombre de lista</label>
               <div class="col-xl-4 col-md-6 col-6">                      
                 <select class="form-control  mt-5" name="item_list_id" id="">
                   <option value=""></option>                        
@@ -178,7 +178,7 @@
       </div>
     </div>
 
-    {{-- Modal 3 --}}
+    {{-- Modal 3 Message --}}
     <div class="col-xl-4 col-md-12 col-12">
       <div class="small-box bg-warning">
         <div class="inner">              
@@ -188,12 +188,12 @@
         <div class="icon">
           <i class="fa fa-window-maximize"></i>
         </div>
-        <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Enviar mensajes a lote con contactos <i class="fa fa-arrow-right"></i></a>
+        <a href="#send-messages-modal" class="small-box-footer" data-target="#send-messages-modal" data-toggle="modal">Enviar mensajes a lista de contactos <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
   
   
-    {{-- Modal body --}}
+    {{-- Modal body Message --}}
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="send-messages-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -207,7 +207,7 @@
               @csrf
               <div class="form-group row">
                 <div class="col-2"></div>
-                <label for="recupient-input" class="col-3 col-form-label">Nombre de lote</label>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre de lista</label>
                 <div class="col-xl-4 col-md-6 col-6">                  
                   <select class="form-control" name="item_list_id" id="">
                     <option value=""></option>
@@ -229,9 +229,6 @@
               <label for="text-message" class="col-3 col-form-label">Mensaje</label>
               <div class="col-xl-4 col-md-6 col-6">
                 <textarea class="form-control" rows="5" placeholder="Escribe tu mensaje" required name="texto_personalizado" id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                {{-- <p id="letters">
-                  Partes del mensaje: 1, 
-                  Caracteres: 0 </p> --}}
               </div>
             </div>
           </div>
@@ -246,14 +243,13 @@
         </div>
       </div>
     </div>
-    {{-- </div> --}}
 
   @endif
 
   <div class="col-12">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Lista de lotes</h3>
+        <h3 class="box-title">Listas de Contactos</h3>
       </div>
       <div class="box-body">
 
@@ -262,7 +258,7 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Nombre de lote</th>
+              <th>Nombre de lista</th>
               <th>Creado</th>
               <th>Acciones</th>
             </tr>
@@ -270,7 +266,7 @@
           <tfoot>
             <tr>
               <th>#</th>
-              <th>Nombre de lote</th>
+              <th>Nombre de lista</th>
               <th>Creado</th>
               <th>Acciones</th>
             </tr>
@@ -285,13 +281,69 @@
                 <td>{{ $batch->created_at }}</td>
                 <td> 
                   <div class="btn-group">
-                    {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button> --}}
-                    <a href="{{ url('/user/contactlist/' . $batch->id) }}" class="btn btn-info mx-5"><i class="fa fa-users" aria-hidden="true"></i> Ver contactos</a>
+                    {{-- <a href="{{ url('/user/contactlist/' . $batch->id) }}" class="btn btn-info mx-5"><i class="fa fa-users" aria-hidden="true"></i> Ver contactos</a> --}}
+
+                    {{-- btn modal --}}
+                    <a class="btn btn-info mx-5" href="#viewContact-{{ $batch->id }}" class="small-box-footer" data-target="#viewContact-{{ $batch->id }}" data-toggle="modal"><i class="fa fa-users" aria-hidden="true"></i> Ver contactos</a>
+
+                    {{-- Modal body Contacts --}}
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="viewContact-{{ $batch->id }}" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="myLargeModalLabel">Agregar contacto lista ID: {{ $batch->id }}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                          </div>
+                          
+                          <div class="modal-body ">   
+                            <table id="table_template" class="table table-bordered table-striped table-responsive">             
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Nombre</th>
+                                  <th>Número</th>
+                                </tr>
+                              </thead>
+                              <tfoot>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Nombre</th>
+                                  <th>Número</th>
+                                </tr>
+                              </tfoot>
+                  
+                              <tbody>
+                                <tr>
+                                  <td>{{ $batch->id }}</td>
+                                  <td>{{ $batch->name }}</td>
+                                  <td>{{ $batch->created_at }}</td>
+                                </tr>
+                              <tbody>
+                            </table>
+
+                            </div>
+
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                              <button type="submit" class="btn btn-info float-right" onclick="ok()">Agregar contacto</button>
+                              <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right mx-5" onclick="limpiar_agregarContacto();">Limpiar</button>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
                     <form action="{{ url('/user/deletebatch/' . $batch->id) }}" method="post">
                       @csrf
                       <button type="submit" class="btn btn-danger mx-5" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button> 
                     </form>
-                    </div>
+                  </div>
                 </td>
               </tr>
             @endforeach

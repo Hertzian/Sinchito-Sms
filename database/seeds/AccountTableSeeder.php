@@ -12,9 +12,14 @@ class AccountTableSeeder extends Seeder
      */
     public function run()
     {
-        $chenson = new Account();
-        $chenson->user_id = '1';
-        $chenson->save();
+        $account = Account::create([
+            'user_id' => '1',
+            'type' => 'normal',
+            'price' => '.1',
+            'message_limit' => '100',
+            'balance' => '10',
+            'status' => '1'
+        ]);
         
     }
 }

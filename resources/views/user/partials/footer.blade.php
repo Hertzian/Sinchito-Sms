@@ -10,7 +10,7 @@
             </li>
         </ul> --}}
     </div>
-    <a href="https://www.tutofrutti.com">Eduardo Aguilar</a> &copy; 2019 
+    <a href="https://eduardoaguilar.dev/">Eduardo Aguilar</a> &copy; {{ date('Y') }}
 </footer>
 
 <!-- ./wrapper -->

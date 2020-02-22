@@ -20,6 +20,7 @@ Auth::routes();
 
 // Route::get('/', 'HomeController@index');
 
+// Admin***********************
 Route::prefix('admin')->group(function () {
   Route::get('/profile', 'admin\AdminController@profileView');
   // **********************************
@@ -40,11 +41,13 @@ Route::prefix('admin')->group(function () {
   Route::post('/statusaccount/{id}', 'admin\AccountsController@statusAccount');
 });
 
+// Users******************************
 Route::prefix('user')->middleware('auth')->group(function(){
   // Home
   Route::get('/', 'user\UsersController@dashboard')->name('dashboard');
   // Profile
   Route::get('/profile', 'user\UsersController@getProfileView');
+  Route::post('/updateprofile', 'user\UsersController@updateProfile');
   // Single SMS
   Route::get('/single','user\ItemsController@sendSingleSMSView');
   Route::post('/single', 'user\ItemsController@sendSingleSMS');
