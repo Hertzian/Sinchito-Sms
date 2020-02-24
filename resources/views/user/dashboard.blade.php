@@ -33,7 +33,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-success"><i class="fas fa-mail-bulk"></i></span>
                                 <div class="info-box-content box-body">
-                                    <h3 class="box-title">Envia un lote de SMS</h3>
+                                    <h3 class="box-title">SMS a tus contactos</h3>
                                     <p>
                                         Envia un SMS a mutiples contactos
                                     </p>

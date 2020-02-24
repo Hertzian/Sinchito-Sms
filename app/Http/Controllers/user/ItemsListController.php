@@ -34,7 +34,7 @@ class ItemsListController extends Controller
     public function getBatches(){    
         $user = Auth::user();
         $account = Account::find($user->id);
-        $batches = ItemList::where('account_id', $user->id)->get();
+        $batches = ItemList::where('account_id', $user->id)->paginate(15);
 
         $items = Item::select('name', 'number')
             ->where('item_list_id', '=' )
@@ -167,9 +167,9 @@ class ItemsListController extends Controller
         return redirect('/user/')->with('message', $message);
     }
 
-    public function sendBatchSMS(Request $request, $id){
+    public function sendBatchSMS(Request $request, $accountId){
 
-        $account = Account::find($id);
+        $account = Account::find($accountId);
         $batchId = $request->input('item_list_id');
         $numbers = Item::where('item_list_id', $batchId)->pluck('number');
         $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
@@ -209,11 +209,25 @@ class ItemsListController extends Controller
         }else{
             $error = 'No cuentas con saldo disponible para enviar mensajes';
 
-            return redirect('/user/')->with('error', $error);
+            return redirect('/user/getlist')->with('error', $error);
         }
 
-        return redirect('/user/')->with('message', $message);
+        return redirect('/user/getitems/' . $batchId)->with('message', $message);
 
+    }
+
+    public function editContactListName(Request $request, $contactListId){
+        $batch = ItemList::find($contactListId);
+
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $batch->name = $request->input('name');
+        $batch->account_id = $request->input('account_id');
+        $batch->update();
+
+        return redirect('/user/getlist')->with('message', 'El nombre de la lista se editó correctamente');
     }
 
     public function deleteBatch($id){        

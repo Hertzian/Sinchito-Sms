@@ -30,18 +30,19 @@ class ItemsController extends Controller
         $this->sender = '12345';
     }
     
-    public function getBatch($id){
-        $batch = ItemList::find($id);
+    public function getBatch($contactListId){
+        $batch = ItemList::find($contactListId);
         $items = Item::where('item_list_id', $batch->id)->get();
 
-        return view('user.item.getitemlist',[
+        return view('user.contact.getcontacts',[
             'batch' => $batch,
             'items' => $items
         ]);
     }
 
-    public function newItem(Request $request, $id){
-        $itemlist = ItemList::find($id);
+    public function newItem(Request $request, $listId){
+        $itemlist = ItemList::find($listId);
+
         $item = new Item();
 
         $item->name = $request->input('name');
@@ -56,12 +57,12 @@ class ItemsController extends Controller
 
         $item->save();
 
-        return redirect('user/getlist')
-            ->with('message', 'El contacto se ha creado con éxito');
+        return redirect('user/getitems/' . $item->item_list_id)
+            ->with('message', 'El contacto se ha agregado con éxito');
     }
 
     public function sendSingleSMSView(){
-        return view('user.item.single');
+        return view('user.contact.single');
     }
 
     public function sendSingleSMS(Request $request){
@@ -114,11 +115,11 @@ class ItemsController extends Controller
         return redirect('user/')->with('message', $message);
     }
 
-    public function deleteItem($id){
-        $item = Item::find($id);
+    public function deleteItem($contactId){
+        $item = Item::find($contactId);
 
         $item->delete();
 
-        return redirect('user/getlist')->with('message', 'El contacto se ha eliminado con éxito');
+        return redirect('user/getitems/' . $item->item_list_id)->with('message', 'El contacto se ha eliminado con correctamente');
     }
 }

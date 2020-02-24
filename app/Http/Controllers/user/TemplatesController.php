@@ -19,7 +19,7 @@ class TemplatesController extends Controller
         $user = Auth::user();
         $account = Account::find($user->id);
         $batches = ItemList::where('account_id', $user->id)->get();
-        $templates = Template::where('account_id', $user->id)->get();
+        $templates = Template::where('account_id', $user->id)->paginate(15);
 
         return view('user.templates.getTemplates', [
             'account' => $account,
@@ -68,8 +68,8 @@ class TemplatesController extends Controller
         return redirect('/user/gettemplates')->with('message', 'La plantilla se ha editado con éxito');
     }
 
-    public function deleteTemplate($id){
-        $template = Template::find($id);
+    public function deleteTemplate($templateId){
+        $template = Template::find($templateId);
 
         $template->delete();
 

@@ -52,20 +52,22 @@ Route::prefix('user')->middleware('auth')->group(function(){
   Route::get('/single','user\ItemsController@sendSingleSMSView');
   Route::post('/single', 'user\ItemsController@sendSingleSMS');
   // Item
-  Route::get('/newitem/{id}', 'user\ItemsController@newItemView');
-  Route::post('/newitem/{id}', 'user\ItemsController@newItem');
-  Route::get('/getitems/{id}', 'user\ItemsController@getBatch');
+  Route::get('/newitem/{listId}', 'user\ItemsController@newItemView');
+  Route::post('/newitem/{listId}', 'user\ItemsController@newItem');
+  Route::get('/getitems/{contactListId}', 'user\ItemsController@getBatch');
   Route::get('/contactlist/{id}', 'user\ItemsController@getContact');
-  Route::post('/deleteitem/{id}', 'user\ItemsController@deleteItem');
+  Route::post('/deleteitem/{contactId}', 'user\ItemsController@deleteItem');
   // Batches
   Route::get('/getlist', 'user\ItemsListController@getBatches');
   Route::get('/newlist/{id}', 'user\ItemsListController@newBatchView');
   Route::get('/contactlist/{id}', 'user\ItemsListController@getContacts');
   Route::post('/newlist/{id}', 'user\ItemsListController@newBatch');
-  Route::post('/send/{id}', 'user\ItemsListController@sendBatchSMS');
+  Route::post('/send/{accountId}', 'user\ItemsListController@sendBatchSMS');
   Route::post('/deletebatch/{id}', 'user\ItemsListController@deleteBatch');
   Route::post('/newcsv/{id}', 'user\ItemsListController@newCSVBatch');
   Route::post('/sendtemplate/{id}', 'user\ItemsListController@sendTemplate');
+  // Contacts
+  Route::post('/contact-list-name/{contactListId}', 'user\ItemsListController@editContactListName');
   // Message 
   Route::get('/message','user\MessageListController@MessageListView');
   Route::get('/messageItem','user\MessageListController@MessageItemView');
@@ -73,11 +75,13 @@ Route::prefix('user')->middleware('auth')->group(function(){
   Route::get('/sendmessagelist','user\MessageListController@SendListView');
   Route::get('/getsenditems/{id}','user\MessageListController@SendItemsView');
 
+  
+
   // Templates
   Route::get('/gettemplates', 'user\TemplatesController@getTemplatesView');
   Route::post('/newtemplate', 'user\TemplatesController@newTemplate');
   Route::post('/edittemplate/{id}', 'user\TemplatesController@editTemplate');
-  Route::post('/deletetemplate/{id}', 'user\TemplatesController@deleteTemplate');
+  Route::post('/deletetemplate/{templateId}', 'user\TemplatesController@deleteTemplate');
 });
 
 // Route::get('/nuevavista', 'SmsController@vista');

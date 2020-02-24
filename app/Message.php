@@ -11,6 +11,6 @@ class Message extends Model
     ];
 
     public function message_list(){
-        return $this->hasOne('App/MessageList', 'message_list_id');
+        return $this->hasOne('App\MessageList', 'message_list_id');
     }
 }

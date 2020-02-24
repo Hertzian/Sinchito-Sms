@@ -12,7 +12,7 @@ class Account extends Model
     ];
 
     public function item_list(){
-        return $this->hasMany('App/ItemList', 'account_id');
+        return $this->hasMany('App\ItemList', 'account_id');
     }
 
     public function user(){
@@ -20,6 +20,6 @@ class Account extends Model
     }
 
     public function message_list(){
-        return $this->hasMany('App/MessageList', 'account_id');
+        return $this->hasMany('App\MessageList', 'account_id');
     }
 }

@@ -60,6 +60,7 @@
             <table id="table_template" class="table table-bordered table-striped table-responsive">
               <thead>
                 <tr>
+                  <th>#</th>
                   <th>Nombre de plantilla</th>
                   <th>Contenido</th>
                   <th>Creado</th>
@@ -68,6 +69,7 @@
               </thead>
               <tfoot>
                 <tr>
+                  <th>#</th>
                   <th>Nombre de plantilla</th>
                   <th>Contenido</th>
                   <th>Creado</th>
@@ -78,64 +80,96 @@
                 @if (count($templates) >= 1)
                 @foreach ($templates as $template)                      
                     <tr>
+                      <td>{{ $template->id }}</td>
                       <td>{{ $template->name }}</td>
-                      <td>{{ $template->template }}</td>
+                      <td>{{ $template->content }}</td>
                       <td>{{ $template->created_at }}</td>
                       <td> 
                         <div class="btn-group">
+
+                          {{-- edit template button --}}
                           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal{{ $template->id }}" href="#edit-modal" >Editar <i class="fa fa-pencil" aria-hidden="true"></i></button>
-                          <form action="{{ url('/user/deletetemplate/' . $template->id) }}" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-danger mx-5" id="sa-warning" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i></button>
-                          </form>
-                          {{-- Modal ************************************** --}}
-                          <!-- Contenido de Modal Editar plantilla  -->
-                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal{{ $template->id }}" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog modal-lg">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h4 class="modal-title" id="myLargeModalLabel">Editar plantilla</h4>
-                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                          {{-- delete template button --}}
+                          <a href="#" class="btn btn-danger" data-target="#deleteTemplate-{{ $template->id }}" data-toggle="modal">Eliminar <span class="pull-right badge bg-danger"><i class="fa fa-remove" aria-hidden="true"></i> </span></a>
+
+                          <!-- edit template modal  -->
+                          <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="edit-modal{{ $template->id }}" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="myLargeModalLabel">Editar plantilla</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body ">
+                                  <form action="{{ url('/user/edittemplate/' . $template->id) }}" method="post" class="">
+                                    @csrf
+                                    <div class="form-group row">
+                                      <div class="col-2"></div>
+                                      <label for="recupient-input" class="col-3 col-form-label">Nombre de plantilla</label>
+                                      <div class="col-xl-4 col-md-6 col-6">
+                                        <input name="name" class="form-control" type="text" value="{{ $template->name }} " placeholder="Template name" required id="temaplate-name">
+                                      </div>
                                     </div>
-                                    <div class="modal-body ">
-                                      <form action="{{ url('/user/edittemplate/' . $template->id) }}" method="post" class="">
-                                        @csrf
-                                        <div class="form-group row">
-                                          <div class="col-2"></div>
-                                          <label for="recupient-input" class="col-3 col-form-label">Nombre de plantilla</label>
-                                          <div class="col-xl-4 col-md-6 col-6">
-                                            <input name="name" class="form-control" type="text" value="{{ $template->name }} " placeholder="Template name" required id="temaplate-name">
-                                          </div>
+                                    <div class="form-group row">
+                                      <div class="col-2"></div>
+                                        <label for="text-message" class="col-3 col-form-label">Contenido</label>
+                                        <div class="col-xl-4 col-md-6 col-6">
+                                          <textarea name="content" class="form-control" rows="5" placeholder="Enter ..." required id="texto_personalizado" onkeyup="valTextMessage(this);">{{ $template->content }}</textarea><br>
+                                          <p id="letters">Message, Characters: 0 </p>
                                         </div>
-                                        <div class="form-group row">
-                                          <div class="col-2"></div>
-                                            <label for="text-message" class="col-3 col-form-label">Contenido</label>
-                                            <div class="col-xl-4 col-md-6 col-6">
-                                              <textarea name="content" class="form-control" rows="5" placeholder="Enter ..." required id="texto_personalizado" onkeyup="valTextMessage(this);">{{ $template->content }}</textarea><br>
-                                              <p id="letters">Message, Characters: 0 </p>
-                                            </div>
-                                        </div>
-                                        
                                     </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
-                                          <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar plantilla</button>
-                                          <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
-                                        </div>
-                                      </form>
+                                </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                                      <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar plantilla</button>
+                                      <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
                                     </div>
-                                  </div>
+                                  </form>
                                 </div>
                               </div>
+                          </div>
+                        </div>
                           {{-- /Modal *********************************************--}}
+
+                        {{-- Delete template modal --}}
+                        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="deleteTemplate-{{ $template->id }}" aria-labelledby="deleteTemplate" aria-hidden="true" style="display: none;">
+                          <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+  
+                              <div class="modal-header">
+                              <h4 class="modal-title" id="myLargeModalLabel">Eliminar: {{ $template->name }}</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                              </div>
+                              
+                              <div class="modal-body ">   
+                              <p>¿Estas seguro de querer eliminar la plantilla de forma permanente?</p>
+                              <p>Esta acción no se puede deshacer.</p>
+  
+                              
+                              </div>
+  
+                              <div class="modal-footer">
+
+                              <form action="{{ url('/user/deletetemplate/' . $template->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-danger mx-5 float-right" onclick="deleteElement()"><i class="fa fa-remove" aria-hidden="true"></i> Sí, eliminar</button>
+                              </form>
+
+                              <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                              </div>
+                          </div>
+                          </div>
+                        </div>
                           
                         </div>
                       </td>
                     </tr>
                     @endforeach
                   @else
-                    <td>No hay plantillas registradas aún :(</td>
-                    <td></td>
+                    <td>No hay plantillas registradas aún</td>
+                    <td><i class="fa fa-grav font-size-40"></i></td>
                     <td></td>
                     <td></td>
                   @endif

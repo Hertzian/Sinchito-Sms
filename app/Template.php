@@ -12,6 +12,6 @@ class Template extends Model
     ];
 
     public function account(){
-        return $this->hasOne('App/Account', 'account_id');
+        return $this->hasOne('App\Account', 'account_id');
     }
 }
