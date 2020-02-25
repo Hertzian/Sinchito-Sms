@@ -36,6 +36,8 @@ class ItemsListController extends Controller
         $account = Account::find($user->id);
         $batches = ItemList::where('account_id', $user->id)->paginate(15);
 
+        // dd($account);
+
         $items = Item::select('name', 'number')
             ->where('item_list_id', '=' )
             ->get();

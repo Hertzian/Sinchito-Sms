@@ -9,7 +9,7 @@
 <div class="row">
 
   {{-- Modal 1 New list --}}
-  <div class="col-xl-4 col-md-12 col-12">
+  <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
     <div class="small-box bg-success">
       <div class="inner">
         <h3>{{ count($batches) }}</h3>
@@ -66,7 +66,7 @@
   @if (count($batches) >= 1)          
       
     {{-- Modal 2 Contacts --}}
-    <div class="col-xl-4 col-md-12 col-12">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
       <!-- small box -->
       <div class="small-box bg-info">
         <div class="inner">
@@ -179,7 +179,7 @@
     </div>
 
     {{-- Modal 3 Message --}}
-    <div class="col-xl-4 col-md-12 col-12">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
       <div class="small-box bg-warning">
         <div class="inner">              
           <h3>Mensajes</h3>
@@ -236,6 +236,82 @@
               <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
             <button type="submit" class="btn btn-success float-right" onclick="ok()">Enviar</button>
             <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right" onclick="limpiar_template();">Limpiar</button>
+          </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    {{-- Modal 4 Template --}}
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+      <div class="small-box bg-primary">
+        <div class="inner">              
+          <h3>Plantillas</h3>
+          <p>Plantillas de mensajes</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-copy"></i>
+        </div>
+        <a href="#send-messages-modal" class="small-box-footer" data-target="#send-template-modal" data-toggle="modal">Enviar mensajes con plantilla <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </div>
+    
+    {{-- Modal 4 body Template --}}
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="send-template-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myLargeModalLabel">Plantillas personalizadas</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+
+          <div class="modal-body ">            
+            <form action="{{ url('/user/send/' . $account->id) }}" method="post" class="">
+              @csrf
+              <div class="form-group row">
+                <div class="col-2"></div>
+                <label for="recupient-input" class="col-3 col-form-label">Nombre de lista</label>
+                <div class="col-xl-4 col-md-6 col-6">                  
+                  <select class="form-control" name="item_list_id">
+                    <option value=""></option>
+                    
+                    @if (count($batches) >= 1)
+                      @foreach ($batches as $batch)
+                        <option value="{{ $batch->id }}">{{ $batch->name }}</option>          
+                      @endforeach
+                    @else
+                      <option value="">No hay listas registradas aún</option>
+                    @endif
+
+                  </select>
+                </div>
+              </div>
+
+            <div class="form-group row">
+              <div class="col-2"></div>
+              <label for="text-message" class="col-3 col-form-label">Plantillas</label>
+              <div class="col-xl-4 col-md-6 col-6">                  
+                <select class="form-control" name="item_list_id">
+                  <option value=""></option>
+                  
+                  @if (count($account->template) >= 1)
+                    @foreach ($account->template as $template)
+                      <option value="{{ $template->id }}">{{ $template->name }}</option>          
+                    @endforeach
+                  @else
+                    <option value="">No hay plantillas registradas</option>
+                  @endif
+
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success float-right" onclick="ok()">Enviar</button>
           </form>
           </div>
 
