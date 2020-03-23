@@ -49,13 +49,13 @@ class ItemsListController extends Controller
         ]);
     }
 
-    public function newBatchView($id){
-        $account = Account::find($id);
+    // public function newBatchView($id){
+    //     $account = Account::find($id);
 
-        return view('user.itemlist.newitemlist',[
-            'account' => $account
-        ]);
-    }
+    //     return view('user.itemlist.newitemlist',[
+    //         'account' => $account
+    //     ]);
+    // }
 
     public function newBatch(Request $request, $id){
         $account = Account::find($id);
@@ -71,7 +71,7 @@ class ItemsListController extends Controller
         $batch->save();
 
         return redirect('/user/getlist')
-        ->with('message', 'El batch se ha creado con éxito');
+        ->with('message', 'La lista se ha creado con éxito');
     }
 
     public function newCSVBatch(Request $request, $id){
@@ -92,7 +92,6 @@ class ItemsListController extends Controller
 
         $file = Storage::get($path);
         $arr = str_getcsv($file, ',');
-           
             
         for ($i=0; $i < count($arr); $i++) { 
             $item = new Item();
@@ -105,8 +104,8 @@ class ItemsListController extends Controller
     }
 
 
-    public function sendTemplate(Request $request, $id){
-        $account = Account::find($id);
+    public function sendTemplate(Request $request, $accountId){
+        $account = Account::find($accountId);
         $batchId = $request->input('item_list_id');
 
         $name = Item::where('item_list_id', $batchId)->pluck('name');
@@ -114,6 +113,10 @@ class ItemsListController extends Controller
         $numCount = Item::where('item_list_id', $batchId)->pluck('item_list_id');
         $texto = $request->input('template_id');
         $template = Template::find($texto);
+
+        $this->validate($request, [
+            'template_id' => 'required'
+        ]);
 
         $client = new Client($this->splan, $this->token);
 
@@ -147,6 +150,7 @@ class ItemsListController extends Controller
 
                 $batchSMS = new MessageList();
                 $batchSMS->name = $batchID;
+                $batchSMS->body = $template->content;
                 $batchSMS->account_id = $account->id;
                 $batchSMS->save();
 
@@ -154,7 +158,7 @@ class ItemsListController extends Controller
                 $account->balance = $account->balance - (count($number) * $account->price);
                 $account->update();
 
-                $message = 'El ID que se dio al batch es: ' . $batchID;
+                $message = 'El ID que se dio a la lista es: ' . $batchID;
 
             } catch (Exception $ex) {
 
@@ -163,10 +167,10 @@ class ItemsListController extends Controller
         }else{
             $error = 'No cuentas con saldo disponible para enviar mensajes';
 
-            return redirect('/user/')->with('error', $error);
+            return redirect('/user/getlist')->with('error', $error);
         }
 
-        return redirect('/user/')->with('message', $message);
+        return redirect('/user/getlist')->with('message', $message);
     }
 
     public function sendBatchSMS(Request $request, $accountId){
@@ -194,6 +198,7 @@ class ItemsListController extends Controller
 
                 $batchSMS = new MessageList();
                 $batchSMS->name = $batchID;
+                $batchSMS->body = $texto;
                 $batchSMS->account_id = $account->id;
                 $batchSMS->save();
 
@@ -201,7 +206,7 @@ class ItemsListController extends Controller
                 $account->balance = $account->balance - (count($numbers) * $account->price);
                 $account->update();
 
-                $message = 'El ID que se dio al batch es: ' . $batchID;
+                $message = 'El ID que se dio a la lista es: ' . $batchID;
                 
             } catch (Exception $ex) {
 
@@ -237,16 +242,16 @@ class ItemsListController extends Controller
         $batch->delete();
 
         return redirect('/user/getlist')
-        ->with('message', 'El batch se ha eliminado con éxito');;
+        ->with('message', 'La lista se ha eliminado con éxito');;
     }
 
-    public function getContacts($id){
-        $batch = ItemList::find($id);
-        $items = Item::where('item_list_id', $batch->id)->get();
+    // public function getContacts($id){
+    //     $batch = ItemList::find($id);
+    //     $items = Item::where('item_list_id', $batch->id)->get();
 
-        return view('user.itemlist.contactList',[
-            'batch' => $batch,
-            'items' => $items
-        ]);
-    }
+    //     return view('user.itemlist.contactList',[
+    //         'batch' => $batch,
+    //         'items' => $items
+    //     ]);
+    // }
 }

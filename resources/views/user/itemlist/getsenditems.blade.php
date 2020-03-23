@@ -2,35 +2,37 @@
 
 @section('title')
   <h1>Lista de Envíos</h1>
-  <a href="{{ url('/user/sendmessagelist') }}" class="btn btn-success mb-5">Regresar</a>
-@endsection
-
-@section('content')
+  @endsection
+  
+  @section('content')
+  <a href="{{ url('/user/sendmessagelist') }}" class="btn btn-secondary mb-5"><i class="fas fa-chevron-left"></i> Regresar</a>
     
 <div class="row">
   {{-- Modal 1 --}}
-  <div class="col-xl-4 col-md-12 col-12">
+  <div class="col-xl-6 col-md-12 col-12">
     <div class="small-box bg-primary">
       <div class="inner">
-        <h4>Contenido:</h4>
+        <h4>Mensaje:</h4>
           <p>{{ $content }}</p>              
       </div>
       
       <div class="icon">
-        <i class="fa fa-address-book"></i>
+        {{-- <i class="fa fa-address-book"></i> --}}
       </div>
-        <a href="#box" class="small-box-footer"><i class="fa fa-arrow-down"></i></a>
+      <span class="small-box-footer">
+        <i class="fa fa-envelope"></i>
+      </span>
     </div>
   </div>
 
   <div class="col-12">
     <div id="box" class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Lista de lotes</h3>
+        <h3 class="box-title">Contactos a los que se envió el mensaje</h3>
       </div>
       <div class="box-body">
 
-        @if (count($contacts) >= 1)  
+        @if (count($messages) >= 1)  
         <table id="table_template" class="table table-bordered table-striped table-responsive">
           <thead>
             <tr>
@@ -51,11 +53,11 @@
 
           <tbody>
                             
-            @foreach ($contacts as $contact)
+            @foreach ($messages as $message)
               <tr>
-                <td>{{ $id }}</td>
-                <td>{{ $contact }}</td>
-                <td>{{ $batch->created_at }}</td>
+                <td>{{ $message->id }}</td>
+                <td>{{ $message->recipient }}</td>
+                <td>{{ $message->created_at }}</td>
                 <td> 
                   <div class="btn-group">
                     {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button> --}}
@@ -71,9 +73,11 @@
 
         @else
           <div class="text-center">
-            <i class="fa fa-grav font-size-70"></i><br><br>
-            ¡No hay listas elementos enviados aún! <br>
+            <i class="fa fa-grav font-size-70"></i>
           </div>   
+          <div class="text-center">
+            ¡No hay envíos registrados aún!
+          </div>
         @endif
 
           </tbody>

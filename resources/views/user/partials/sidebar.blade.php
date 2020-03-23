@@ -34,7 +34,7 @@
                 </a>
             </li>
 
-            <li class="treeview">
+            {{-- <li class="treeview">
                 <a href="#">
                     <i class="fas fa-envelope"></i>
                     <span>SMS</span>
@@ -45,14 +45,26 @@
                     <li><a href="{{ url('/user/single') }}"><i class="fa fa-envelope"></i>SMS Simple</a></li>
                     <li><a href="{{ url('/user/gettemplates') }}"><i class="fa fa-copy"></i>Plantilla</a></li>
                 </ul>
+            </li> --}}
+            
+            <li>
+                <a href="{{ url('/user/single') }}">
+                    <i class="fa fa-envelope"></i> SMS Simple</a>
             </li>
 
             <li>
-                <a href="{{ url('/user/getlist') }}"><i class="fas fa-user-friends"></i> Contactos</a>
+                <a href="{{ url('/user/gettemplates') }}">
+                    <i class="fa fa-copy"></i> Plantilla</a>
             </li>
 
             <li>
-                <a href="{{ url('/user/sendmessagelist') }}"><i class="fas fa-list-alt"></i> Lista de Envíos</a>
+                <a href="{{ url('/user/getlist') }}">
+                    <i class="fas fa-user-friends"></i> Contactos</a>
+            </li>
+
+            <li>
+                <a href="{{ url('/user/sendmessagelist') }}">
+                    <i class="fas fa-list-alt"></i> Lista de Envíos</a>
             </li>
 
         </ul>

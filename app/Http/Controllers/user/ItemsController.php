@@ -31,10 +31,13 @@ class ItemsController extends Controller
     }
     
     public function getBatch($contactListId){
+        $user = Auth::user();
+        $account = Account::find($user->id);
         $batch = ItemList::find($contactListId);
         $items = Item::where('item_list_id', $batch->id)->get();
 
         return view('user.contact.getcontacts',[
+            'account' => $account,
             'batch' => $batch,
             'items' => $items
         ]);
@@ -92,6 +95,7 @@ class ItemsController extends Controller
 
                 $batchSMS = new MessageList();
                 $batchSMS->name = $batchID;
+                $batchSMS->body = $texto;
                 $batchSMS->account_id = $account->id;
                 $batchSMS->save();
 

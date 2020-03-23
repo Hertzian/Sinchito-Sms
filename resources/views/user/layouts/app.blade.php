@@ -61,9 +61,10 @@
 </div>
 
 
+</div>
 @include('user.partials.footer')
 
-@include('user.partials.controlsidebar')
+{{-- @include('user.partials.controlsidebar') --}}
 
 
 

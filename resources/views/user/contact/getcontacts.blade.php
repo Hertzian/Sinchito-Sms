@@ -9,7 +9,7 @@
     <a href="{{ url('/user/getlist') }}" class="btn btn-secondary mb-5"><i class="fas fa-chevron-left"></i> Regresar</a>
     <div class="row">
         {{-- Add Contact button --}}
-        <div class="col-xl-4 col-md-12 col-12">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
@@ -23,12 +23,12 @@
                 <div class="icon">
                     <i class="fa fa-user"></i>
                 </div>
-                <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Nueva Contacto<i class="fa fa-arrow-right"></i></a>
+                <a href="#add-modal" class="small-box-footer" data-target="#add-modal" data-toggle="modal">Nuevo Contacto<i class="fa fa-arrow-right"></i></a>
             </div>
         </div>
 
         @if (count($items) != 0)
-            <div class="col-xl-4 col-md-12 col-12">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
             <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
@@ -38,14 +38,14 @@
                     <div class="icon">
                         <i class="fa fa-envelope"></i>
                     </div>
-                    <a href="#add-modal" class="small-box-footer" data-target="#sendSms-modal" data-toggle="modal">Nueva Contacto<i class="fa fa-arrow-right"></i></a>
+                    <a href="#add-modal" class="small-box-footer" data-target="#sendSms-modal" data-toggle="modal">Envía SMS´s<i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
             {{-- SMS Template button --}}
-            <div class="col-xl-4 col-md-12 col-12">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                 <!-- small box -->
-                <div class="small-box bg-info">
+                <div class="small-box bg-primary">
                     <div class="inner">
                         <h3>Plantilla</h3>
                             <p>Utiliza una plantilla</p>
@@ -53,7 +53,7 @@
                     <div class="icon">
                         <i class="fas fa-copy"></i>
                     </div>
-                    <a href="#add-modal" class="small-box-footer" data-target="#sendTemplate-modal" data-toggle="modal">Nueva Contacto<i class="fa fa-arrow-right"></i></a>
+                    <a href="#add-modal" class="small-box-footer" data-target="#sendTemplate-modal" data-toggle="modal">SMS´s con plantilla<i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
         @endif
@@ -91,7 +91,7 @@
                             <div class="col-2"></div>
                             <label for="number" class="col-3 col-form-label">Numero</label>
                             <div class="col-xl-4 col-md-6 col-6">
-                                <input class="form-control" type="number" id="number" name="number" placeholder="Numero" required >
+                                <input class="form-control" type="text" id="number" name="number" placeholder="Numero" required >
                             </div>
                         </div>
                 </div>
@@ -148,28 +148,32 @@
                 </div>
              
                 <div class="modal-body ">
-                <form action="{{ url('/user/newitem/' . $batch->id) }}" method="post">
+                <form action="{{ url('/user/sendtemplate/' . $account->id) }}" method="post">
                     @csrf
+                        {{-- <input type="hidden" name="account_id" value="{{ $account->id }}"> --}}
+                        <input type="hidden" name="item_list_id" value="{{ $batch->id }}">
                         <div class="form-group row">
                             <div class="col-2"></div>
-                            <label for="name" class="col-3 col-form-label">Nombre</label>
-                            <div class="col-xl-4 col-md-6 col-6">
-                                <input type="hidden" name="item_list_id" value="{{ $batch->id }}">  
-                                <input class="form-control" type="text" id="name" name="name" placeholder="Nombre de contacto" required >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-2"></div>
-                            <label for="number" class="col-3 col-form-label">Numero</label>
-                            <div class="col-xl-4 col-md-6 col-6">
-                                <input class="form-control" type="number" id="number" name="number" placeholder="Numero" required >
+                            <label for="text-message" class="col-3 col-form-label">Plantillas</label>
+                            <div class="col-xl-4 col-md-6 col-6">                  
+                                <select class="form-control" name="template_id">
+                                <option value="">Selecciona una plantilla</option>
+                                
+                                @if (count($account->template) >= 1)
+                                    @foreach ($account->template as $template)
+                                    <option value="{{ $template->id }}">{{ $template->name }}</option>          
+                                    @endforeach
+                                @else
+                                    <option value="">No hay plantillas registradas</option>
+                                @endif
+
+                                </select>
                             </div>
                         </div>
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar Lista</button>
-                        <button type="button" class="btn btn-warning float-right" onclick="limpiar_newitem();">Limpiar</button>
+                        <button type="submit" class="btn btn-info float-right" onclick="ok()">Enviar</button>
                     </div>
                 </form>
             </div>

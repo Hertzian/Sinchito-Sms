@@ -30,7 +30,7 @@
   <div class="col-12">
     <div id="box" class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Lista de lotes</h3>
+        <h3 class="box-title">Lista de envíos</h3>
       </div>
       <div class="box-body">
 
@@ -39,7 +39,8 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Nombre de lote</th>
+              <th>Identificador</th>
+              <th>Contenido</th>
               <th>Creado</th>
               <th>Acciones</th>
             </tr>
@@ -47,7 +48,8 @@
           <tfoot>
             <tr>
               <th>#</th>
-              <th>Nombre de lote</th>
+              <th>Identificador</th>
+              <th>Contenido</th>
               <th>Creado</th>
               <th>Acciones</th>
             </tr>
@@ -59,6 +61,7 @@
               <tr>
                 <td>{{ $list->id }}</td>
                 <td>{{ $list->name }}</td>
+                <td>{{ $list->body }}</td>
                 <td>{{ $list->created_at }}</td>
                 <td> 
                   <div class="btn-group">
@@ -75,9 +78,10 @@
 
         @else
           <div class="text-center">
-            <i class="fa fa-grav font-size-70"></i><br><br>
-            ¡No hay listas registradas aún! <br>
-            Agrega una lista para continuar. 
+            <i class="fa fa-grav font-size-70"></i>
+          </div>   
+          <div class="text-center">
+            ¡No hay listas registradas aún!
           </div>   
         @endif
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Account;
+use App\Message;
 use App\ItemList;
 use Clx\Xms\Client;
 use App\MessageList;
@@ -32,18 +33,18 @@ class MessageListController extends Controller
         ]);
     }
 
-    public function MessageListView(){
+    public function messageListView(){
         $user = Auth::user();
         $account = Account::find($user->id);
         return view('user.messageList.messageList');
     }
 
-    public function MessageItemView(){
+    public function messageItemView(){
         $user = Auth::user();
         return view('user.messageList.messageItem');
     }
 
-    public function SendListView(){
+    public function sendListView(){
         $user = Auth::user();
         $account = Account::find($user->id);
         $messageList = MessageList::where('account_id', $account->id)->get();
@@ -55,20 +56,46 @@ class MessageListController extends Controller
         ]);
     }
 
-    public function SendItemsView($id){
+    public function sendItemsView($messageListId){
         $user = Auth::user();
         $account = Account::find($user->id);
-        $batch = MessageList::find($id);
-        $messageItem = new Client($this->splan, $this->token);
-        $items = $messageItem->fetchBatch($batch->name);
+        $messageList = MessageList::find($messageListId);
 
-        return view('user.itemlist.getsenditems', [
-            'user' => $user,
-            'account' => $account,
-            'batch' => $batch,
-            'id' => $items->getBatchId(),
-            'contacts' => $items->getRecipients(),
-            'content' => $items->getBody(),
-        ]);
+        $messages = Message::where('message_list_id', $messageListId)->get();
+
+        // dd($messages);
+
+        if (count($messages) >= 1) {
+            return view('user.itemlist.getsenditems')
+                ->with([
+                    'content' => $messageList->body,
+                    'messages' => $messages
+                ]);
+        }else {
+            try {
+                $messageItem = new Client($this->splan, $this->token);
+                
+                $items = $messageItem->fetchBatch($messageList->name);
+
+                // dd($items->getRecipients());
+
+                for ($i=0; $i < count($items->getRecipients()); $i++) { 
+                    $item = new Message();
+                    $item->identifier = $messageList->name;
+                    $item->recipient = $items->getRecipients()[$i];
+                    $item->message_list_id = $messageListId;
+                    $item->save();
+                }
+
+                return view('user.itemlist.getsenditems')
+                ->with([
+                    'content' => $messageList->body,
+                    'messages' => $messages
+                ]);
+                
+            } catch (\Throwable $th) {
+                return redirect('/user/sendmessagelist')->with('message', 'Ha ocurrido un error al recuperar los mensajes');
+            }
+        }
     }
 }

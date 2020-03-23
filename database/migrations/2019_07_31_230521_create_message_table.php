@@ -15,15 +15,16 @@ class CreateMessageTable extends Migration
     {
         Schema::create('message', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('sender');
+            // $table->string('sender');
+            $table->string('identifier');
             $table->string('recipient');
-            $table->string('encoding');
-            $table->string('body');
-            $table->string('msg_length');
-            $table->string('cc');
-            $table->string('is_queued');
-            $table->string('send_at');
-            $table->string('status');
+            // $table->string('encoding');
+            // $table->string('body');
+            // $table->string('msg_length');
+            // $table->string('cc');
+            // $table->string('is_queued');
+            // $table->string('send_at');
+            // $table->string('status');
             $table->timestamps();
         });
     }

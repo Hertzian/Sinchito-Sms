@@ -16,6 +16,7 @@ class CreateMessageListTable extends Migration
         Schema::create('message_list', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('body');
             $table->timestamps();
         });
     }

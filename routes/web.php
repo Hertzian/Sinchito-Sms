@@ -55,27 +55,25 @@ Route::prefix('user')->middleware('auth')->group(function(){
   Route::get('/newitem/{listId}', 'user\ItemsController@newItemView');
   Route::post('/newitem/{listId}', 'user\ItemsController@newItem');
   Route::get('/getitems/{contactListId}', 'user\ItemsController@getBatch');
-  Route::get('/contactlist/{id}', 'user\ItemsController@getContact');
+  // Route::get('/contactlist/{id}', 'user\ItemsController@getContact');
   Route::post('/deleteitem/{contactId}', 'user\ItemsController@deleteItem');
   // Batches
   Route::get('/getlist', 'user\ItemsListController@getBatches');
-  Route::get('/newlist/{id}', 'user\ItemsListController@newBatchView');
-  Route::get('/contactlist/{id}', 'user\ItemsListController@getContacts');
+  // Route::get('/newlist/{id}', 'user\ItemsListController@newBatchView');
+  // Route::get('/contactlist/{id}', 'user\ItemsListController@getContacts');
   Route::post('/newlist/{id}', 'user\ItemsListController@newBatch');
   Route::post('/send/{accountId}', 'user\ItemsListController@sendBatchSMS');
   Route::post('/deletebatch/{id}', 'user\ItemsListController@deleteBatch');
   Route::post('/newcsv/{id}', 'user\ItemsListController@newCSVBatch');
-  Route::post('/sendtemplate/{id}', 'user\ItemsListController@sendTemplate');
+  Route::post('/sendtemplate/{accountId}', 'user\ItemsListController@sendTemplate');
   // Contacts
   Route::post('/contact-list-name/{contactListId}', 'user\ItemsListController@editContactListName');
   // Message 
-  Route::get('/message','user\MessageListController@MessageListView');
-  Route::get('/messageItem','user\MessageListController@MessageItemView');
+  Route::get('/message','user\MessageListController@messageListView');
+  Route::get('/messageItem','user\MessageListController@messageItemView');
   // Message list
-  Route::get('/sendmessagelist','user\MessageListController@SendListView');
-  Route::get('/getsenditems/{id}','user\MessageListController@SendItemsView');
-
-  
+  Route::get('/sendmessagelist','user\MessageListController@sendListView');
+  Route::get('/getsenditems/{messageListId}','user\MessageListController@sendItemsView');
 
   // Templates
   Route::get('/gettemplates', 'user\TemplatesController@getTemplatesView');
@@ -99,9 +97,9 @@ Route::prefix('user')->middleware('auth')->group(function(){
 // check views routes
 // Route::get('/profile', function () {return view('vistas.profile');})->name('profile');
 // Route::get('/template', function () {return view('vistas.template');})->name('template');
-Route::get('/dasch', function () {return view('vistas.dasch');})->name('dasch');
-Route::get('/sms', function () {return view('vistas.sms');})->name('sms');
-Route::get('/settings', function () {return view('vistas.settings');})->name('settings');
-Route::get('/contacts', function () {return view('vistas.contacts');})->name('contacts');
-Route::get('/sin', function () {return view('vistas.singleSms');})->name('sin');
+// Route::get('/dasch', function () {return view('vistas.dasch');})->name('dasch');
+// Route::get('/sms', function () {return view('vistas.sms');})->name('sms');
+// Route::get('/settings', function () {return view('vistas.settings');})->name('settings');
+// Route::get('/contacts', function () {return view('vistas.contacts');})->name('contacts');
+// Route::get('/sin', function () {return view('vistas.singleSms');})->name('sin');
 // Route::get('/balance', function () {return view('vistas.balance');})->name('balance');
