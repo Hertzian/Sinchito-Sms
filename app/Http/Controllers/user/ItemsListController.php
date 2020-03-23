@@ -22,7 +22,6 @@ class ItemsListController extends Controller
     protected $sender;
 
     public function __construct(){
-
         $this->middleware('auth');        
         $this->token = config('app.sinch')['API_TOKEN'];
         $this->splan = config('app.sinch')['SERVICE_PLAN_ID'];
@@ -35,8 +34,6 @@ class ItemsListController extends Controller
         $user = Auth::user();
         $account = Account::find($user->id);
         $batches = ItemList::where('account_id', $user->id)->paginate(15);
-
-        // dd($account);
 
         $items = Item::select('name', 'number')
             ->where('item_list_id', '=' )
@@ -74,35 +71,99 @@ class ItemsListController extends Controller
         ->with('message', 'La lista se ha creado con éxito');
     }
 
-    public function newCSVBatch(Request $request, $id){
-        $account = Account::find($id);
+    // public function newCSVBatchOld(Request $request, $accountId){
+    //     $account = Account::find($accountId);
 
-        $this->validate($request, [
-            'item_list_id' => 'required',
-            'csv' => 'required|file'
-        ]);
+    //     $this->validate($request, [
+    //         'item_list_id' => 'required',
+    //         'csv' => 'required|file'
+    //     ]);
 
-        $item_list_id = $request->input('item_list_id');
+    //     $item_list_id = $request->input('item_list_id');
 
-        $extension = $request->file('csv')->getClientOriginalExtension();
-        $fileNameWithExt = $request->file('csv')->getClientOriginalName();
-        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-        $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-        $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
+    //     $extension = $request->file('csv')->getClientOriginalExtension();
+    //     $fileNameWithExt = $request->file('csv')->getClientOriginalName();
+    //     $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+    //     $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+    //     $path = $request->file('csv')->storeAs('public/csv' . $request->input('csv'), $fileNameToStore);
 
-        $file = Storage::get($path);
-        $arr = str_getcsv($file, ',');
+    //     $file = Storage::get($path);
+    //     $arr = str_getcsv($file, ',');
             
-        for ($i=0; $i < count($arr); $i++) { 
-            $item = new Item();
-            $item->number = '+52' . $arr[$i];
-            $item->item_list_id = $item_list_id;
-            $item->save();
-        }
+    //     for ($i=0; $i < count($arr); $i++) { 
+    //         $item = new Item();
+    //         $item->number = '+52' . $arr[$i];
+    //         $item->item_list_id = $item_list_id;
+    //         $item->save();
+    //     }
         
-        return redirect('/user/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
-    }
+    //     return redirect('/user/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
+    // }
 
+    public function newCSVBatch(Request $request, $accountId){
+        $file = $request->file('csv');
+
+        try {
+            if (isset($file)){
+    
+                $this->validate($request, [
+                    'item_list_id' => 'required',
+                    'csv' => 'required|file',
+                ]);
+
+                $item_list_id = $request->input('item_list_id');
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $tempPath = $file->getRealPath();
+                $fileSize = $file->getSize();
+                $mimeType = $file->getMimeType();
+                $valid_extension = array("csv");
+                $maxFileSize = 2097152; 
+                
+                if(in_array(strtolower($extension),$valid_extension)){
+                    if($fileSize <= $maxFileSize){
+                        
+                        $location = 'storage/csv';
+                        $file->move($location, $filename);
+                        $filepath = public_path($location."/".$filename);
+                        $file = fopen($filepath,"r");
+    
+                        $importData_arr = [];
+                        
+                        $i = 0;
+    
+                        while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
+                            $num = count($filedata );
+                            
+                            for ($c=0; $c < $num; $c++) {
+                                $importData_arr[$i][] = $filedata [$c];
+                            }
+                            $i++;
+                        }
+
+                        foreach($importData_arr as $importData){
+                            $item = new Item();
+                            $item->name = $importData[0];
+                            $item->number = $importData[1];
+                            $item->item_list_id = $item_list_id;
+                            $item->save();
+                        }
+
+                        return redirect('/user/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
+                    }else{
+                        Session::flash('error','Tu archivo es muy grande. Debe ser menor que 2MB.');
+                    }
+                }else{
+                    Session::flash('error','Extensión no válida de archivo.');
+                }
+            }else{
+                return redirect('/user/getlist')->with('error', 'Algo no salio bien :(');    
+            }
+        } catch (\Throwable $th) {
+            return redirect('/user/getlist')->with('error', 'Error intenta de nuevo.');    
+        }
+        return redirect('/user/getlist')->with('message', 'Contactos cargados con éxito, Todo ha salido bien');
+    }
 
     public function sendTemplate(Request $request, $accountId){
         $account = Account::find($accountId);
@@ -174,7 +235,6 @@ class ItemsListController extends Controller
     }
 
     public function sendBatchSMS(Request $request, $accountId){
-
         $account = Account::find($accountId);
         $batchId = $request->input('item_list_id');
         $numbers = Item::where('item_list_id', $batchId)->pluck('number');
@@ -220,7 +280,6 @@ class ItemsListController extends Controller
         }
 
         return redirect('/user/getitems/' . $batchId)->with('message', $message);
-
     }
 
     public function editContactListName(Request $request, $contactListId){

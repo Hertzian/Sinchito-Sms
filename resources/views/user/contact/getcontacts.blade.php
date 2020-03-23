@@ -8,8 +8,9 @@
 
     <a href="{{ url('/user/getlist') }}" class="btn btn-secondary mb-5"><i class="fas fa-chevron-left"></i> Regresar</a>
     <div class="row">
+
         {{-- Add Contact button --}}
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
@@ -27,8 +28,11 @@
             </div>
         </div>
 
+        {{-- if items > 0 buttons --}}
         @if (count($items) != 0)
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+
+            {{-- SMS button --}}
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
             <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
@@ -43,7 +47,7 @@
             </div>
 
             {{-- SMS Template button --}}
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                 <!-- small box -->
                 <div class="small-box bg-primary">
                     <div class="inner">
@@ -56,9 +60,24 @@
                     <a href="#add-modal" class="small-box-footer" data-target="#sendTemplate-modal" data-toggle="modal">SMS´s con plantilla<i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
+
+            {{-- csv button --}}
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+                <!-- small box -->
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h3>CSV</h3>
+                            <p>Guarda contactos con un .csv</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <a href="#csv-modal" class="small-box-footer" data-target="#csv-modal" data-toggle="modal">SMS´s con plantilla<i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
         @endif
 
-        {{-- Send SMS button --}}
+        
         
 
 
@@ -144,6 +163,48 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myLargeModalLabel">Enviar con plantilla</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+             
+                <div class="modal-body ">
+                <form action="{{ url('/user/sendtemplate/' . $account->id) }}" method="post">
+                    @csrf
+                        {{-- <input type="hidden" name="account_id" value="{{ $account->id }}"> --}}
+                        <input type="hidden" name="item_list_id" value="{{ $batch->id }}">
+                        <div class="form-group row">
+                            <div class="col-2"></div>
+                            <label for="text-message" class="col-3 col-form-label">Plantillas</label>
+                            <div class="col-xl-4 col-md-6 col-6">                  
+                                <select class="form-control" name="template_id">
+                                <option value="">Selecciona una plantilla</option>
+                                
+                                @if (count($account->template) >= 1)
+                                    @foreach ($account->template as $template)
+                                    <option value="{{ $template->id }}">{{ $template->name }}</option>          
+                                    @endforeach
+                                @else
+                                    <option value="">No hay plantillas registradas</option>
+                                @endif
+
+                                </select>
+                            </div>
+                        </div>
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-info float-right" onclick="ok()">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- CSV modal --}}
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="csv-modal" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">CSV</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
              

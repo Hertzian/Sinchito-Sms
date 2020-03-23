@@ -364,210 +364,42 @@
                   </form>
                 </div>
 
-
               </td>
                 <td>{{ $batch->created_at }}</td>
                 <td> 
                   <div class="btn-group">
-
-                    {{-- btn modal --}}
-                    <a class="btn btn-info" href="#viewContact-{{ $batch->id }}" class="small-box-footer" data-target="#viewContact-{{ $batch->id }}" data-toggle="modal"><i class="fa fa-users" aria-hidden="true"></i> Ver contactos</a>
-
-                    {{-- Modal body Contacts --}}
-                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="viewContact-{{ $batch->id }}" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-
-                          <div class="modal-header">
-                            <h4 class="modal-title" id="myLargeModalLabel">Lista: {{ $batch->name }}</h4>
-                            
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                          </div>
-                          
-                          <div class="modal-body "> 
-                            
-                            <div class="m-5">
-
-                              {{-- send sms mini button --}}
-                              <div class="col-md-3 col-sm-12 m-3">
-                                <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#sendSmsThis-{{ $batch->id }}" aria-expanded="false" aria-controls="collapseExample">
-                                  <i class="fas fa-share"></i> Enviar SMS a esta lista
-                                </button>
-                              </div>
-
-                              {{-- new contact mini button --}}
-                              <div class="col-md-3 col-sm-12 m-3">
-                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#mewContactMini-{{ $batch->id }}" aria-expanded="false" aria-controls="collapseExample">
-                                  <i class="fas fa-plus"></i> Agregar contacto a esta lista
-                                </button>
-                              </div>
-
-                              {{-- send template mini button --}}
-                              <div class="col-md-3 col-sm-12 m-3">
-                                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#sendTemplate-{{ $batch->id }}" aria-expanded="false" aria-controls="collapseExample">
-                                  <i class="fas fa-paste"></i> Utilizar plantilla
-                                </button>
-                              </div>
-
-                              {{-- send sms mini modal --}}
-                              <div class="collapse" id="sendSmsThis-{{ $batch->id }}">
-                                <div class="card card-body">
-                                  <h3>Sms para esta lista</h3>
-
-                                  <form action="{{ url('/user/send/' . $account->id) }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="item_list_id" value="{{ $batch->id }}">
-                                    <div class="form-group row">
-                                      <div class="col-2"></div>
-                                      <label for="text-message" class="col-3 col-form-label">Mensaje</label>
-                                      <div class="col-xl-4 col-md-6 col-6">
-                                        <textarea class="form-control" rows="5" placeholder="Escribe tu mensaje" required name="texto_personalizado" id="texto_personalizado" onkeyup="valTextMessage(this);"></textarea><br>
-                                      </div>
-                                    </div>                
-                      
-                                    {{-- <button type="button" class="btn btn-default "  data-dismiss="modal">Close</button> --}}
-                                    <button type="submit" class="btn btn-info float-right" onclick="ok()">Enviar</button>
-                                    <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right mx-5" onclick="limpiar_agregarContacto();">Limpiar</button>
-                                  </form>
-                                </div>
-                              </div>
-
-                              {{-- new contact mini modal --}}
-                              <div class="collapse" id="mewContactMini-{{ $batch->id }}">
-                                <div class="card card-body">
-                                  <h3>Agregar contacto a esta lista</h3>
-
-                                  <form action="{{ url('/user/newitem/' . $batch->id) }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="item_list_id" value="{{ $batch->id }}">
-                                    
-                      
-                                    <div class="form-group row">
-                                      <div class="col-2"></div>
-                                      <label for="recupient-input" class="col-3 col-form-label">Nombre de contacto</label>
-                                      <div class="col-xl-4 col-md-6 col-6">
-                                        <input class="form-control" type="text" name="name" placeholder="Nombre de contacto" required id="contact-name-{{ $batch->id }}">
-                                      </div>
-                                    </div>
-                      
-                                    <div class="form-group row">
-                                      <div class="col-2"></div>
-                                      <label for="recupient-input" class="col-3 col-form-label">Número de contacto</label>
-                                      <div class="col-xl-4 col-md-6 col-6">
-                                        <input class="form-control" type="text" name="number" placeholder="Número de contacto" required id="contact-number-{{ $batch->id }}">
-                                      </div>
-                                    </div>                  
-                      
-                                    <button type="submit" class="btn btn-info float-right" onclick="ok()">Agregar contacto</button>
-                                    <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right mx-5" onclick="limpiar_agregarContacto();">Limpiar</button>
-                                  </form>
-                                </div>
-                              </div>
-
-                              {{-- send template mini modal --}}
-                              <div class="collapse" id="sendTemplate-{{ $batch->id }}">
-                                <div class="card card-body">
-                                  <h3>Usar plantilla</h3>
-
-                                  <form action="{{ url('/user/newitem/' . $batch->id) }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="item_list_id" value="{{ $batch->id }}">
-                                    
-                      
-                                    <div class="form-group row">
-                                      <div class="col-2"></div>
-                                      <label for="recupient-input" class="col-3 col-form-label">Plantilla:</label>
-                                      <div class="col-xl-4 col-md-6 col-6">
-                                        <input class="form-control" type="text" name="name" placeholder="Nombre de contacto" required id="contact-name-{{ $batch->id }}">
-                                      </div>
-                                    </div>
-                      
-                      
-                                    <button type="submit" class="btn btn-info float-right" onclick="ok()">Agregar contacto</button>
-                                    <button type="button" class="btn btn-warning col-xl-2 col-md-2 col-3 float-right mx-5" onclick="limpiar_agregarContacto();">Limpiar</button>
-                                  </form>
-                                </div>
-                              </div>
-
-                            </div>
-
-                            <table id="table_template" class="table table-bordered table-striped table-responsive">             
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>Nombre</th>
-                                  <th>Número</th>
-                                </tr>
-                              </thead>
-                              <tfoot>
-                                <tr>
-                                  <th>#</th>
-                                  <th>Nombre</th>
-                                  <th>Número</th>
-                                </tr>
-                              </tfoot>
-                  
-                              <tbody>
-                                @if (count($batch->item) >= 1)
-                                  @foreach ($batch->item as $item)
-                                    <tr>
-                                      <td>{{ $item->id }}</td>
-                                      <td>{{ $item->name }}</td>
-                                      <td>{{ $item->number }}</td>
-                                    </tr>
-                                  @endforeach
-                                @else
-                                  <tr>
-                                    <td></td>
-                                    <td>No hay números en esta lista</td>
-                                    <td><i class="fa fa-grav font-size-40"></i></td>
-                                  </tr>
-                                  @endif
-                                
-                              <tbody>
-                            </table>
-
-                            </div>
-
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
-                            </div>
-                            </form>
-                        </div>
-                      </div>
-                    </div>
                     
                     <a href="{{ url('/user/getitems/' . $batch->id) }}" class="btn btn-warning"><i class="fas fa-info-circle"></i> Editar</a>
                     <a href="#" class="btn btn-danger" data-target="#deleteContactList-{{ $batch->id }}" data-toggle="modal"><i class="fa fa-remove" aria-hidden="true"></i> Borrar</a>
-                    {{-- Modal body Contacts --}}
-                    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="deleteContactList-{{ $batch->id }}" aria-labelledby="deleteContactList" aria-hidden="true" style="display: none;">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
+                  </div>
 
-                          <div class="modal-header">
-                            <h4 class="modal-title" id="myLargeModalLabel">Eliminar: {{ $batch->name }}</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                          </div>
+                  {{-- Modal body Contacts --}}
+                  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="deleteContactList-{{ $batch->id }}" aria-labelledby="deleteContactList" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myLargeModalLabel">Eliminar: {{ $batch->name }}</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        
+                        <div class="modal-body ">   
+                          <p>¿Estas seguro de querer eliminarlo de forma permanente?</p>
+                          <p>Esta acción no se puede deshacer.</p>
                           
-                          <div class="modal-body ">   
-                            <p>¿Estas seguro de querer eliminarlo de forma permanente?</p>
-                            <p>Esta acción no se puede deshacer.</p>
+                        </div>
 
-                            
-                          </div>
-
-                          <div class="modal-footer">
-                            <form action="{{ url('/user/deletebatch/' . $batch->id) }}" method="post">
-                              @csrf
-                              <button type="submit" class="btn btn-danger mx-5 float-right" id="sa-warning-{{ $batch->id }}" onclick="deleteElement()">Eliminar permanentemente</button> 
-                            </form>
-                            <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
-                          </div>
+                        <div class="modal-footer">
+                          <form action="{{ url('/user/deletebatch/' . $batch->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger mx-5 float-right" id="sa-warning-{{ $batch->id }}" onclick="deleteElement()">Eliminar permanentemente</button> 
+                          </form>
+                          <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
                         </div>
                       </div>
                     </div>
-                    
                   </div>
+                  
                 </td>
               </tr>
             @endforeach
