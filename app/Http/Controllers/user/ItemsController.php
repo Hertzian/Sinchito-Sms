@@ -34,7 +34,7 @@ class ItemsController extends Controller
         $user = Auth::user();
         $account = Account::find($user->id);
         $batch = ItemList::find($contactListId);
-        $items = Item::where('item_list_id', $batch->id)->get();
+        $items = Item::where('item_list_id', $batch->id)->paginate(50);
 
         return view('user.contact.getcontacts',[
             'account' => $account,

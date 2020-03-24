@@ -64,8 +64,8 @@ Route::prefix('user')->middleware('auth')->group(function(){
   Route::post('/newlist/{id}', 'user\ItemsListController@newBatch');
   Route::post('/send/{accountId}', 'user\ItemsListController@sendBatchSMS');
   Route::post('/deletebatch/{id}', 'user\ItemsListController@deleteBatch');
-  // Route::post('/newcsv/{accountId}', 'user\ItemsListController@newCSVBatchOld');
-  Route::post('/newcsv/{accountId}', 'user\ItemsListController@newCSVBatch');
+  // Route::post('/newcsv/{itemListId}', 'user\ItemsListController@newCSVBatchOld');
+  Route::post('/newcsv/{itemListId}', 'user\ItemsListController@newCSVBatch');
   Route::post('/sendtemplate/{accountId}', 'user\ItemsListController@sendTemplate');
   // Contacts
   Route::post('/contact-list-name/{contactListId}', 'user\ItemsListController@editContactListName');

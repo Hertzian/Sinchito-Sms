@@ -47,7 +47,7 @@ class MessageListController extends Controller
     public function sendListView(){
         $user = Auth::user();
         $account = Account::find($user->id);
-        $messageList = MessageList::where('account_id', $account->id)->get();
+        $messageList = MessageList::where('account_id', $account->id)->paginate(15);
 
         return view('user.itemlist.getsendlists',[
             'user' => $user,
@@ -61,7 +61,7 @@ class MessageListController extends Controller
         $account = Account::find($user->id);
         $messageList = MessageList::find($messageListId);
 
-        $messages = Message::where('message_list_id', $messageListId)->get();
+        $messages = Message::where('message_list_id', $messageListId)->paginate(15);
 
         // dd($messages);
 

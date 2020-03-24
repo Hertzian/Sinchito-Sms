@@ -28,6 +28,21 @@
             </div>
         </div>
 
+        {{-- csv button --}}
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <h3>CSV</h3>
+                        <p>Guarda contactos con un .csv</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-copy"></i>
+                </div>
+                <a href="#csv-modal" class="small-box-footer" data-target="#csv-modal" data-toggle="modal">SMS´s con plantilla<i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+
         {{-- if items > 0 buttons --}}
         @if (count($items) != 0)
 
@@ -37,7 +52,7 @@
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>SMS</h3>
-                            <p>Envía SMS a tus contactos</p>              
+                            <p>Envía SMS a estos contactos</p>              
                     </div>
                     <div class="icon">
                         <i class="fa fa-envelope"></i>
@@ -61,20 +76,7 @@
                 </div>
             </div>
 
-            {{-- csv button --}}
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
-                <!-- small box -->
-                <div class="small-box bg-secondary">
-                    <div class="inner">
-                        <h3>CSV</h3>
-                            <p>Guarda contactos con un .csv</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-copy"></i>
-                    </div>
-                    <a href="#csv-modal" class="small-box-footer" data-target="#csv-modal" data-toggle="modal">SMS´s con plantilla<i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
+            
         @endif
 
         
@@ -204,50 +206,40 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">CSV</h4>
+                    <h4 class="modal-title" id="myLargeModalLabel">Guarda contactos con .csv</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-             
-                <div class="modal-body ">
-                <form action="{{ url('/user/sendtemplate/' . $account->id) }}" method="post">
-                    @csrf
-                        {{-- <input type="hidden" name="account_id" value="{{ $account->id }}"> --}}
-                        <input type="hidden" name="item_list_id" value="{{ $batch->id }}">
-                        <div class="form-group row">
-                            <div class="col-2"></div>
-                            <label for="text-message" class="col-3 col-form-label">Plantillas</label>
-                            <div class="col-xl-4 col-md-6 col-6">                  
-                                <select class="form-control" name="template_id">
-                                <option value="">Selecciona una plantilla</option>
-                                
-                                @if (count($account->template) >= 1)
-                                    @foreach ($account->template as $template)
-                                    <option value="{{ $template->id }}">{{ $template->name }}</option>          
-                                    @endforeach
-                                @else
-                                    <option value="">No hay plantillas registradas</option>
-                                @endif
 
-                                </select>
-                            </div>
-                        </div>
-                </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-info float-right" onclick="ok()">Enviar</button>
+                <form action="{{ url('/user/newcsv/' . $batch->id) }}" method="post" class="p-5" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="item_list_id" value="{{ $batch->id }}">
+                    <div class="form-group row">
+                      <div class="col-2"></div>
+                      <label for="text-message" class="col-3 col-form-label">Selecciona un archivo con extension .csv</label>
+                      <div class="col-xl-4 col-md-6 col-6">
+                        <input type="file" name="csv" class="form-control">
+                      </div>
                     </div>
-                </form>
+        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default "  data-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-info float-right" onclick="ok()">Guardar</button>
+                    </div>
+                  </form>
+
             </div>
         </div>
     </div>
 
+    {{-- Contacts list --}}
+    {{ $items->onEachSide(1)->links() }}
     <div class="row">
-        
     
         @if (count($items) >= 1)
             @foreach ($items as $item)
 
-                <div class="col-xl-3 col-lg-3 col-12">
+                {{-- <div class="col-xl-3 col-lg-3 col-12"> --}}
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                     <!-- Widget: user widget style 1 -->
                     <div class="box box-widget widget-user-2">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -256,8 +248,8 @@
                         <img class="rounded-circle" src="{{ asset('images/user-128x128.jpg') }}" alt="User Avatar">
                         </div>
                         <!-- /.widget-user-image -->
-                        <h3 class="widget-user-username">{{ $item->name}}</h3>
-                        <h6 class="widget-user-desc">{{ $item->number }}</h6>
+                        <h3 class="widget-user-username">{{ $item->number }}</h3>
+                        <h6 class="widget-user-desc">{{ $item->name}}</h6>
                     </div>
                     <div class="box-footer no-padding">
                         <ul class="nav d-block nav-stacked">
@@ -316,7 +308,9 @@
 
         @endif
         
+        
     </div>
+    {{ $items->onEachSide(1)->links() }}
 
     
 

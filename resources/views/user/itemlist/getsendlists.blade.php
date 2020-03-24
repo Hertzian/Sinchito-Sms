@@ -87,6 +87,7 @@
 
           </tbody>
         </table>
+        {{ $messageList->onEachSide(1)->links() }}
       </div>
     </div>
   </div>

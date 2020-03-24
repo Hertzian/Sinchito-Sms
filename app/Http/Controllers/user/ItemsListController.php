@@ -100,69 +100,59 @@ class ItemsListController extends Controller
     //     return redirect('/user/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
     // }
 
-    public function newCSVBatch(Request $request, $accountId){
+    public function newCSVBatch(Request $request, $contactListId){
         $file = $request->file('csv');
+        $list = ItemList::find($contactListId);
+
+        $this->validate($request, [
+            'item_list_id' => 'required',
+            'csv' => 'required|file|max:2000',
+        ]);
 
         try {
-            if (isset($file)){
-    
-                $this->validate($request, [
-                    'item_list_id' => 'required',
-                    'csv' => 'required|file',
-                ]);
+            $item_list_id = $request->input('item_list_id');
 
-                $item_list_id = $request->input('item_list_id');
-                $filename = $file->getClientOriginalName();
-                $extension = $file->getClientOriginalExtension();
-                $tempPath = $file->getRealPath();
-                $fileSize = $file->getSize();
-                $mimeType = $file->getMimeType();
-                $valid_extension = array("csv");
-                $maxFileSize = 2097152; 
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $tempPath = $file->getRealPath();
+            $fileSize = $file->getSize();
+            $mimeType = $file->getMimeType();
+            $valid_extension = array("csv");
+
+
+            
+            if(in_array(strtolower($extension),$valid_extension)){
+                $location = 'storage/csv';
+                $file->move($location, $filename);
+                $filepath = public_path($location."/".$filename);
+                $file = fopen($filepath,"r");
+
+                $importData_arr = [];
                 
-                if(in_array(strtolower($extension),$valid_extension)){
-                    if($fileSize <= $maxFileSize){
-                        
-                        $location = 'storage/csv';
-                        $file->move($location, $filename);
-                        $filepath = public_path($location."/".$filename);
-                        $file = fopen($filepath,"r");
-    
-                        $importData_arr = [];
-                        
-                        $i = 0;
-    
-                        while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
-                            $num = count($filedata );
-                            
-                            for ($c=0; $c < $num; $c++) {
-                                $importData_arr[$i][] = $filedata [$c];
-                            }
-                            $i++;
-                        }
+                $i = 0;
 
-                        foreach($importData_arr as $importData){
-                            $item = new Item();
-                            $item->name = $importData[0];
-                            $item->number = $importData[1];
-                            $item->item_list_id = $item_list_id;
-                            $item->save();
-                        }
-
-                        return redirect('/user/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
-                    }else{
-                        Session::flash('error','Tu archivo es muy grande. Debe ser menor que 2MB.');
+                while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
+                    for ($c=0; $c < count($filedata ); $c++) {
+                        $importData_arr[$i][] = $filedata [$c];
                     }
-                }else{
-                    Session::flash('error','Extensión no válida de archivo.');
+                    $i++;
                 }
+
+                foreach($importData_arr as $importData){
+                    $item = new Item();
+                    $item->name = $importData[0];
+                    $item->number = '+52' . $importData[1];
+                    $item->item_list_id = $item_list_id;
+                    $item->save();
+                }
+
+                return redirect('/user/getlist')->with('message', 'Los contactos del archivo csv se han adicionado con éxito');
             }else{
-                return redirect('/user/getlist')->with('error', 'Algo no salio bien :(');    
+                Session::flash('error','Extensión no válida de archivo.');
             }
         } catch (\Throwable $th) {
-            return redirect('/user/getlist')->with('error', 'Error intenta de nuevo.');    
+            return redirect('/user/getlist')->with('error', 'Error intenta de nuevo.');
         }
-        return redirect('/user/getlist')->with('message', 'Contactos cargados con éxito, Todo ha salido bien');
     }
 
     public function sendTemplate(Request $request, $accountId){

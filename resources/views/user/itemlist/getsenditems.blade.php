@@ -36,7 +36,7 @@
         <table id="table_template" class="table table-bordered table-striped table-responsive">
           <thead>
             <tr>
-              <th>#Identificador</th>
+              <th>#</th>
               <th>Recipiente</th>
               {{-- <th>Contenido</th> --}}
               <th>Creado</th>
@@ -44,7 +44,7 @@
           </thead>
           <tfoot>
             <tr>
-                <th>#Identificador</th>
+                <th>#</th>
                 <th>Recipiente</th>
                 {{-- <th>Contenido</th> --}}
                 <th>Creado</th>
@@ -82,6 +82,7 @@
 
           </tbody>
         </table>
+        {{ $messages->onEachSide(1)->links() }}
       </div>
     </div>
   </div>
