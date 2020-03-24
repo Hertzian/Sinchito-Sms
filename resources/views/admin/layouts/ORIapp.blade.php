@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    SmsSinchito | Bienvenido - Welcome 
     <title>me @yield('title')</title>
 
     <!-- Styles -->

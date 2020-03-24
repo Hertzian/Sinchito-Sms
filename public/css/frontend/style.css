@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Ubuntu:700&display=swap');
+
+:root{
+    --c-primary: #B8D8BA;
+    --c-secondary: #77A6B6;
+    --c-danger: #ED6A5A;
+    --c-warning: #F4F1BB;
+    --c-info: #4D7298;
+    --c-gray: #ccc;
+    --c-dark: #555;
+    --c-shadow: 3px 3px 10px #888;
+    --ff-regular: 'Muli', sans-serif;
+    --ff-bold: 'Ubuntu', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    background-color: var(--c-gray);
+    font-family: var(--ff-regular);
+}
+
+.primary{color: var(--c-primary);}
+.secondary{color: var(--c-secondary);}
+.danger{color: var(--c-danger);}
+.warning{color: var(--c-warning);}
+.info{color: var(--c-info);}
+.gray{color: var(--c-gray);}
+.dark{color: var(--c-dark);}
+.white{color: #fff;}
+
+li{list-style: none;}
+
+a{text-decoration: none;}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: var(--ff-bold);
+}
+
+h1{font-size: 2.5rem;}
+
+h2{
+    text-align: center;
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+
+span{
+    color: var(--c-gray);
+}
+
+p{line-height: 2rem;}
+
+section{padding: 5rem 2rem;}
+
+.image{
+    margin: auto;
+    width: 100%;
+}
+
+.image img{
+    width: 100%;
+}
+
+.btn{
+    background-color: var(--c-primary);
+    padding: .2rem 1.5rem;
+    color: var(--c-dark)!important;
+}
+
+.btn:hover{
+    background-color: var(--c-gray);
+    color: var(--c-dark);
+}
+
+.container{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text{
+    width: 100%;
+    padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon{
+    padding: 1rem;
+}
+
+/* navbar */
+.navbar-color{background-color: var(--c-info);}
+
+.navbar{
+    width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a{
+    font-size: 1.7rem;
+    font-family: var(--ff-bold);
+}
+
+.navbar .logo a:hover{
+    color: var(--c-primary);
+}
+
+.navbar a{
+    color: #fff;
+}
+
+.navbar .menu{
+    display: flex;
+}
+
+.navbar .menu li a{
+    padding: .5rem 1rem;
+}
+
+.navbar .menu li a:hover{
+    background-color: var(--c-secondary);
+    color: var(--c-dark);
+    text-decoration: underline;
+}
+
+section.section-a{
+    background-color: #fff;
+}
+
+.section-a .text p{
+    padding-bottom: 3rem;
+}
+
+.section-a .text a.btn{
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: var(--ff-bold);
+    margin: 0 auto;
+}
+
+.section-a .text a.btn:hover{
+    background-color: var(--c-secondary);
+    color: #fff!important;
+}
+
+/* section-b */
+section.section-b{
+    height: 100%;
+    background-color: var(--c-secondary);
+}
+
+section.section-b h2{
+    padding-bottom: 3rem;
+}
+
+section.section-b .inside p{
+    padding: .6rem .5rem;
+    margin-left: 0;
+}
+
+section.section-b .text{
+    align-items: flex-start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+section.section-c{
+    height: 100vh;
+    background-color: var(--c-danger);
+}
+

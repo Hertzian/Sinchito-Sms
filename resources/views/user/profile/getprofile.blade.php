@@ -37,7 +37,7 @@
           @if ($user->avatar == '0')
             <img src="{{ asset('images/user-128x128.jpg') }}" class="rounded-circle">
           @else
-            <img src="{{ url('storage/avatar/' . $user->avatar) }}" class="rounded-circle">
+            <img src="{{ url('storage/avatar/' . $user->avatar) }}" style="width:250px;height:auto" class="rounded-circle">
           @endif
           <div class="form-group">
           <label for="avatar">imagen de perfil:</label>

@@ -6,8 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="images/favicon.ico">
-	<title>Sms Dashboard</title>
+	{{-- <link rel="icon" href="images/favicon.ico"> --}}
+	<link rel="icon" href="{{ asset('images/favicon.ico') }}">
+	<title>SmsSinchito | Bienvenido - Welcome </title>
 	<!-- fontawesome-->  
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<!-- Bootstrap 4.0-->

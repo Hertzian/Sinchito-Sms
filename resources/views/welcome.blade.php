@@ -3,99 +3,101 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ asset('images/favicon.ico') }}">
+        <title>SmsSinchito | Bienvenido - Welcome </title>
+        <link rel="stylesheet" href="{{ asset('css/frontend/style.css') }}">
+        <script src="https://kit.fontawesome.com/bc09df0ab2.js" crossorigin="anonymous"></script>
 
-        <title>SmsSinchAPI</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
+        <div class="navbar-color">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="{{ url('/') }}"><i class="fas fa-sms"></i> Sinchito</a>
+                </div>
+                <ul class="menu">
+                    <li><a href="#caracteristicas">Caracteristicas</a></li>
+                    <li><a href="#herramientas">Herramientas</a></li>
+                    <li><a href="#especificaciones">Especificaciones</a></li>
+                    <li><a href="#paquetes">Paquetes</a></li>
+                    <li><a href="#caracteristicas">Caracteristicas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/user') }}">Dashboard</a>
+                        <a class="btn" href="{{ url('/user') }}">Panel de administración</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Registro</a>
-                        @endif
+                        <a class="btn" href="{{ route('login') }}">Login</a>
                     @endauth
-                </div>                
-            @elseif(Route::has())
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/user') }}">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
+                @elseif(Route::has())
+                    @auth
+                        <a class="btn" href="{{ url('/user') }}">Panel de administración</a>
+                    @else
+                        <a class="btn" href="{{ route('login') }}">Login</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Registro</a>
-                    @endif
-                @endauth
-            </div>
-            @endif
+                    @endauth
+                @endif
+            </nav>
+        </div>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Sms Sinch API
+        <section class="section-a">
+            <div class="container">
+                <div class="block">
+                    <div class="text">
+                        <h2>Un <span>servicio</span> que facilita <br><span>Tu Vida.</span></h2>
+                        <p>
+                            SMS Sinchito es un servicio para envio de sms por medio de tu pc, que facilita las campañas publicitarias por medio de sms. Es posible desde un simple SMS, hasta el envío automático a toda una lista de contactos. Podrás hacer tantas listas de contactos como desees, podrás hacer plantillas personalizadas para cada uno de tus clientes sin mayor esfuerzo que el hacer una plantilla y ¡Listo!. Porque claro, tambien es posible hacer plantillas personalizadas y tener acceso a ellas cuando tu gustes.
+                        </p>
+                        <a class="btn" href="#">Crea tu guenta gratis</a>
+                    </div>
+                    <div class="image">
+                        <img src="{{ asset('images/section-a.jpg') }}" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="section-b">
+            <div class="container">
+                <h2>¿Con qué está <span>realizado</span>?</h2>
+                <div class="block">
+                    <div class="image">
+                        <img src="{{ asset('images/section-a.jpg') }}" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="block inside">
+                            <div class="icon white">
+                                <i class="fas fa-check-circle fa-2x"></i>
+                            </div>
+                            <p>Su API principal, la que se encarga de los SMS's en sí es con Sinch</p>
+                        </div>
+                        <div class="block inside">
+                            <div class="icon white">
+                                <i class="fas fa-check-circle fa-2x"></i>
+                            </div>
+                            <p>El backend principalmente esta conformado con Laravel</p>
+                        </div>
+                        <div class="block inside">
+                            <div class="icon white">
+                                <i class="fas fa-check-circle fa-2x"></i>
+                            </div>
+                            <p>El panel de administración es una plantilla basada en bootstrap</p>
+                        </div>
+                        <div class="block inside">
+                            <div class="icon white">
+                                <i class="fas fa-check-circle fa-2x"></i>
+                            </div>
+                            <p>Básicamente HTML, CSS y Vainilla JS</p>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+        </section>
+
+        <section class="section-c">
+
+        </section>
     </body>
 </html>
