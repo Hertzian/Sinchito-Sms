@@ -8,10 +8,10 @@ class Template extends Model
 {
     protected $table = 'template';
     protected $fillable = [
-        'name', 'content', 'account_id'
+        'name','template'
     ];
 
-    public function template(){
-        return $this->hasMany('App/');
+    public function account(){
+        return $this->hasOne('App\Account', 'account_id');
     }
 }

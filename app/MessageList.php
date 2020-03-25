@@ -11,10 +11,10 @@ class MessageList extends Model
     ];
 
     public function account(){
-        return $this->hasOne('App/Account', 'account_id');
+        return $this->hasOne('App\Account', 'account_id');
     }
 
     public function message(){
-        return $this->hasMany('App/Message');
+        return $this->hasMany('App\Message');
     }
 }

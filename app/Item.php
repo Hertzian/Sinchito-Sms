@@ -12,6 +12,6 @@ class Item extends Model
     ];
 
     public function item_list(){
-        return $this->hasOne('App/ItemList', 'item_list_id');
+        return $this->belongsTo('App\ItemList', 'item_list_id');
     }
 }
