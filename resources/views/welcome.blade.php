@@ -12,30 +12,34 @@
     </head>
     <body>
         <div class="bg-info">
-            <nav class="navbar">
+            <nav class="navbar container">
                 <div class="logo">
                     <a href="{{ url('/') }}"><i class="fas fa-sms"></i> Sinchito</a>
+                </div>
+                <div class="ham" aria-label="toggle-navigation">
+                    <div class="ham-toggle"></div>
                 </div>
                 <ul class="menu">
                     <li><a href="#features">Caracteristicas</a></li>
                     <li><a href="#gallery">Galería</a></li>
                     <li><a href="#tools">Herramientas</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                </ul>
+                
                 @if (Route::has('login'))
                     @auth
-                        <a class="btn" href="{{ url('/user') }}">Panel de administración</a>
+                        <a id="lg-btn" class="btn" href="{{ url('/user') }}">Panel de administración</a>
                     @else
-                        <a class="btn" href="{{ route('login') }}">Login</a>
+                        <a id="lg-btn" class="btn" href="{{ route('login') }}">Login</a>
                     @endauth
                 @elseif(Route::has())
                     @auth
-                        <a class="btn" href="{{ url('/user') }}">Panel de administración</a>
+                        <a id="lg-btn" class="btn" href="{{ url('/user') }}">Panel de administración</a>
                     @else
-                        <a class="btn" href="{{ route('login') }}">Login</a>
+                        <a id="lg-btn" class="btn" href="{{ route('login') }}">Login</a>
 
                     @endauth
                 @endif
+                </ul>
             </nav>
         </div>
 
@@ -51,7 +55,7 @@
                         <a class="btn mx-2" href="{{ route('register') }}">Registrate</a>
                     </div>
                     <div class="image">
-                        <img src="{{ asset('images/section-a.jpg') }}" alt="">
+                        <img src="{{ asset('images/section-a.jpg') }}">
                     </div>
                 </div>
             </div>
@@ -63,8 +67,8 @@
         <section id="features" class="section-b bg-danger">
             <div class="container">
                 <h2>Principales <span class="white">Caracteristicas</span></h2>
-                <div class="block">
-                    <div class="image shadow">
+                <div id="check" class="block">
+                    <div class="image">
                         <img src="{{ asset('images/section-a.jpg') }}" alt="">
                     </div>
                     <div class="text">
@@ -153,7 +157,7 @@
         <section id="tools" class="section-b bg-info">
             <div class="container">
                 <h2>¿Qué <span class="white">herramientas</span> se utilizaron?</h2>
-                <div class="block">
+                <div id="tools-check" class="block">
                     <div class="image">
                         <img src="{{ asset('images/section-a.jpg') }}" alt="">
                     </div>
@@ -181,7 +185,7 @@
         <section id="contact" class="section-contact bg-warning">
             <div class="container">
                 <h2 class="my-5">Contáctame</h2>
-                <div class="block">
+                <div id="contact-me" class="block">
                     <div class="text contact p-4 mx-1">
                         <span class="dark">email: </span><a href="mailto:lalo@eduardoaguilar.dev">lalo@eduardoaguilar.dev</a> 
                     </div>
@@ -199,18 +203,36 @@
         </footer>
     </body>
     <script>
+        const menuBtn = document.querySelector('.ham');
+        const menuList = document.querySelector('.menu');
         const topBtn = document.getElementById("topBtn");
         const slides = document.querySelectorAll('.slide');
         const next = document.querySelector('#next');
         const prev = document.querySelector('#prev');
         const auto = true;
         const intervalTime = 5000;
+        let menuOpen = false;
         let slideInterval;
 
         window.onscroll = function() {
             scroll()
         };
 
+        // menu
+        menuBtn.addEventListener('click', () => {
+            if (!menuOpen) {
+                menuBtn.classList.add('open');
+                menuList.classList.add('open');
+                menuOpen = true;
+            }else{
+                menuBtn.classList.remove('open');
+                menuList.classList.remove('open');
+                menuOpen = false;
+
+            }
+        });
+
+        // scroll button
         function scroll() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 topBtn.style.display = "block";
@@ -224,6 +246,7 @@
             document.documentElement.scrollTop = 0;
         }
 
+        // Slider
         const nextSlide = () => {
             // Get current class
             const current = document.querySelector('.current');
