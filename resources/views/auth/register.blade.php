@@ -1,16 +1,20 @@
 @extends('layouts.app2')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/frontend/style.css') }}">
+<script src="https://kit.fontawesome.com/bc09df0ab2.js" crossorigin="anonymous"></script>
 
-<body class="register-page-back hold-transition">        
+<body class="register-page-back hold-transition">
     <div class="register-box ">
-        <div class="register-logo">
-            <a href="{{ route('register') }}"><b>Sms</b>SinchApi Registro</a>
+        <div class="login-logo logo">
+            <a href="{{ url('/') }}" >
+                <i class="fas fa-sms"></i> Sinchito</a>
+            </a>
         </div>
         <div class="register-box-body">
-            <h3 class="login-box-msg">Bienvenido</h3> 
+            <h3 class="login-box-msg">Bienvenido</h3>
             <p class="login-box-msg">Registro nuevo</p>
-            
+
 
             <form method="POST" class="form-element" action="{{ route('register') }}">
             @csrf
@@ -58,7 +62,7 @@
                 <div class="form-group has-feedback">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
                     <span class="fa fa-envelope form-control-feedback"></span>
-                    
+
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -117,7 +121,7 @@
                     <div class="col-12 text-center">
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </div>
-                </div>            
+                </div>
             </form>
             <div class="margin-top-20 text-center">
                 <p>Ya tienes cuenta?<a href="{{ route('login') }}" class="text-info m-l-5">Ingresa aquí</a></p>

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
-    <title>{{ config('app.name', 'SmsSinchAPI') }}</title>
+    <title>{{ config('app.name', 'SinchitoSms') }}</title>
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<!-- Bootstrap 4.0-->

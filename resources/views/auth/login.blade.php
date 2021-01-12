@@ -1,11 +1,16 @@
 @extends('layouts.app2')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/frontend/style.css') }}">
+<script src="https://kit.fontawesome.com/bc09df0ab2.js" crossorigin="anonymous"></script>
 
 <body class="hold-transition login-page">
+    <link rel="stylesheet" href="{{ asset('css/frontend/style.css') }}">
     <div class="login-box">
-        <div class="login-logo">
-        <a href="{{ url('/') }}"><b>SMS</b>Sinch</a>
+        <div class="login-logo logo">
+            <a href="{{ url('/') }}" >
+                <i class="fas fa-sms"></i> Sinchito</a>
+            </a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
@@ -59,6 +64,9 @@
 
             </form>
         </div>
+    </div>
+    <div class="margin-top-20 text-center">
+        <p>Si no tienes cuenta <a href="{{ route('register') }}" class="text-info m-l-5">Registrate aquí</a></p>
     </div>
 </div>
 @endsection
