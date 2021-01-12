@@ -26,8 +26,39 @@
                 </div>
 
                 <div class="form-group has-feedback">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
+                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" placeholder="Apellido paterno" required autocomplete="last_name" autofocus>
                     <span class="fa fa-user form-control-feedback"></span>
+                    @error('last_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input id="sec_last_name" type="text" class="form-control @error('sec_last_name') is-invalid @enderror" name="sec_last_name" value="{{ old('sec_last_name') }}" placeholder="Apellido materno" required autocomplete="sec_last_name" autofocus>
+                    <span class="fa fa-user form-control-feedback"></span>
+                    @error('sec_last_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Teléfono" required autocomplete="phone" autofocus>
+                    <span class="fa fa-phone form-control-feedback"></span>
+                    @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
+                    <span class="fa fa-envelope form-control-feedback"></span>
+                    
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -37,7 +68,7 @@
 
                 <div class="form-group has-feedback">
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
-                    <span class="fa fa-user form-control-feedback"></span>
+                    <span class="fa fa-lock form-control-feedback"></span>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

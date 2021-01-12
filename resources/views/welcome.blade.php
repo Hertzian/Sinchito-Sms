@@ -24,7 +24,7 @@
                     <li><a href="#gallery">Galería</a></li>
                     <li><a href="#tools">Herramientas</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                
+
                 @if (Route::has('login'))
                     @auth
                         <a id="lg-btn" class="btn" href="{{ url('/user') }}">Panel de administración</a>
@@ -61,7 +61,8 @@
             </div>
         </section>
 
-        <section class="section-parallax-1 parallax"></section>
+        <section class="section-parallax-1 parallax" style="height: 50%;
+        background-image: url('{{asset('images/section-c.jpg')}}');"></section>
 
         {{-- Features --}}
         <section id="features" class="section-b bg-danger">
@@ -104,7 +105,7 @@
         {{-- Gallery --}}
         <div id="gallery">
             <div class="slider">
-                <div class="slide current">
+                <div class="slide current" style="background: url('{{asset('images/section-1.jpg')}}') no-repeat center center/cover;">
                     <div class="content">
                         <h1>Versátil</h1>
                         <p>
@@ -112,7 +113,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="slide">
+                <div class="slide" style="background: url('{{ asset('images/section-2.jpg')}}') no-repeat center center/cover;">
                     <div class="content">
                         <h1>Organizado</h1>
                         <p>
@@ -120,7 +121,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="slide">
+                <div class="slide" style="background: url('{{ asset('images/section-3.jpg')}}') no-repeat center center/cover;">
                     <div class="content">
                         <h1>Infinidad de contactos</h1>
                         <p>
@@ -128,7 +129,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="slide">
+                <div class="slide" style="background: url('{{ asset('images/section-4.jpg')}}') no-repeat center center/cover;">
                     <div class="content">
                         <h1>Estandarizado</h1>
                         <p>
@@ -136,7 +137,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="slide">
+                <div class="slide" style="background: url('{{ asset('images/section-5.jpg')}}') no-repeat center center/cover;">
                     <div class="content">
                         <h1>Elegante</h1>
                         <p>
@@ -150,8 +151,8 @@
                 <button id="next"><i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
-			
-        
+
+
 
         {{-- Tools --}}
         <section id="tools" class="section-b bg-info">
@@ -179,7 +180,8 @@
             </div>
         </section>
 
-        <section class="section-parallax-2 parallax"></section>
+        <section class="section-parallax-2 parallax" style="height: 50%;
+        background-image: url('{{asset('images/section-d.jpg')}}');"></section>
 
         {{-- Contact --}}
         <section id="contact" class="section-contact bg-warning">
@@ -187,10 +189,10 @@
                 <h2 class="my-5">Contáctame</h2>
                 <div id="contact-me" class="block">
                     <div class="text contact p-4 mx-1">
-                        <span class="dark">email: </span><a href="mailto:lalo@eduardoaguilar.dev">lalo@eduardoaguilar.dev</a> 
+                        <span class="dark">email: </span><a href="mailto:lalo@eduardoaguilar.dev">lalo@eduardoaguilar.dev</a>
                     </div>
                     <div class="text contact p-4 mx-1">
-                        <span class="dark">tel: </span><a href="tel:+523327070095">33-2707-0095</a> 
+                        <span class="dark">tel: </span><a href="tel:+523327070095">33-2707-0095</a>
                     </div>
                 </div>
             </div>
